@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,11 @@ namespace GUI.Data
         }
         public void SaveChanges()
         {
-            StreamWriter sw = new StreamWriter(filePath);
+            using (StreamWriter file = File.CreateText(".\test.txt"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, numberOfGasStation);
+            }
         }
     }
 }
