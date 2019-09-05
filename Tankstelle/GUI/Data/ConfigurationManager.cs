@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Data
 {
-    class ConfigurationManager
+    public class ConfigurationManager
     {
         private string filePath = "./Data";
         private int numberOfGasStation;
