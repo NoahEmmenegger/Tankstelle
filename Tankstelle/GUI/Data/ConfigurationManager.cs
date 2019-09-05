@@ -9,12 +9,11 @@ namespace GUI.Data
 {
     class ConfigurationManager
     {
-        private string filePath = "";
-        private int NumberOfGasStation;
+        private string filePath = "./Data";
+        private int numberOfGasStation;
 
         public int GetNumberOfGasStation()
         {
-
             return 2;
         }
 
