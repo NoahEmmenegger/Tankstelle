@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GUI.Business
+namespace Tankstelle.Business
 {
     public class Fuel
     {
