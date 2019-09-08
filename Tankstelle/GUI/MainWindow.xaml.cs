@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tankstelle.Data;
 
 namespace GUI
 {
@@ -23,6 +24,8 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+            ConfigurationManager configuration = new ConfigurationManager();
+            configuration.GetDataAsJson();
         }
     }
 }
