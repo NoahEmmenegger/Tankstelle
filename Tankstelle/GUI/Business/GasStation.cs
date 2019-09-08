@@ -17,12 +17,22 @@ namespace Tankstelle.Business
         /// <summary>
         /// Holt die Werte, welche im Config stehen und setzt sie
         /// </summary>
-        public void GetConfigValues()
+        public void GetGasPumps()
         {
 
         }
 
-        public void WSetConfigValues()
+        public void SetGasPumps()
+        {
+
+        }
+
+        public void GetFuels()
+        {
+
+        }
+
+        public void SetFuels()
         {
 
         }
