@@ -10,7 +10,7 @@ namespace Tankstelle.Business
 {
     public class GasStation
     {
-        private ConfigurationManager _configManager = new ConfigurationManager();
+        private ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
         public List<GasPump> GasPumpList { get; set; }
         public List<Fuel> FuelList { get; set; }
 

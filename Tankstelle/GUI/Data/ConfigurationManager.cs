@@ -15,10 +15,26 @@ namespace Tankstelle.Data
         private int numberOfGasStation;
         private List<string> fuels;
         private List<object> tanks;
+        private static ConfigurationManager uniqueInstance = null;
+
+        public static ConfigurationManager CreateInstance()
+        {
+            if (uniqueInstance == null)
+            {
+                uniqueInstance = new ConfigurationManager();
+                uniqueInstance.GetDataAsJson();
+            }
+            return uniqueInstance;
+        }
+
+        private ConfigurationManager()
+        {
+
+        }
 
         public int GetNumberOfGasStation()
         {
-            return 2;
+            return numberOfGasStation;
         }
 
         public void GetDataAsJson()
