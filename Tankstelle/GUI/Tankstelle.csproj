@@ -68,6 +68,7 @@
     <Compile Include="Data\ConfigurationManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ActiveFuelPropertys.cs" />
     <Compile Include="GUI\ChoseGasStationObject.xaml.cs">
       <DependentUpon>ChoseGasStationObject.xaml</DependentUpon>
     </Compile>
