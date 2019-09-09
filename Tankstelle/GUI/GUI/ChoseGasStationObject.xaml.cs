@@ -21,9 +21,8 @@ namespace Tankstelle.GUI
     public partial class ChoseGasStationObject : Window
     {
         private GasStation _gasStation = new GasStation();
-        public ChoseGasStationObject(GasStation gasStation)
+        public ChoseGasStationObject()
         {
-            _gasStation = gasStation;
             InitializeComponent();
         }
 
