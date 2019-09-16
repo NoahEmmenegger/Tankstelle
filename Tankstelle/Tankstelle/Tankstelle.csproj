@@ -62,14 +62,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\CashRegister.cs" />
+    <Compile Include="Business\Coin.cs" />
+    <Compile Include="Business\CoinContainer.cs" />
     <Compile Include="Business\Fuel.cs" />
     <Compile Include="Business\GasPump.cs" />
     <Compile Include="Business\GasStation.cs" />
+    <Compile Include="Business\Tank.cs" />
     <Compile Include="Data\ConfigurationManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ActiveFuelPropertys.cs" />
+    <Compile Include="GUI\CashRegisterDisplay.xaml.cs">
+      <DependentUpon>CashRegisterDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChoseCashRegister.xaml.cs">
+      <DependentUpon>ChoseCashRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChoseGasPump.xaml.cs">
+      <DependentUpon>ChoseGasPump.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ChoseGasStationObject.xaml.cs">
       <DependentUpon>ChoseGasStationObject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\GasPumpDisplay.xaml.cs">
+      <DependentUpon>GasPumpDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -102,9 +119,25 @@
     <Folder Include="Cash_register\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="GUI\CashRegisterDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\ChoseCashRegister.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\ChoseGasPump.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GUI\ChoseGasStationObject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\GasPumpDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

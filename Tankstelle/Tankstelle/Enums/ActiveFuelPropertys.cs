@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tankstelle.Business
+namespace Tankstelle.Enums
 {
-    public class GasPump
+    public enum ActiveFuelPropertys
     {
-
     }
 }
