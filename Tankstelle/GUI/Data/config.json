@@ -1,0 +1,19 @@
+{
+    "Data": {
+        "numberOfGasStation": 2,
+        "fuels": [
+            "Diesel",
+            "Benzin"
+        ],
+        "tanks": [
+            {
+                "name": "Tank1",
+                "fuel": "fuel1"
+            },
+            {
+                "name": "Tank2",
+                "fuel": "fuel2"
+            }
+        ]
+    }
+}

@@ -11,10 +11,10 @@ namespace Tankstelle.Data
 {
     public class ConfigurationManager
     {
-        private string filePath = Path.Combine(Environment.CurrentDirectory, @"Data\", "config.json");
+        private string filePath = "./Gui/Data/config.json";
         private int numberOfGasStation;
-        private List<string> fuels;
-        private List<object> tanks;
+        private List<string> fuels = new List<string>();
+        private List<object> tanks = new List<object>();
         private static ConfigurationManager uniqueInstance = null;
 
         public static ConfigurationManager CreateInstance()
@@ -37,6 +37,16 @@ namespace Tankstelle.Data
             return numberOfGasStation;
         }
 
+        public List<string> GetFuels()
+        {
+            return fuels;
+        }
+
+        public List<object> GetTanks()
+        {
+            return tanks;
+        }
+
         public void GetDataAsJson()
         {
             using (StreamReader sr = new StreamReader(filePath))
@@ -45,8 +55,16 @@ namespace Tankstelle.Data
                 JObject jObject = JObject.Parse(rawJson);
                 JToken data = jObject["Data"];
                 numberOfGasStation = (int)data["numberOfGasStation"];
-                var fuels = data["fuels"];
-                var tanks = (object)data["tanks"];
+                var fuelsData = data["fuels"];
+                foreach (string fuel in fuelsData)
+                {
+                    fuels.Add(fuel);
+                }
+                var tanksData = data["tanks"];
+                foreach (object tank in tanksData)
+                {
+                    tanks.Add(tank);
+                }
             }
         }
 
