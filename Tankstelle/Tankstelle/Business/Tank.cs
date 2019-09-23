@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Business
 {
-    class Tank
+    public class Tank
     {
+        public string _name { get; set; }
+        public Fuel _fuel { get; set; }
+        public float _availibleLiter { get; set; }
+        public float _minAmount { get; set; }
     }
 }

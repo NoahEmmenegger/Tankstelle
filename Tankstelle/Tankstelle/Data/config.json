@@ -1,6 +1,6 @@
 {
     "Data": {
-        "numberOfGasStation": 2,
+        "numberOfGasPump": 2,
         "fuels": [
             "Diesel",
             "Benzin"
