@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="ChoseGasPump" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Wählen Sie eine Zapfsäule</TextBox>
+        <ListView Grid.Row="1"></ListView>
     </Grid>
 </Window>
