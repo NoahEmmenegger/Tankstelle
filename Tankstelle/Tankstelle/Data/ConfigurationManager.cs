@@ -11,7 +11,7 @@ namespace Tankstelle.Data
 {
     public class ConfigurationManager
     {
-        private string filePath = "./Gui/Data/config.json";
+        private string filePath = @"..\..\Data\config.json";
         private int numberOfGasStation;
         private List<string> fuels = new List<string>();
         private List<object> tanks = new List<object>();

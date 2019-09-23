@@ -23,7 +23,7 @@ namespace Tankstelle.GUI
         public ChoseCashRegister()
         {
             InitializeComponent();
-            ConfigurationManager configuration = new ConfigurationManager();
+            ConfigurationManager configuration = ConfigurationManager.CreateInstance();
             configuration.GetDataAsJson();
         }
     }
