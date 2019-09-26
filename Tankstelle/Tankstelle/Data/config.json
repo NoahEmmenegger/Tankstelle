@@ -4,11 +4,27 @@
         "fuels": [
           {
             "name": "Diesel",
-            "pricePerLiter":  "0.5"
+            "pricePerLiter": "0.5",
+            "tankList": [
+              {
+                "name":  "Tank1"
+              },
+              {
+                "name":  "Tank2"
+              }
+            ]
           },
           {
             "name": "Benzin",
-            "pricePerLiter": "0.5"
+            "pricePerLiter": "0.5",
+            "tankList": [
+              {
+                "name": "Tank1"
+              },
+              {
+                "name": "Tank2"
+              }
+            ]
           }
         ],
         "tanks": [

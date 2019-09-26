@@ -74,24 +74,31 @@ namespace Tankstelle.Data
 
                 numberOfGasPump = (int)data["numberOfGasPump"];
 
+                var tanksData = data["tanks"];
+                foreach (JToken tankToken in tanksData)
+                {
+                    Tank tankObject = new Tank();
+                    tankObject._name = tankToken["name"].ToString();
+                    tankObject._availibleLiter = float.Parse(tankToken["availibleLiter"].ToString());
+                    tankObject._minAmount = float.Parse(tankToken["minAmount"].ToString());
+                    tanks.Add(tankObject);
+                }
+
                 var fuelsData = data["fuels"];
                 foreach (JToken fuel in fuelsData)
                 {
                     Fuel fuelObject = new Fuel();
                     fuelObject.Name = fuel["name"].ToString();
                     fuelObject.PricePerLiter = Convert.ToDecimal(fuel["pricePerLiter"]);
-                    fuels.Add(fuelObject);
-                }
 
-                var tanksData = data["tanks"];
-                foreach (JToken tankToken in tanksData)
-                {
-                    Tank tankObject = new Tank();
-                    tankObject._name = tankToken["name"].ToString();
-                    tankObject._fuel = fuels.Where(x => x.Name == tankToken["fuel"].ToString()).FirstOrDefault();
-                    tankObject._availibleLiter = float.Parse(tankToken["availibleLiter"].ToString());
-                    tankObject._minAmount = float.Parse(tankToken["minAmount"].ToString());
-                    tanks.Add(tankObject);
+                    List<Tank> tankList = new List<Tank>();
+                    foreach (JToken tankToken in fuel["tankList"])
+                    {
+                        Tank tank = tanks.Where(x => x._name == tankToken["name"].ToString()).FirstOrDefault();
+                        tankList.Add(tank);
+                    }
+                    fuelObject.TankList = tankList;
+                    fuels.Add(fuelObject);
                 }
             }
         }
