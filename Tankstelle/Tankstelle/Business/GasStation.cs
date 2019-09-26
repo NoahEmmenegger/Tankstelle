@@ -19,7 +19,7 @@ namespace Tankstelle.Business
         /// </summary>
         public void GetGasPumps()
         {
-
+            _configManager.GetNumberOfGasStation();
         }
 
         public void SetGasPumps()
@@ -29,7 +29,7 @@ namespace Tankstelle.Business
 
         public void GetFuels()
         {
-
+            _configManager.GetFuels();
         }
 
         public void SetFuels()
