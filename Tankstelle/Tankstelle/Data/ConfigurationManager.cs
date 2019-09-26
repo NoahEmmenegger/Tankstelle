@@ -75,7 +75,7 @@ namespace Tankstelle.Data
                 foreach (object tank in tanksData)
                 {
                     Tank tank1 = new Tank();
-                    tank1._name = tank[1];
+                    tank1._name = "";
                     tanks.Add(tank1);
                 }
             }
