@@ -8,5 +8,7 @@ namespace Tankstelle.Business
 {
     public class Fuel
     {
+        public decimal PricePerLiter { get; set; }
+        public string Name { get; set; }
     }
 }
