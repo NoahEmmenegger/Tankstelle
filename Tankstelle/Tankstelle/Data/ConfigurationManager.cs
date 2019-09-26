@@ -53,6 +53,11 @@ namespace Tankstelle.Data
             return fuels;
         }
 
+        public void AddTank(Tank tank)
+        {
+            tanks.Add(tank);
+        }
+
         public List<Tank> GetTanks()
         {
             return tanks;
@@ -93,7 +98,7 @@ namespace Tankstelle.Data
 
         public void SaveChanges()
         {
-            using (StreamWriter file = File.CreateText(".\test.txt"))
+            using (StreamWriter sw = new StreamWriter(filePath))
             {
             }
         }
