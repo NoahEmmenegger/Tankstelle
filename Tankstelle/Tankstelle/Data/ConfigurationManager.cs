@@ -14,7 +14,7 @@ namespace Tankstelle.Data
     {
         private string filePath = @"..\..\Data\config.json";
         private int numberOfGasPump;
-        private List<string> fuels = new List<string>();
+        private List<Fuel> fuels = new List<Fuel>();
         private List<Tank> tanks = new List<Tank>();
         private static ConfigurationManager uniqueInstance = null;
 
@@ -43,12 +43,12 @@ namespace Tankstelle.Data
             return numberOfGasPump;
         }
 
-        public void AddFuel(string fuel)
+        public void AddFuel(Fuel fuel)
         {
             fuels.Add(fuel);
         }
 
-        public List<string> GetFuels()
+        public List<Fuel> GetFuels()
         {
             return fuels;
         }
@@ -63,20 +63,30 @@ namespace Tankstelle.Data
             using (StreamReader sr = new StreamReader(filePath))
             {
                 string rawJson = sr.ReadToEnd();
+
                 JObject jObject = JObject.Parse(rawJson);
                 JToken data = jObject["Data"];
+
                 numberOfGasPump = (int)data["numberOfGasPump"];
+
                 var fuelsData = data["fuels"];
-                foreach (string fuel in fuelsData)
+                foreach (JToken fuel in fuelsData)
                 {
-                    fuels.Add(fuel);
+                    Fuel fuelObject = new Fuel();
+                    fuelObject.Name = fuel["name"].ToString();
+                    fuelObject.PricePerLiter = Convert.ToDecimal(fuel["pricePerLiter"]);
+                    fuels.Add(fuelObject);
                 }
+
                 var tanksData = data["tanks"];
-                foreach (object tank in tanksData)
+                foreach (JToken tankToken in tanksData)
                 {
-                    Tank tank1 = new Tank();
-                    tank1._name = "";
-                    tanks.Add(tank1);
+                    Tank tankObject = new Tank();
+                    tankObject._name = tankToken["name"].ToString();
+                    tankObject._fuel = fuels.Where(x => x.Name == tankToken["fuel"].ToString()).FirstOrDefault();
+                    tankObject._availibleLiter = float.Parse(tankToken["availibleLiter"].ToString());
+                    tankObject._minAmount = float.Parse(tankToken["minAmount"].ToString());
+                    tanks.Add(tankObject);
                 }
             }
         }

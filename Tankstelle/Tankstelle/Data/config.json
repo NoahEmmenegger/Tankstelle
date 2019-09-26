@@ -2,18 +2,28 @@
     "Data": {
         "numberOfGasPump": 2,
         "fuels": [
-            "Diesel",
-            "Benzin"
+          {
+            "name": "Diesel",
+            "pricePerLiter":  "0.5"
+          },
+          {
+            "name": "Benzin",
+            "pricePerLiter": "0.5"
+          }
         ],
         "tanks": [
-            {
-                "name": "Tank1",
-                "fuel": "fuel1"
-            },
-            {
-                "name": "Tank2",
-                "fuel": "fuel2"
-            }
+          {
+            "name": "Tank1",
+            "fuel": "Diesel",
+            "availibleLiter": "30",
+            "minAmount": "12"
+          },
+          {
+            "name": "Tank2",
+            "fuel": "Benzin",
+            "availibleLiter": "30",
+            "minAmount": "12"
+          }
         ]
     }
 }
