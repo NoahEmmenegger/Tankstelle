@@ -18,5 +18,9 @@ namespace Tankstelle.Business
         {
 
         }
+        public GasPump(List<Fuel> fuelList, int GasPumpNumber)
+        {
+            FuelList = fuelList;
+        }
     }
 }

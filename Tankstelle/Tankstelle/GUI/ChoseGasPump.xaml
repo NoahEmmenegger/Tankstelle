@@ -12,6 +12,6 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBox FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Wählen Sie eine Zapfsäule</TextBox>
-        <ListView Grid.Row="1"></ListView>
+        <ListView ItemsSource="{Binding}"></ListView>
     </Grid>
 </Window>

@@ -11,5 +11,6 @@ namespace Tankstelle.Business
         public string _name { get; set; }
         public float _availibleLiter { get; set; }
         public float _minAmount { get; set; }
+
     }
 }

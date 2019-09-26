@@ -29,6 +29,8 @@ namespace Tankstelle.GUI
         private void _btnChoseGasPump_Click(object sender, RoutedEventArgs e)
         {
             _gasStation.GetGasPumps();
+            ChoseGasPump choseGasPump = new ChoseGasPump(_gasStation.GasPumpList);
+            choseGasPump.ShowDialog();
         }
 
         private void _btnChoseCashRegister_Click(object sender, RoutedEventArgs e)
