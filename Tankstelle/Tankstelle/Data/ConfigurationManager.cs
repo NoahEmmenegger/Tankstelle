@@ -78,9 +78,10 @@ namespace Tankstelle.Data
                 foreach (JToken tankToken in tanksData)
                 {
                     Tank tankObject = new Tank();
-                    tankObject._name = tankToken["name"].ToString();
-                    tankObject._availibleLiter = float.Parse(tankToken["availibleLiter"].ToString());
-                    tankObject._minAmount = float.Parse(tankToken["minAmount"].ToString());
+                    tankObject.Name = tankToken["name"].ToString();
+                    tankObject.AvailibleLiter = float.Parse(tankToken["availibleLiter"].ToString());
+                    tankObject.MinAmount = float.Parse(tankToken["minAmount"].ToString());
+                    tankObject.FuelName = tankToken["fuel"].ToString();
                     tanks.Add(tankObject);
                 }
 
@@ -94,7 +95,7 @@ namespace Tankstelle.Data
                     List<Tank> tankList = new List<Tank>();
                     foreach (JToken tankToken in fuel["tankList"])
                     {
-                        Tank tank = tanks.Where(x => x._name == tankToken["name"].ToString()).FirstOrDefault();
+                        Tank tank = tanks.Where(x => x.Name == tankToken["name"].ToString()).FirstOrDefault();
                         tankList.Add(tank);
                     }
                     fuelObject.TankList = tankList;

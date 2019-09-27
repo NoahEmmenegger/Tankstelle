@@ -10,9 +10,12 @@ namespace Tankstelle.Business
 {
     public class GasStation
     {
+        private List<Fuel> fuelList = new List<Fuel>();
+        private List<GasPump> gasPumpList = new List<GasPump>();
+
         private ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
-        public List<GasPump> GasPumpList { get; set; }
-        public List<Fuel> FuelList { get; set; }
+        public List<GasPump> GasPumpList { get => gasPumpList; set => gasPumpList = value; }
+        public List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
 
         /// <summary>
         /// Holt die Informationen über die GasPumps, welche im Config stehen und erzeugt anhand dieser Informationen GasPumps.
@@ -38,7 +41,7 @@ namespace Tankstelle.Business
         {
             foreach (Fuel oneFuel in _configManager.GetFuels())
             {
-               oneFuel.TankList = _configManager.GetTanks().Where(t => t._name == oneFuel.Name).ToList();
+               oneFuel.TankList = _configManager.GetTanks().Where(t => t.Name == oneFuel.Name).ToList();
                FuelList.Add(oneFuel);
             }
         }

@@ -12,6 +12,15 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBox FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Wählen Sie eine Zapfsäule</TextBox>
-        <ListView ItemsSource="{Binding}"></ListView>
+        <ListView Grid.Row="1" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:Name="Test">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Zapfsäule "></Label>
+                        <Label Content="{Binding Path=GasPumpNumber}"></Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

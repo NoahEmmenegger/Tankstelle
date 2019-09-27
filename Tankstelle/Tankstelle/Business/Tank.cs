@@ -8,9 +8,9 @@ namespace Tankstelle.Business
 {
     public class Tank
     {
-        public string _name { get; set; }
-        public float _availibleLiter { get; set; }
-        public float _minAmount { get; set; }
-
+        public string Name { get; set; }
+        public string FuelName { get; set; }
+        public float AvailibleLiter { get; set; }
+        public float MinAmount { get; set; }
     }
 }

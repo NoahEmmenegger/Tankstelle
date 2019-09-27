@@ -9,6 +9,9 @@ namespace Tankstelle.Business
 {
     public class GasPump
     {
+        /// <summary>
+        /// Legt fest ob Zapfsäule in Gebrauch ist.
+        /// </summary>
         private bool _isLocked = false;
         public int GasPumpNumber { get; set; }
         public List<Fuel> FuelList { get; set; }
@@ -18,9 +21,10 @@ namespace Tankstelle.Business
         {
 
         }
-        public GasPump(List<Fuel> fuelList, int GasPumpNumber)
+        public GasPump(List<Fuel> fuelList, int gasPumpNumber)
         {
             FuelList = fuelList;
+            GasPumpNumber = gasPumpNumber;
         }
     }
 }
