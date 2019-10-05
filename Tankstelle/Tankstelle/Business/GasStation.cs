@@ -8,28 +8,27 @@ using Tankstelle.Data;
 
 namespace Tankstelle.Business
 {
-    public class GasStation
+    public static class GasStation
     {
-        private List<Fuel> fuelList = new List<Fuel>();
-        private List<GasPump> gasPumpList = new List<GasPump>();
+        private static List<Fuel> fuelList = new List<Fuel>();
+        private static List<GasPump> gasPumpList = new List<GasPump>();
 
-        private ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
-        public List<GasPump> GasPumpList { get => gasPumpList; set => gasPumpList = value; }
-        public List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
+        private static ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
+        public static List<GasPump> GasPumpList { get => gasPumpList; set => gasPumpList = value; }
+        public static List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
 
         /// <summary>
         /// Holt die Informationen über die GasPumps, welche im Config stehen und erzeugt anhand dieser Informationen GasPumps.
         /// </summary>
-        public void GetGasPumps()
+        public static void GetGasPumps()
         {
-            GetFuels();
             for (int i = 0; i < _configManager.GetNumberOfGasPump(); i++)
             {
-                GasPumpList.Add(new GasPump(FuelList, i + 1));
+                GasPumpList.Add(new GasPump(i + 1));
             }
         }
 
-        public void SetGasPumps()
+        public static void SetGasPumps()
         {
 
         }
@@ -37,7 +36,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Holt die Informationen über die Treibstoffarten, welche im Config stehen.
         /// </summary>
-        public void GetFuels()
+        public static void GetFuels()
         {
             foreach (Fuel oneFuel in _configManager.GetFuels())
             {
@@ -46,7 +45,7 @@ namespace Tankstelle.Business
             }
         }
 
-        public void SetFuels()
+        public static void SetFuels()
         {
 
         }

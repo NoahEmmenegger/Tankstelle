@@ -20,7 +20,6 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class ChoseGasStationObject : Window
     {
-        private GasStation _gasStation = new GasStation();
         public ChoseGasStationObject()
         {
             InitializeComponent();
@@ -28,8 +27,9 @@ namespace Tankstelle.GUI
 
         private void _btnChoseGasPump_Click(object sender, RoutedEventArgs e)
         {
-            _gasStation.GetGasPumps();
-            ChoseGasPump choseGasPump = new ChoseGasPump(_gasStation.GasPumpList);
+            GasStation.GetFuels();
+            GasStation.GetGasPumps();
+            ChoseGasPump choseGasPump = new ChoseGasPump(GasStation.GasPumpList);
             choseGasPump.ShowDialog();
         }
 

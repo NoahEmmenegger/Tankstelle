@@ -14,16 +14,14 @@ namespace Tankstelle.Business
         /// </summary>
         private bool _isLocked = false;
         public int GasPumpNumber { get; set; }
-        public List<Fuel> FuelList { get; set; }
         public decimal ToPayValue { get; set; }
         public ActiveFuelPropertys ActiveFuel { get; set; }
         public void OpenDisplay()
         {
 
         }
-        public GasPump(List<Fuel> fuelList, int gasPumpNumber)
+        public GasPump(int gasPumpNumber)
         {
-            FuelList = fuelList;
             GasPumpNumber = gasPumpNumber;
         }
     }

@@ -35,7 +35,7 @@ namespace Tankstelle.GUI
         public ChoseGasPump(List<GasPump> gasPumps)
         {
             InitializeComponent();
-            Context = gasPumps;
+            Context = GasStation.GasPumpList;
         }
     }
 }
