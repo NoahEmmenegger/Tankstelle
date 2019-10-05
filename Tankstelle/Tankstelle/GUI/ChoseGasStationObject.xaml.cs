@@ -29,7 +29,7 @@ namespace Tankstelle.GUI
         {
             GasStation.GetFuels();
             GasStation.GetGasPumps();
-            ChoseGasPump choseGasPump = new ChoseGasPump(GasStation.GasPumpList);
+            ChoseGasPump choseGasPump = new ChoseGasPump();
             choseGasPump.ShowDialog();
         }
 

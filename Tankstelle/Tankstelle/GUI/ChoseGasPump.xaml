@@ -10,11 +10,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBox FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Wählen Sie eine Zapfsäule</TextBox>
-        <ListView Grid.Row="1" ItemsSource="{Binding}">
+        <ListView Grid.Row="1" ItemsSource="{Binding}" Name="_livZapfsauulen">
             <ListView.ItemTemplate>
-                <DataTemplate x:Name="Test">
+                <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Zapfsäule "></Label>
                         <Label Content="{Binding Path=GasPumpNumber}"></Label>
@@ -22,5 +23,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Grid.Row="2" Width="80" Height="30" HorizontalAlignment="Right" Margin="5" Name="_btnWaehlen" Click="_btnWaehlen_Click">Wählen</Button>
     </Grid>
 </Window>

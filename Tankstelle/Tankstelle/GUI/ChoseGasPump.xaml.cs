@@ -32,10 +32,21 @@ namespace Tankstelle.GUI
             }
         }
 
-        public ChoseGasPump(List<GasPump> gasPumps)
+        public ChoseGasPump()
         {
             InitializeComponent();
             Context = GasStation.GasPumpList;
+        }
+
+        private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
+        {
+            GasPump selectedGasPump = GasStation.GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
+            if (!selectedGasPump.IsLocked)
+            {
+                selectedGasPump.IsLocked = true;
+                selectedGasPump.OpenDisplay();
+            }
+            
         }
     }
 }

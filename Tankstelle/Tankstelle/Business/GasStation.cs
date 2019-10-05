@@ -13,8 +13,17 @@ namespace Tankstelle.Business
         private static List<Fuel> fuelList = new List<Fuel>();
         private static List<GasPump> gasPumpList = new List<GasPump>();
 
+        /// <summary>
+        /// Objekt um aus der Config Datei zu lesen und in die Config Datei zu schreiben.
+        /// </summary>
         private static ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
+        /// <summary>
+        /// Liste mit allen Zapfsäulen
+        /// </summary>
         public static List<GasPump> GasPumpList { get => gasPumpList; set => gasPumpList = value; }
+        /// <summary>
+        /// Liste mit allen Treibstoffsorten
+        /// </summary>
         public static List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
 
         /// <summary>
@@ -45,6 +54,9 @@ namespace Tankstelle.Business
             }
         }
 
+        /// <summary>
+        /// Setzt die Treibstoffarten im Config
+        /// </summary>
         public static void SetFuels()
         {
 
