@@ -41,12 +41,7 @@ namespace Tankstelle.GUI
         private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
         {
             GasPump selectedGasPump = GasStation.GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
-            if (!selectedGasPump.IsLocked)
-            {
-                selectedGasPump.IsLocked = true;
-                selectedGasPump.OpenDisplay();
-            }
-            
+            selectedGasPump.OpenDisplay();
         }
     }
 }

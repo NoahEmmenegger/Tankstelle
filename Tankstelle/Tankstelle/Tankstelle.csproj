@@ -69,10 +69,10 @@
     <Compile Include="Business\GasPump.cs" />
     <Compile Include="Business\GasStation.cs" />
     <Compile Include="Business\Tank.cs" />
+    <Compile Include="Business\Tap.cs" />
     <Compile Include="Data\ConfigurationManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\ActiveFuelPropertys.cs" />
     <Compile Include="GUI\CashRegisterDisplay.xaml.cs">
       <DependentUpon>CashRegisterDisplay.xaml</DependentUpon>
     </Compile>
