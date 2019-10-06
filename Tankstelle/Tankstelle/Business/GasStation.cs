@@ -36,7 +36,9 @@ namespace Tankstelle.Business
                 GasPumpList.Add(new GasPump(i + 1));
             }
         }
-
+        /// <summary>
+        /// Setzt die Zapfsäulen im Config
+        /// </summary>
         public static void SetGasPumps()
         {
 
