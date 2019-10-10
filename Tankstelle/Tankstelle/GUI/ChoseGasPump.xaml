@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <TextBox FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Zapfsäulen</TextBox>
         <TextBox Grid.Column="1" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Zapfhänen</TextBox>
-        <ListView Grid.Row="1" ItemsSource="{Binding}" Name="_livZapfsauulen">
+        <ListView Grid.Row="1" ItemsSource="{Binding}" Name="_livZapfsauulen" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -28,10 +28,12 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView Grid.Row="1" Grid.Column="1">
+        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ElementName=_livZapfsauulen, Path=SelectedItem.TapList}" Name="_livZapfhaenen" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Path=Fuel.Name}"></Label>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

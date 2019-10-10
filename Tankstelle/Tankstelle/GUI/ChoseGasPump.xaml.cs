@@ -40,8 +40,17 @@ namespace Tankstelle.GUI
 
         private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
         {
-            GasPump selectedGasPump = GasStation.GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
-            selectedGasPump.OpenDisplay();
+            if(_livZapfsauulen.SelectedItem != null && _livZapfhaenen.SelectedItem != null)
+            {
+                GasPump selectedGasPump = GasStation.GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
+                selectedGasPump.ActiveTap = selectedGasPump.TapList.First(t => t == _livZapfhaenen.SelectedItem);
+                selectedGasPump.OpenDisplay();
+            }
+            else
+            {
+                MessageBox.Show("Sie müssen eine Zapfsäule und einen Zapfhan auswählen, bevor Sie fortfahren können.");
+            }
+
         }
     }
 }
