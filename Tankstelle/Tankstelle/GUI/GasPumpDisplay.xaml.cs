@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tankstelle.Business;
 
 namespace Tankstelle.GUI
 {
@@ -19,6 +20,18 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class GasPumpDisplay : Window
     {
+        public GasPump Context
+        {
+            get
+            {
+                return (GasPump)DataContext;
+            }
+            set
+            {
+                DataContext = value;
+            }
+        }
+
         public GasPumpDisplay()
         {
             InitializeComponent();
