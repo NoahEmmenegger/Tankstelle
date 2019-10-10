@@ -31,6 +31,7 @@ namespace Tankstelle.Business
         /// </summary>
         public static void GetGasPumps()
         {
+            GasPumpList.Clear();
             for (int i = 0; i < _configManager.GetNumberOfGasPump(); i++)
             {
                 GasPumpList.Add(new GasPump(i + 1));
