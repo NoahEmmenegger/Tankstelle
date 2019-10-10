@@ -106,9 +106,20 @@ namespace Tankstelle.Data
 
         public void SaveChanges()
         {
-            using (StreamWriter sw = new StreamWriter(filePath))
+            string output = "";
+            using (StreamReader sr = new StreamReader(filePath))
             {
+                string rawJson = sr.ReadToEnd();
+
+                JObject jObject = JObject.Parse(rawJson);
+                JToken data = jObject["Data"];
+
+                data["numberOfGasPump"] = numberOfGasPump;
+
+                output = JsonConvert.SerializeObject(jObject, Formatting.Indented);
             }
+
+            File.WriteAllText(filePath, output);
         }
     }
 }

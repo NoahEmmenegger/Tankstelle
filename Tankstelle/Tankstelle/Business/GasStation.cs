@@ -40,9 +40,10 @@ namespace Tankstelle.Business
         /// <summary>
         /// Setzt die Zapfsäulen im Config
         /// </summary>
-        public static void SetGasPumps()
+        public static void SetGasPumps(int numberOfGasPump)
         {
-
+            _configManager.SetNumberOfGasPump(numberOfGasPump);
+            _configManager.SaveChanges();
         }
 
         /// <summary>
