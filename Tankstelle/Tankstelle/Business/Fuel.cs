@@ -9,7 +9,7 @@ namespace Tankstelle.Business
     public class Fuel
     {
         /// <summary>
-        /// Preis wie Teuer ein Liter vom Treibstoff ist.
+        /// Preis wie Teuer ein Liter vom Treibstoff ist. Angabe in Rappen.
         /// </summary>
         public decimal PricePerLiter { get; set; }
         /// <summary>

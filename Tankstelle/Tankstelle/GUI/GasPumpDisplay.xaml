@@ -7,6 +7,43 @@
         mc:Ignorable="d"
         Title="GasPumpDisplay" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Button Name="_btnTanken" Click="_btnTanken_Click" Margin="5" Height="30" Width="80">Tanken</Button>
+            <Button Name="_btnStopp" Click="_btnStopp_Click" Margin="5" Height="30" Width="80">Stopp</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Label Margin="5">Zapfsäulenummer:</Label>
+            <Label Width="80" Margin="5" Content="{Binding Path=GasPumpNumber}"></Label>
+            <Label Margin="5">Ausgewählte Treibstoffart:</Label>
+            <Label Margin="5" Content="{Binding Path=ActiveTap.Fuel.Name}"></Label>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Width="150" FontSize="30" FontWeight="Bold" Margin="5">Betrag</Label>
+            <TextBox VerticalAlignment="Center" FontSize="30" Margin="5" Height="50" Width="300" IsReadOnly="True" Background="Black" Foreground="White" Text="{Binding Path=ToPayValue}"></TextBox>
+            <Label VerticalAlignment="Center"  FontSize="30" FontWeight="Bold" Margin="5">Franken</Label>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Width="150" FontSize="30" FontWeight="Bold" Margin="5">Abgabe</Label>
+            <TextBox VerticalAlignment="Center" FontSize="30" Margin="5" Height="50" Width="300" IsReadOnly="True" Background="Black" Foreground="White" Text="{Binding Path=Liter}"></TextBox>
+            <Label VerticalAlignment="Center"  FontSize="30" FontWeight="Bold" Margin="5">Liter</Label>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Width="150" FontSize="30" FontWeight="Bold" Margin="5">Preis/L</Label>
+            <TextBox VerticalAlignment="Center" FontSize="30" Margin="5" Height="50" Width="300" IsReadOnly="True" Background="Black" Foreground="White" Text="{Binding Path=ActiveTap.Fuel.PricePerLiter}"></TextBox>
+            <Label VerticalAlignment="Center"  FontSize="30" FontWeight="Bold" Margin="5">Rappen</Label>
+        </StackPanel>
+        <Button x:Name="_btnFertig" Click="_btnFertig_Click" Grid.Column="1" Grid.Row="4" Height="30" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">Fertig</Button>
     </Grid>
 </Window>

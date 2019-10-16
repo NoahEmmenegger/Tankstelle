@@ -36,5 +36,20 @@ namespace Tankstelle.GUI
         {
             InitializeComponent();
         }
+
+        private void _btnFertig_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _btnTanken_Click(object sender, RoutedEventArgs e)
+        {
+            Context.StartRefuel();
+        }
+
+        private void _btnStopp_Click(object sender, RoutedEventArgs e)
+        {
+            Context.StopRefuel();
+        }
     }
 }
