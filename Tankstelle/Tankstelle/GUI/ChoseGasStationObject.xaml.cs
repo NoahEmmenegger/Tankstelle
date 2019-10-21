@@ -22,20 +22,21 @@ namespace Tankstelle.GUI
     {
         public ChoseGasStationObject()
         {
+            GasStation.GetFuels();
+            GasStation.GetGasPumps();
             InitializeComponent();
         }
 
         private void _btnChoseGasPump_Click(object sender, RoutedEventArgs e)
         {
-            GasStation.GetFuels();
-            GasStation.GetGasPumps();
             ChoseGasPump choseGasPump = new ChoseGasPump();
-            choseGasPump.ShowDialog();
+            choseGasPump.Show();
         }
 
         private void _btnChoseCashRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            CashRegisterDisplay chashRegisterDisplay = new CashRegisterDisplay();
+            chashRegisterDisplay.Show();
         }
     }
 }
