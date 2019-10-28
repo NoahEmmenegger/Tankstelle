@@ -88,7 +88,7 @@ namespace Tankstelle.Business
         public GasPump(int gasPumpNumber)
         {
             GasPumpNumber = gasPumpNumber;
-            foreach (var oneFuel in GasStation.FuelList)
+            foreach (var oneFuel in GasStation.GetInstance().FuelList)
             {
                 TapList.Add(new Tap(oneFuel));
             }

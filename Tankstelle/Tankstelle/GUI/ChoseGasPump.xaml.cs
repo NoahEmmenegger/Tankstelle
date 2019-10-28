@@ -35,14 +35,14 @@ namespace Tankstelle.GUI
         public ChoseGasPump()
         {
             InitializeComponent();
-            Context = GasStation.GasPumpList;
+            Context = GasStation.GetInstance().GasPumpList;
         }
 
         private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
         {
             if(_livZapfsauulen.SelectedItem != null && _livZapfhaenen.SelectedItem != null)
             {
-                GasPump selectedGasPump = GasStation.GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
+                GasPump selectedGasPump = GasStation.GetInstance().GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
                 selectedGasPump.ActiveTap = selectedGasPump.TapList.First(t => t == _livZapfhaenen.SelectedItem);
                 selectedGasPump.OpenDisplay();
             }
