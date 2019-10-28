@@ -42,7 +42,15 @@
         <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Margin="5" Width="100">Zapfäulen:</Label>
-                <ComboBox Width="140" ItemsSource="{Binding Path=GasPumpNumber}">
+                <ComboBox Width="140" ItemsSource="{Binding}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Zapfsäule</Label>
+                                <Label Content="{Binding Path=GasPumpNumber}"></Label>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
         </StackPanel>
