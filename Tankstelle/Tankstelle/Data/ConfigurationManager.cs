@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using Tankstelle.Business;
 
 namespace Tankstelle.Data
@@ -116,10 +117,38 @@ namespace Tankstelle.Data
 
                 data["numberOfGasPump"] = numberOfGasPump;
 
+                var list = JsonConvert.DeserializeObject<List<Fuel>>(data["fuels"].ToString());
+
+                JArray jsonFuels = (JArray)data["fuels"];
+                jsonFuels.Clear();
+                
+
+                foreach (Fuel fuel in fuels)
+                {
+                    //jsonFuels.Add(JsonConvert.SerializeObject(fuel, Formatting.Indented));
+                    //var cycleJson = JObject.Parse(
+                    //    "{" +
+                    //        "\"name\":\"" + fuel.Name + "\"" +
+                    //    "}");
+
+                    var jsonFuel = JObject.FromObject(fuel);
+
+                    JArray jsonTaks = (JArray)jsonFuel["TankList"];
+                    jsonTaks.Clear();
+                    foreach (Tank tank in fuel.TankList)
+                    {
+                        var tankObject = new { name = tank.Name };
+                        jsonTaks.Add(JObject.FromObject(tankObject));
+                    }
+                    jsonFuels.Add(jsonFuel);
+                }
+
+                //data["fuels"] = JsonConvert.SerializeObject(list, Formatting.None);
+
                 output = JsonConvert.SerializeObject(jObject, Formatting.Indented);
             }
 
-            File.WriteAllText(filePath, output);
+            File.WriteAllText(@"..\..\Data\testconfig.json", output);
         }
     }
 }
