@@ -8,28 +8,42 @@ using Tankstelle.Data;
 
 namespace Tankstelle.Business
 {
-    public static class GasStation
+    public class GasStation
     {
+        private static GasStation instance = null;
         private static List<Fuel> fuelList = new List<Fuel>();
         private static List<GasPump> gasPumpList = new List<GasPump>();
 
         /// <summary>
         /// Objekt um aus der Config Datei zu lesen und in die Config Datei zu schreiben.
         /// </summary>
-        private static ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
+        private ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
         /// <summary>
         /// Liste mit allen Zapfsäulen
         /// </summary>
-        public static List<GasPump> GasPumpList { get => gasPumpList; set => gasPumpList = value; }
+        public List<GasPump> GasPumpList { get => gasPumpList; set => gasPumpList = value; }
         /// <summary>
         /// Liste mit allen Treibstoffsorten
         /// </summary>
-        public static List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
+        public List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
+
+        private GasStation()
+        {
+            //Do Nothing
+        }
+
+        public static GasStation GetInstance()
+        {
+            if (instance == null)
+                instance = new GasStation();
+            return instance;
+        }
+
 
         /// <summary>
         /// Holt die Informationen über die GasPumps, welche im Config stehen und erzeugt anhand dieser Informationen GasPumps.
         /// </summary>
-        public static void GetGasPumps()
+        public void GetGasPumps()
         {
             GasPumpList.Clear();
             for (int i = 0; i < _configManager.GetNumberOfGasPump(); i++)
@@ -40,7 +54,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Setzt die Zapfsäulen im Config
         /// </summary>
-        public static void SetGasPumps(int numberOfGasPump)
+        public void SetGasPumps(int numberOfGasPump)
         {
             _configManager.SetNumberOfGasPump(numberOfGasPump);
             _configManager.SaveChanges();
@@ -49,7 +63,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Holt die Informationen über die Treibstoffarten, welche im Config stehen.
         /// </summary>
-        public static void GetFuels()
+        public void GetFuels()
         {
             FuelList.Clear();
             foreach (Fuel oneFuel in _configManager.GetFuels())
