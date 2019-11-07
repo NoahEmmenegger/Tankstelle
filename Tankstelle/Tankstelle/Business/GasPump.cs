@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Tankstelle.Enums;
 using Tankstelle.GUI;
 
 namespace Tankstelle.Business
@@ -15,6 +16,7 @@ namespace Tankstelle.Business
         private Tap _activeTap;
         private decimal toPayValue;
         private double liter;
+        private Statuse _status;
         private Timer timer = new Timer();
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -38,6 +40,20 @@ namespace Tankstelle.Business
             {
                 TapList.ForEach(t => t.IsLocked = true);
                 _activeTap = value;
+            }
+        }
+
+        public Statuse Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Status"));
             }
         }
 
@@ -92,6 +108,7 @@ namespace Tankstelle.Business
             {
                 TapList.Add(new Tap(oneFuel));
             }
+            Status = Statuse.Frei;
         }
         public void OpenDisplay()
         {
@@ -100,6 +117,7 @@ namespace Tankstelle.Business
         }
         public void StartRefuel()
         {
+            Status = Statuse.Tankend;
             timer.Interval = 1000;
             timer.Elapsed += Refuel;
             timer.Start();
@@ -108,6 +126,7 @@ namespace Tankstelle.Business
         public void StopRefuel()
         {
             timer.Stop();
+            Status = Statuse.Besetzt;
         }
 
         public void Refuel(Object source, ElapsedEventArgs e)

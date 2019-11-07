@@ -39,10 +39,25 @@
         </StackPanel>
         <TextBox Grid.Column="1" IsReadOnly="True" Margin="10"></TextBox>
 
+        <StackPanel Grid.Column="3" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="5" Width="100">Nummer:</Label>
+                <TextBox Width="50" Margin="5" IsReadOnly="True" Text="{Binding ElementName=GasPumpComboBox, Path=SelectedItem.GasPumpNumber}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="100" Margin="5">Zu Bezahlen:</Label>
+                <TextBox Width="100" Margin="5" IsReadOnly="True" Text="{Binding ElementName=GasPumpComboBox, Path=SelectedItem.ToPayValue}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="100" Margin="5">Status:</Label>
+                <TextBox Width="100" Margin="5" IsReadOnly="True" Text="{Binding ElementName=GasPumpComboBox, Path=SelectedItem.Status}"></TextBox>
+            </StackPanel>
+        </StackPanel>
+
         <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Margin="5" Width="100">Zapfäulen:</Label>
-                <ComboBox Width="140" ItemsSource="{Binding}">
+                <ComboBox Width="140" Name="GasPumpComboBox" ItemsSource="{Binding Path=GasPumpList}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

@@ -20,11 +20,11 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class CashRegisterDisplay : Window
     {
-        public List<GasPump> Context
+        public CashRegister Context
         {
             get
             {
-                return (List<GasPump>)DataContext;
+                return (CashRegister)DataContext;
             }
             set
             {
@@ -32,10 +32,10 @@ namespace Tankstelle.GUI
             }
         }
 
-        public CashRegisterDisplay()
+        public CashRegisterDisplay(CashRegister cashRegister)
         {
             InitializeComponent();
-            Context = GasStation.GetInstance().GasPumpList;
+            Context = cashRegister;
         }
     }
 }

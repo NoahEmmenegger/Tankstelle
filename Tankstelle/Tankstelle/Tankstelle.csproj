@@ -74,6 +74,7 @@
     <Compile Include="Data\ConfigurationManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Statuse.cs" />
     <Compile Include="GUI\CashRegisterDisplay.xaml.cs">
       <DependentUpon>CashRegisterDisplay.xaml</DependentUpon>
     </Compile>
