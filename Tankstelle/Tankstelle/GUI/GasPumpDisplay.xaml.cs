@@ -39,7 +39,7 @@ namespace Tankstelle.GUI
 
         private void _btnFertig_Click(object sender, RoutedEventArgs e)
         {
-
+            Context.FinishRefuel();
         }
 
         private void _btnTanken_Click(object sender, RoutedEventArgs e)

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Data;
+using Tankstelle.Business;
 
 namespace Tankstelle.GUI
 {
@@ -20,9 +21,21 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class ChoseCashRegister : Window
     {
+        public List<CashRegister> Context
+        {
+            get
+            {
+                return (List<CashRegister>)DataContext;
+            }
+            set
+            {
+                DataContext = value;
+            }
+        } 
         public ChoseCashRegister()
         {
             InitializeComponent();
+            Context = GasStation.GetInstance().CashRegisterList;
         }
     }
 }

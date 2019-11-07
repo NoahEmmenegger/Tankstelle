@@ -43,6 +43,9 @@ namespace Tankstelle.Business
             }
         }
 
+        /// <summary>
+        /// Zeigt auf in welchem Status sich dieser Zapfhan gerade befindet, ob z.B. getankt wird.
+        /// </summary>
         public Statuse Status
         {
             get
@@ -115,6 +118,9 @@ namespace Tankstelle.Business
             _display.Context = this;
             _display.Show();
         }
+        /// <summary>
+        /// Startet das Tanken
+        /// </summary>
         public void StartRefuel()
         {
             Status = Statuse.Tankend;
@@ -122,10 +128,18 @@ namespace Tankstelle.Business
             timer.Elapsed += Refuel;
             timer.Start();
         }
-
+        /// <summary>
+        /// Stop den Tankvorgang
+        /// </summary>
         public void StopRefuel()
         {
             timer.Stop();
+        }
+        /// <summary>
+        /// Schliesst den Tankvorgang ab
+        /// </summary>
+        public void FinishRefuel()
+        {
             Status = Statuse.Besetzt;
         }
 

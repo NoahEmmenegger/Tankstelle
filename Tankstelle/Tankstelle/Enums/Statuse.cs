@@ -8,6 +8,7 @@ namespace Tankstelle.Enums
 {
     public enum Statuse
     {
+        Geschlossen = 0,
         Frei = 1,
         Tankend = 2,
         Besetzt = 3,

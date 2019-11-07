@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="ChoseCashRegister" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Wählen Sie eine Kasse:</TextBlock>
+        <ListView Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="80" Height="30" Margin="5">Zurück</Button>
+            <Button Width="80" Height="30" Margin="5">Ok</Button>
+        </StackPanel>
     </Grid>
 </Window>
