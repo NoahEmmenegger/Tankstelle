@@ -92,7 +92,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Setzt die Treibstoffarten im Config
         /// </summary>
-        public static void AddFuels(Fuel fuel)
+        public void AddFuels(Fuel fuel)
         {
             _configManager.AddFuel(fuel);
             _configManager.SaveChanges();
