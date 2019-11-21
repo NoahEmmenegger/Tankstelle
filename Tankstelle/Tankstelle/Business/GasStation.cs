@@ -55,7 +55,6 @@ namespace Tankstelle.Business
             return instance;
         }
 
-
         /// <summary>
         /// Holt die Informationen über die GasPumps, welche im Config stehen und erzeugt anhand dieser Informationen GasPumps.
         /// </summary>
@@ -97,6 +96,5 @@ namespace Tankstelle.Business
             _configManager.AddFuel(fuel);
             _configManager.SaveChanges();
         }
-
     }
 }

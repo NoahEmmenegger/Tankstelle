@@ -115,8 +115,16 @@ namespace Tankstelle.Business
         }
         public void OpenDisplay()
         {
-            _display.Context = this;
-            _display.Show();
+            try
+            {
+                _display.Context = this;
+                _display.Show();
+            }
+            catch(Exception ex)
+            {
+                //TODO Exception Handling 
+            }
+
         }
         /// <summary>
         /// Startet das Tanken
@@ -142,7 +150,6 @@ namespace Tankstelle.Business
         {
             Status = Statuse.Besetzt;
         }
-
         public void Refuel(Object source, ElapsedEventArgs e)
         {
             Liter = Liter + 0.25;
