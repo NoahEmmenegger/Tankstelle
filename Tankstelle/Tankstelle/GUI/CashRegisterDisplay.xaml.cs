@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Enums;
 
 namespace Tankstelle.GUI
 {
@@ -36,6 +37,19 @@ namespace Tankstelle.GUI
         {
             InitializeComponent();
             Context = cashRegister;
+        }
+
+        private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
+        {
+            GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
+            if (selectedGasPump.Status != Statuse.Besetzt)
+            {
+                MessageBox.Show("Die Zapfsäule kann nicht zum bezahlen ausgewählt werden, da es der momentane Status nicht zulässt. Sie muss den Status \"Besetzt\" haben, damit sie ausgewählt werden kann.", "Nicht auswählbar", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                selectedGasPump.Status = Statuse.Bezahlen;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="10"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -17,7 +18,11 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+
+        <TextBox IsReadOnly="True" Grid.RowSpan="2" Grid.Row="0" Grid.Column="1" Background="LightGray"></TextBox>
+        <TextBox IsReadOnly="True" Grid.RowSpan="2" Grid.Row="0" Grid.Column="3" Background="LightGray"></TextBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Button Height="50" Width="50" Margin="5">7</Button>
                 <Button Height="50" Width="50" Margin="5">8</Button>
@@ -37,9 +42,9 @@
                 <Button Background="DarkOrange"  Height="50" Width="70" Margin="5">Fertig</Button>
             </StackPanel>
         </StackPanel>
-        <TextBox Grid.Column="1" IsReadOnly="True" Margin="10"></TextBox>
+        <TextBox Grid.Column="2" IsReadOnly="True" Margin="10"></TextBox>
 
-        <StackPanel Grid.Column="3" Orientation="Vertical">
+        <StackPanel Grid.Column="4" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Margin="5" Width="100">Nummer:</Label>
                 <TextBox Width="50" Margin="5" IsReadOnly="True" Text="{Binding ElementName=GasPumpComboBox, Path=SelectedItem.GasPumpNumber}"></TextBox>
@@ -54,7 +59,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Vertical">
+        <StackPanel Grid.Column="4" Grid.Row="1" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Margin="5" Width="100">Zapfäulen:</Label>
                 <ComboBox Width="140" Name="GasPumpComboBox" ItemsSource="{Binding Path=GasPumpList}">
@@ -68,6 +73,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
+            <Button x:Name="_btnWaehlen" Click="_btnWaehlen_Click" Height="40" Width="100" Margin="8" HorizontalAlignment="Right">Wählen</Button>
         </StackPanel>
     </Grid>
 </Window>

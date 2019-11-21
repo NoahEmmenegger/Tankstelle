@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Enums;
 
 namespace Tankstelle.GUI
 {
@@ -50,6 +51,18 @@ namespace Tankstelle.GUI
         private void _btnStopp_Click(object sender, RoutedEventArgs e)
         {
             Context.StopRefuel();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(Context.Status == Statuse.Tankend)
+            {
+                if(Context.ToPayValue != 0)
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Sie dürfen das Fenster so nicht schliessen, da Sie noch etwas bezahlen müssen. Schliessen Sie es mit dem Fertigbutton", "Schliessung verweigert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
         }
     }
 }

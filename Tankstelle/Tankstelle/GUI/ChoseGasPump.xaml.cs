@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Enums;
 
 namespace Tankstelle.GUI
 {
@@ -35,7 +36,7 @@ namespace Tankstelle.GUI
         public ChoseGasPump()
         {
             InitializeComponent();
-            Context = GasStation.GetInstance().GasPumpList;
+            Context = GasStation.GetInstance().GasPumpList.Where(g => g.Status == Enums.Statuse.Frei).ToList();
         }
 
         private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
@@ -44,7 +45,10 @@ namespace Tankstelle.GUI
             {
                 GasPump selectedGasPump = GasStation.GetInstance().GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
                 selectedGasPump.ActiveTap = selectedGasPump.TapList.First(t => t == _livZapfhaenen.SelectedItem);
-                selectedGasPump.OpenDisplay();
+                if(selectedGasPump.Status == Statuse.Frei)
+                {
+                    selectedGasPump.OpenDisplay();
+                }
             }
             else
             {
