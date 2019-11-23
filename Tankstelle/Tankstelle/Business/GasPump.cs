@@ -161,5 +161,12 @@ namespace Tankstelle.Business
             Liter = Liter + 0.25;
             ToPayValue = Convert.ToDecimal(Liter) * ActiveTap.Fuel.PricePerLiter;
         }
+
+        public void Refresh()
+        {
+            Status = Statuse.Frei;
+            Liter = 0;
+            ToPayValue = 0;
+        }
     }
 }

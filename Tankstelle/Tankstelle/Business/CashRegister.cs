@@ -17,5 +17,18 @@ namespace Tankstelle.Business
             CashRegisterDisplay display = new CashRegisterDisplay(this);
             display.Show();
         }
+
+        public bool FinishPayment(GasPump gasPump, bool verifyToPayValue = true)
+        {
+            if (verifyToPayValue)
+            {
+                if (gasPump.ToPayValue > 0)
+                {
+                    return false;
+                }
+            }
+            GasPumpList.Find(g => g == gasPump).Refresh();
+            return true;
+        }
     }
 }

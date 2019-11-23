@@ -51,5 +51,19 @@ namespace Tankstelle.GUI
                 selectedGasPump.Status = Statuse.Bezahlen;
             }
         }
+
+        private void _btnFertig_Click(object sender, RoutedEventArgs e)
+        {
+            GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
+            bool result = Context.FinishPayment(selectedGasPump);
+            if (!result)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Sind Sie sicher, dass Sie die Zahlung beenden wollen? Es stehen noch Rechnungen offen.", "Zahlung beednen?", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+                if(MessageBoxResult.OK == messageBoxResult)
+                {
+                    Context.FinishPayment(selectedGasPump, false);
+                }
+            }
+        }
     }
 }
