@@ -5,20 +5,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Tankstelle.Enums;
 using Tankstelle.GUI;
 
 namespace Tankstelle.Business
 {
     public class GasPump : INotifyPropertyChanged
     {
-        private GasPumpDisplay _display = new GasPumpDisplay();        
+        private GasPumpDisplay _display;        
         private Tap _activeTap;
         private decimal toPayValue;
         private double liter;
+        private Statuse _status;
         private Timer timer = new Timer();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public GasPump(int gasPumpNumber)
+        {
+            GasPumpNumber = gasPumpNumber;
+            foreach (var oneFuel in GasStation.GetInstance().FuelList)
+            {
+                TapList.Add(new Tap(oneFuel));
+            }
+            Status = Statuse.Frei;
+        }
 
         /// <summary>
         /// Liste mit allen Zapfhähnen, welche es bei dieser Zapfsäule gibt.
@@ -40,12 +51,26 @@ namespace Tankstelle.Business
                 _activeTap = value;
             }
         }
-
+        /// <summary>
+        /// Zeigt auf in welchem Status sich dieser Zapfhan gerade befindet, ob z.B. getankt wird.
+        /// </summary>
+        public Statuse Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Status"));
+            }
+        }
         /// <summary>
         /// Nummer von der Zapfsäule
         /// </summary>
         public int GasPumpNumber { get; set; }
-
         /// <summary>
         /// Wert welcher bei dieser Zapfäule bezahlt werden muss.
         /// </summary>
@@ -63,7 +88,6 @@ namespace Tankstelle.Business
                     PropertyChanged(this, new PropertyChangedEventArgs("ToPayValue"));
             }
         }
-
         /// <summary>
         /// Anzahl der bereits getankten Liter an dieser Zapfsäule vom akktuellen Kunden
         /// </summary>
@@ -84,36 +108,65 @@ namespace Tankstelle.Business
         /// Öffnet das Fenster zur Zapfsäule
         /// </summary>
         /// 
-
-        public GasPump(int gasPumpNumber)
-        {
-            GasPumpNumber = gasPumpNumber;
-            foreach (var oneFuel in GasStation.GetInstance().FuelList)
-            {
-                TapList.Add(new Tap(oneFuel));
-            }
-        }
         public void OpenDisplay()
         {
-            _display.Context = this;
-            _display.Show();
+            try
+            {
+                Status = Statuse.Tankend;
+                _display = new GasPumpDisplay();
+                _display.Context = this;
+                _display.Show();
+            }
+            catch(Exception ex)
+            {
+                //TODO Exception Handling 
+            }
+
         }
+        /// <summary>
+        /// Startet das Tanken
+        /// </summary>
         public void StartRefuel()
         {
-            timer.Interval = 1000;
-            timer.Elapsed += Refuel;
-            timer.Start();
+            if(Status != Statuse.Besetzt)
+            {
+                timer.Interval = 1000;
+                timer.Elapsed += Refuel;
+                timer.Start();
+            }
         }
-
+        /// <summary>
+        /// Stop den Tankvorgang
+        /// </summary>
         public void StopRefuel()
         {
             timer.Stop();
         }
-
+        /// <summary>
+        /// Schliesst den Tankvorgang ab
+        /// </summary>
+        public void FinishRefuel()
+        {           
+            Status = Statuse.Besetzt;
+            timer.Stop();
+            _display.Close();
+        }
+        /// <summary>
+        /// Berechnet das Tanken. Wieviel Liter Treibstoff bezogen wird und wie teuer es ist
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         public void Refuel(Object source, ElapsedEventArgs e)
         {
             Liter = Liter + 0.25;
             ToPayValue = Convert.ToDecimal(Liter) * ActiveTap.Fuel.PricePerLiter;
+        }
+
+        public void Refresh()
+        {
+            Status = Statuse.Frei;
+            Liter = 0;
+            ToPayValue = 0;
         }
     }
 }

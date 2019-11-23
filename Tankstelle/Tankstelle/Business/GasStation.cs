@@ -11,8 +11,9 @@ namespace Tankstelle.Business
     public class GasStation
     {
         private static GasStation instance = null;
-        private static List<Fuel> fuelList = new List<Fuel>();
-        private static List<GasPump> gasPumpList = new List<GasPump>();
+        private List<Fuel> fuelList = new List<Fuel>();
+        private List<GasPump> gasPumpList = new List<GasPump>();
+        private List<CashRegister> cashRegisterList = new List<CashRegister>();
 
         /// <summary>
         /// Objekt um aus der Config Datei zu lesen und in die Config Datei zu schreiben.
@@ -27,6 +28,21 @@ namespace Tankstelle.Business
         /// </summary>
         public List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
 
+        /// <summary>
+        /// Liste mit allen Kassen von der Tankstelle
+        /// </summary>
+        public List<CashRegister> CashRegisterList
+        {
+            get
+            {
+                return cashRegisterList;
+            }
+            set
+            {
+                cashRegisterList = value;
+            }
+        }
+
         private GasStation()
         {
             //Do Nothing
@@ -38,7 +54,6 @@ namespace Tankstelle.Business
                 instance = new GasStation();
             return instance;
         }
-
 
         /// <summary>
         /// Holt die Informationen über die GasPumps, welche im Config stehen und erzeugt anhand dieser Informationen GasPumps.
@@ -81,6 +96,5 @@ namespace Tankstelle.Business
             _configManager.AddFuel(fuel);
             _configManager.SaveChanges();
         }
-
     }
 }

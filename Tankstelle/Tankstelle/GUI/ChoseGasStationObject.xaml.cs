@@ -35,8 +35,9 @@ namespace Tankstelle.GUI
 
         private void _btnChoseCashRegister_Click(object sender, RoutedEventArgs e)
         {
-            CashRegisterDisplay chashRegisterDisplay = new CashRegisterDisplay();
-            chashRegisterDisplay.Show();
+            CashRegister cashRegister = new CashRegister();
+            cashRegister.GasPumpList = GasStation.GetInstance().GasPumpList;
+            cashRegister.ShowDisplay();
         }
     }
 }
