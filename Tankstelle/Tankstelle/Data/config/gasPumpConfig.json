@@ -1,0 +1,16 @@
+{
+  "gasPumps": [
+    {
+      "number": 1,
+      "active": true
+    },
+    {
+      "number": 2,
+      "active": true
+    },
+    {
+      "number": 3,
+      "active": true
+    }
+  ]
+}

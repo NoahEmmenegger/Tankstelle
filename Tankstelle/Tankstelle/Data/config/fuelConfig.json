@@ -1,0 +1,16 @@
+{
+  "tanks": [
+    {
+      "name": "Tank1",
+      "fuel": "Diesel",
+      "availibleLiter": "30",
+      "minAmount": "12"
+    },
+    {
+      "name": "Tank2",
+      "fuel": "Benzin",
+      "availibleLiter": "30",
+      "minAmount": "12"
+    }
+  ]
+}

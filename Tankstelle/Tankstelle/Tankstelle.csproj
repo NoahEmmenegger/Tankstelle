@@ -69,6 +69,7 @@
     <Compile Include="Business\Fuel.cs" />
     <Compile Include="Business\GasPump.cs" />
     <Compile Include="Business\GasStation.cs" />
+    <Compile Include="Business\Receipt.cs" />
     <Compile Include="Business\Tank.cs" />
     <Compile Include="Business\Tap.cs" />
     <Compile Include="Data\ConfigurationManager.cs" />
@@ -107,6 +108,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Data\config.json" />
+    <None Include="Data\config\fuelConfig.json" />
+    <None Include="Data\config\gasPumpConfig.json" />
+    <None Include="Data\config\receiptConfig.json" />
+    <None Include="Data\config\tankConfig.json" />
     <None Include="Data\testconfig.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
