@@ -52,7 +52,7 @@ namespace Tankstelle.GUI
             }
         }
 
-        private void _btnFertig_Click(object sender, RoutedEventArgs e)
+        private void _btnAbschliessen_Click(object sender, RoutedEventArgs e)
         {
             GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
             bool result = Context.FinishPayment(selectedGasPump);
@@ -64,6 +64,24 @@ namespace Tankstelle.GUI
                     Context.FinishPayment(selectedGasPump, false);
                 }
             }
+        }     
+        
+        private void Nummber_Click(object sender, RoutedEventArgs e)
+        {
+            _tbxAnzeige.Text += ((Button)sender).Content;
+        }
+
+        private void _btnInput_Click(object sender, RoutedEventArgs e)
+        {
+            Context.InsertCoin(Convert.ToInt32(_tbxAnzeige.Text));
+        }
+        private void _btnFertig_Click(object sender, RoutedEventArgs e)
+        {
+            Context.AcceptValueInput();
+            GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
+            int outputValue = Context.InsertValue - Convert.ToInt32((selectedGasPump.ToPayValue * 100));
+            QuantityCoins outputCoins = Context.GetChange(outputValue);
+
         }
     }
 }
