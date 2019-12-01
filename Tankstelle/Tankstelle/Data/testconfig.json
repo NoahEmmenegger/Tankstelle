@@ -1,40 +1,11 @@
 {
-  "Data": {
-    "numberOfGasPump": 3,
-    "fuels": [
-      {
-        "PricePerLiter": 0.5,
-        "TankList": [],
-        "Name": "Diesel"
-      },
-      {
-        "PricePerLiter": 0.5,
-        "TankList": [],
-        "Name": "Benzin"
-      },
-      {
-        "PricePerLiter": 1.0,
-        "TankList": [
-          {
-            "name": "testtank"
-          }
-        ],
-        "Name": "test"
-      }
-    ],
-    "tanks": [
-      {
-        "name": "Tank1",
-        "fuel": "Diesel",
-        "availibleLiter": "30",
-        "minAmount": "12"
-      },
-      {
-        "name": "Tank2",
-        "fuel": "Benzin",
-        "availibleLiter": "30",
-        "minAmount": "12"
-      }
-    ]
-  }
+  "receipts": [
+    {
+      "Id": 1,
+      "Date": "2019/02/02 00:00:00",
+      "RelatedFuel": "Diesel",
+      "RelatedLiter": 5,
+      "Sum": 1250
+    }
+  ]
 }

@@ -1,16 +1,28 @@
 {
-  "tanks": [
+  "fuels": [
     {
-      "name": "Tank1",
-      "fuel": "Diesel",
-      "availibleLiter": "30",
-      "minAmount": "12"
+      "Name": "Diesel",
+      "PricePerLiter": "0.5",
+      "TankList": [
+        {
+          "Number": 1
+        },
+        {
+          "Number": 2
+        }
+      ]
     },
     {
-      "name": "Tank2",
-      "fuel": "Benzin",
-      "availibleLiter": "30",
-      "minAmount": "12"
+      "Name": "Benzin",
+      "PricePerLiter": "0.5",
+      "TankList": [
+        {
+          "Number": 1
+        },
+        {
+          "Number": 2
+        }
+      ]
     }
   ]
 }

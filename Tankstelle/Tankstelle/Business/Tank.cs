@@ -8,6 +8,7 @@ namespace Tankstelle.Business
 {
     public class Tank
     {
+        public int Number { get; set; }
         public string Name { get; set; }
         public string FuelName { get; set; }
         public float AvailibleLiter { get; set; }

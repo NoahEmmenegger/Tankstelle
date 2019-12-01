@@ -1,16 +1,16 @@
 {
   "gasPumps": [
     {
-      "number": 1,
-      "active": true
+      "GasPumpNumber": 1,
+      "Status": 1
     },
     {
-      "number": 2,
-      "active": true
+      "GasPumpNumber": 2,
+      "Status": 0
     },
     {
-      "number": 3,
-      "active": true
+      "GasPumpNumber": 3,
+      "Status": 2
     }
   ]
 }
