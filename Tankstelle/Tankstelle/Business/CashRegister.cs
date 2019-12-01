@@ -25,8 +25,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Der insgesamte Wert von den Münzen, welche eingeworfen worden sind.
         /// </summary>
-        private int insertValue = 0;
-        public int InsertValue { get; set; }
+        public int InsertValue { get; set; } = 0;
 
         public CashRegister()
         {
@@ -71,35 +70,70 @@ namespace Tankstelle.Business
             Coin inputCoin;
             switch (coin)
             {
+                case 5:
+                    inputCoin = new Coin(5, "Rappen");
+                    insertCoins.Add(inputCoin);
+                    InsertValue += 5;
+                    break;
                 case 10:
                     inputCoin = new Coin(10, "Rappen");
                     insertCoins.Add(inputCoin);
-                    insertValue += 10;
+                    InsertValue += 10;
                     break;
                 case 20:
                     inputCoin = new Coin(20, "Rappen");
                     insertCoins.Add(inputCoin);
-                    insertValue += 20;
+                    InsertValue += 20;
                     break;
                 case 50:
                     inputCoin = new Coin(50, "Rappen");
                     insertCoins.Add(inputCoin);
-                    insertValue += 50;
+                    InsertValue += 50;
                     break;
                 case 100:
                     inputCoin = new Coin(100, "Rappen");
                     insertCoins.Add(inputCoin);
-                    insertValue += 100;
+                    InsertValue += 100;
                     break;
                 case 200:
                     inputCoin = new Coin(200, "Rappen");
                     insertCoins.Add(inputCoin);
-                    insertValue += 200;
+                    InsertValue += 200;
                     break;
                 case 500:
                     inputCoin = new Coin(500, "Rappen");
                     insertCoins.Add(inputCoin);
-                    insertValue += 500;
+                    InsertValue += 500;
+                    break;
+                case 1000:
+                    inputCoin = new Coin(1000, "Rappen");
+                    insertCoins.Add(inputCoin);
+                    InsertValue += 1000;
+                    break;
+                case 2000:
+                    inputCoin = new Coin(2000, "Rappen");
+                    insertCoins.Add(inputCoin);
+                    InsertValue += 2000;
+                    break;
+                case 5000:
+                    inputCoin = new Coin(5000, "Rappen");
+                    insertCoins.Add(inputCoin);
+                    InsertValue += 5000;
+                    break;
+                case 10000:
+                    inputCoin = new Coin(10000, "Rappen");
+                    insertCoins.Add(inputCoin);
+                    InsertValue += 10000;
+                    break;
+                case 20000:
+                    inputCoin = new Coin(20000, "Rappen");
+                    insertCoins.Add(inputCoin);
+                    InsertValue += 20000;
+                    break;
+                case 100000:
+                    inputCoin = new Coin(100000, "Rappen");
+                    insertCoins.Add(inputCoin);
+                    InsertValue += 100000;
                     break;
                 default:
                     break;
@@ -112,7 +146,7 @@ namespace Tankstelle.Business
         /// <returns>Der Wert vom eingeworfenen Geld</returns>
         public int GetValueInput()
         {
-            return insertValue;
+            return InsertValue;
         }
 
         /// <summary>
@@ -144,7 +178,7 @@ namespace Tankstelle.Business
         public void NotAcceptValueInput()
         {
             insertCoins.Clear();
-            insertValue = 0;
+            InsertValue = 0;
         }
 
         /// <summary>
@@ -278,7 +312,7 @@ namespace Tankstelle.Business
                 }
             }
             insertCoins = new List<Coin>();
-            insertValue = 0;
+            InsertValue = 0;
             return outputCoins;
         }
 
@@ -365,6 +399,22 @@ namespace Tankstelle.Business
         private void AlertCoinMaximun(int coin)
         {
             Console.WriteLine($"Der CoinContainer von der Münzen {coin} hat den maximalen Füllungsgrad überschritten");
+        }
+
+        public void Round(decimal value)
+        {
+            decimal roundedValue = Math.Round(value, 2);
+            char[] charsFromValue = roundedValue.ToString().ToCharArray();
+            int lastNumber = charsFromValue.Last();
+            int secondLastNumber = Convert.ToInt32(charsFromValue[charsFromValue.Length - 2]);
+            if (lastNumber >= 5)
+            {
+                secondLastNumber = secondLastNumber++;
+            }
+            else
+            {
+                
+            }
         }
     }
 }

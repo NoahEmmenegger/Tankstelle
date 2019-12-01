@@ -49,6 +49,7 @@ namespace Tankstelle.GUI
             else
             {
                 selectedGasPump.Status = Statuse.Bezahlen;
+                _tbxAnzeige.Text = "Eingabe: 0 Franken";
             }
         }
 
@@ -68,19 +69,33 @@ namespace Tankstelle.GUI
         
         private void Nummber_Click(object sender, RoutedEventArgs e)
         {
-            _tbxAnzeige.Text += ((Button)sender).Content;
+            string buttonContent = ((Button)sender).Content.ToString();
+            if (buttonContent.Contains("Franken"))
+            {
+                Context.InsertCoin(Convert.ToInt32(buttonContent.Split(' ').First()) * 100);
+            }
+            else
+            {
+                Context.InsertCoin(Convert.ToInt32(buttonContent.Split(' ').First()));
+            }
+            var test = Context.GetValueInput();
+            _tbxAnzeige.Text = $"Eingabe: {Convert.ToDouble(Context.GetValueInput()) / 100} Franken";
         }
 
         private void _btnInput_Click(object sender, RoutedEventArgs e)
         {
-            Context.InsertCoin(Convert.ToInt32(_tbxAnzeige.Text));
+
         }
         private void _btnFertig_Click(object sender, RoutedEventArgs e)
         {
             Context.AcceptValueInput();
             GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
             int outputValue = Context.InsertValue - Convert.ToInt32((selectedGasPump.ToPayValue * 100));
-            QuantityCoins outputCoins = Context.GetChange(outputValue);
+            int[] outputCoins = Context.GetChange(outputValue).CountCoins();
+            _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
+            _tbxAnzeige.Text += $"{outputCoins[0]} x 5 Rappen\r\n{outputCoins[1]} x 10 Rappen\r\n{outputCoins[2]} x 20 Rappen\r\n{outputCoins[3]} x 50 Rappen\r\n{outputCoins[4]} x 1 Franken\r\n" +
+                $"{outputCoins[5]} x 2 Franken\r\n{outputCoins[6]} x 5 Franken\r\n{outputCoins[7]} x 10 Franken\r\n{outputCoins[8]} x 20 Franken\r\n{outputCoins[9]} x 50 Franken\r\n{outputCoins[10]} x 100 Franken\r\n" +
+                $"{outputCoins[11]} x 200 Franken\r\n{outputCoins[12]} x 1000 Franken";
 
         }
     }
