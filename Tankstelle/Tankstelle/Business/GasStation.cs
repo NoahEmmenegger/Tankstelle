@@ -61,18 +61,10 @@ namespace Tankstelle.Business
         public void GetGasPumps()
         {
             GasPumpList.Clear();
-            for (int i = 0; i < _configManager.GetNumberOfGasPump(); i++)
+            for (int i = 0; i < _configManager.GetGasPumps().Count(); i++)
             {
                 GasPumpList.Add(new GasPump(i + 1));
             }
-        }
-        /// <summary>
-        /// Setzt die Zapfsäulen im Config
-        /// </summary>
-        public void SetGasPumps(int numberOfGasPump)
-        {
-            _configManager.SetNumberOfGasPump(numberOfGasPump);
-            _configManager.SaveChanges();
         }
 
         /// <summary>
