@@ -15,7 +15,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="170"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -24,25 +24,28 @@
 
         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <Button Height="50" Width="50" Margin="5">7</Button>
-                <Button Height="50" Width="50" Margin="5">8</Button>
-                <Button Height="50" Width="50" Margin="5">9</Button>
-                <Button Background="Aqua"  Height="50" Width="70" Margin="5">Eingabe</Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="7"></Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="8"></Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="9"></Button>
+                <Button x:Name="_btnInput" Click="_btnInput_Click" Background="Aqua"  Height="50" Width="70" Margin="5">Eingabe</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="50" Width="50" Margin="5">4</Button>
-                <Button Height="50" Width="50" Margin="5">5</Button>
-                <Button Height="50" Width="50" Margin="5">6</Button>
-                <Button Background="Beige"  Height="50" Width="70" Margin="5">Rückgeld</Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="4"></Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="5"></Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="6"></Button>
+                <Button Name="_btnFertig" Click="_btnFertig_Click"  Background="Green"  Height="50" Width="70" Margin="5">Fertig</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="50" Width="50" Margin="5">1</Button>
-                <Button Height="50" Width="50" Margin="5">2</Button>
-                <Button Height="50" Width="50" Margin="5">3</Button>
-                <Button x:Name="_btnFertig" Click="_btnFertig_Click" Background="DarkOrange"  Height="50" Width="70" Margin="5">Fertig</Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="1"></Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="2"></Button>
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="3"></Button>
+                <Button Name="_btnAbbruch" Background="DarkOrange"  Height="50" Width="70" Margin="5">Abbruch</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Height="50" Click="Nummber_Click" Width="50" Margin="5" Content="0"></Button>
             </StackPanel>
         </StackPanel>
-        <TextBox Grid.Column="2" IsReadOnly="True" Margin="10"></TextBox>
+        <TextBox x:Name="_tbxAnzeige" Grid.Column="2" IsReadOnly="True" Margin="10"></TextBox>
 
         <StackPanel Grid.Column="4" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
@@ -74,6 +77,7 @@
                 </ComboBox>
             </StackPanel>
             <Button x:Name="_btnWaehlen" Click="_btnWaehlen_Click" Height="40" Width="100" Margin="8" HorizontalAlignment="Right">Wählen</Button>
+            <Button x:Name="_btnAbschliessen" Click="_btnAbschliessen_Click"   Height="40" Width="100" Margin="8" HorizontalAlignment="Right">Abschliessen</Button>
         </StackPanel>
     </Grid>
 </Window>

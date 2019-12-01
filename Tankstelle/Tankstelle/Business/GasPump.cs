@@ -21,21 +21,10 @@ namespace Tankstelle.Business
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public GasPump(int gasPumpNumber)
-        {
-            GasPumpNumber = gasPumpNumber;
-            foreach (var oneFuel in GasStation.GetInstance().FuelList)
-            {
-                TapList.Add(new Tap(oneFuel));
-            }
-            Status = Statuse.Frei;
-        }
-
         /// <summary>
         /// Liste mit allen Zapfhähnen, welche es bei dieser Zapfsäule gibt.
         /// </summary>
         public List<Tap> TapList { get; set; } = new List<Tap>();
-
         /// <summary>
         /// Der Zapfhahn, welcher momentan im Gebrauch ist
         /// </summary>
@@ -108,6 +97,16 @@ namespace Tankstelle.Business
         /// Öffnet das Fenster zur Zapfsäule
         /// </summary>
         /// 
+
+        public GasPump(int gasPumpNumber)
+        {
+            GasPumpNumber = gasPumpNumber;
+            foreach (var oneFuel in GasStation.GetInstance().FuelList)
+            {
+                TapList.Add(new Tap(oneFuel));
+            }
+            Status = Statuse.Frei;
+        }
         public void OpenDisplay()
         {
             try
