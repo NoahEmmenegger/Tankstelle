@@ -96,7 +96,6 @@ namespace Tankstelle.GUI
             _tbxAnzeige.Text += $"{outputCoins[0]} x 5 Rappen\r\n{outputCoins[1]} x 10 Rappen\r\n{outputCoins[2]} x 20 Rappen\r\n{outputCoins[3]} x 50 Rappen\r\n{outputCoins[4]} x 1 Franken\r\n" +
                 $"{outputCoins[5]} x 2 Franken\r\n{outputCoins[6]} x 5 Franken\r\n{outputCoins[7]} x 10 Franken\r\n{outputCoins[8]} x 20 Franken\r\n{outputCoins[9]} x 50 Franken\r\n{outputCoins[10]} x 100 Franken\r\n" +
                 $"{outputCoins[11]} x 200 Franken\r\n{outputCoins[12]} x 1000 Franken";
-
         }
     }
 }
