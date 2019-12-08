@@ -21,6 +21,8 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class CashRegisterDisplay : Window
     {
+        private string[] _coinCategorys = new string[] { "5 Rappen", "10 Rappen", "20 Rappen", "50 Rappen", "1 Franken", "2 Franken", "5 Franken", "10 Franken", "20 Franken", "50 Franken", "100 Franken", "200 Franken", "1000 Franken"};
+        private string _zuBezahlenAusgabe;
         public CashRegister Context
         {
             get
@@ -49,7 +51,9 @@ namespace Tankstelle.GUI
             else
             {
                 selectedGasPump.Status = Statuse.Bezahlen;
-                _tbxAnzeige.Text = "Eingabe: 0 Franken";
+                selectedGasPump.ToPayValue = Context.Round(selectedGasPump.ToPayValue);
+                _tbxAnzeige.Text = _zuBezahlenAusgabe = $"Zu bezahlen: {selectedGasPump.ToPayValue} Franken\r\n";
+                _tbxAnzeige.Text += "Eingabe: 0 Franken";
             }
         }
 
@@ -79,7 +83,8 @@ namespace Tankstelle.GUI
                 Context.InsertCoin(Convert.ToInt32(buttonContent.Split(' ').First()));
             }
             var test = Context.GetValueInput();
-            _tbxAnzeige.Text = $"Eingabe: {Convert.ToDouble(Context.GetValueInput()) / 100} Franken";
+            _tbxAnzeige.Text = _zuBezahlenAusgabe;
+            _tbxAnzeige.Text += $"Eingabe: {Convert.ToDouble(Context.GetValueInput()) / 100} Franken\r\n";
         }
 
         private void _btnInput_Click(object sender, RoutedEventArgs e)
@@ -91,11 +96,22 @@ namespace Tankstelle.GUI
             Context.AcceptValueInput();
             GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
             int outputValue = Context.InsertValue - Convert.ToInt32((selectedGasPump.ToPayValue * 100));
-            int[] outputCoins = Context.GetChange(outputValue).CountCoins();
-            _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
-            _tbxAnzeige.Text += $"{outputCoins[0]} x 5 Rappen\r\n{outputCoins[1]} x 10 Rappen\r\n{outputCoins[2]} x 20 Rappen\r\n{outputCoins[3]} x 50 Rappen\r\n{outputCoins[4]} x 1 Franken\r\n" +
-                $"{outputCoins[5]} x 2 Franken\r\n{outputCoins[6]} x 5 Franken\r\n{outputCoins[7]} x 10 Franken\r\n{outputCoins[8]} x 20 Franken\r\n{outputCoins[9]} x 50 Franken\r\n{outputCoins[10]} x 100 Franken\r\n" +
-                $"{outputCoins[11]} x 200 Franken\r\n{outputCoins[12]} x 1000 Franken";
+            if(Context.InsertValue / 100 >= selectedGasPump.ToPayValue)
+            {
+                int[] outputCoins = Context.GetChange(outputValue).CountCoins();
+                _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
+                for (int i = 0; i < outputCoins.Length; i++)
+                {
+                    if (outputCoins[i] > 0)
+                    {
+                        _tbxAnzeige.Text += $"{outputCoins[i]} x {_coinCategorys[i]}\r\n";
+                    }
+                }
+            }
+            else
+            {
+                _tbxAnzeige.Text += $"Es wurde noch zu wenig Geld eingeworfen. Es fehlen noch {selectedGasPump.ToPayValue - Context.InsertValue / 100} Franken.";
+            }
         }
     }
 }

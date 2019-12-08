@@ -401,20 +401,23 @@ namespace Tankstelle.Business
             Console.WriteLine($"Der CoinContainer von der Münzen {coin} hat den maximalen Füllungsgrad überschritten");
         }
 
-        public void Round(decimal value)
+        /// <summary>
+        /// Rundet einen Wert, dass es ein gültiger Frankenbetrag ist.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public decimal Round(decimal value)
         {
             decimal roundedValue = Math.Round(value, 2);
-            char[] charsFromValue = roundedValue.ToString().ToCharArray();
-            int lastNumber = charsFromValue.Last();
-            int secondLastNumber = Convert.ToInt32(charsFromValue[charsFromValue.Length - 2]);
-            if (lastNumber >= 5)
-            {
-                secondLastNumber = secondLastNumber++;
-            }
-            else
-            {
-                
-            }
+            decimal lastNumber = decimal.Parse(roundedValue.ToString().ToCharArray().Last().ToString());
+                  
+            if(lastNumber > 5)
+                roundedValue = roundedValue + (10 - lastNumber)/100;
+            else if(lastNumber < 5)
+                roundedValue = roundedValue - lastNumber / 100;
+
+            return roundedValue;
+         
         }
     }
 }
