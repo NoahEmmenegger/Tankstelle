@@ -133,9 +133,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cash_register\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="GUI\AdminArea.xaml">
       <SubType>Designer</SubType>
