@@ -1,23 +1,21 @@
-﻿<Window x:Class="Tankstelle.GUI.ChoseGasStationObject"
+﻿<Window x:Class="Tankstelle.GUI.AdminArea"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tankstelle.GUI"
         mc:Ignorable="d"
-        Title="ChoseGasStationObject" Height="450" Width="800">
+        Title="AdminArea" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Was möchten Sie tun?</TextBlock>
+        <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Admin Area</TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button x:Name="_btnChoseCashRegister" Click="_btnChoseCashRegister_Click" Height="40" Width="120" Margin="10">Kasse auswählen</Button>
-            <Button x:Name="_btnChoseGasPump" Click="_btnChoseGasPump_Click" Height="40" Width="120" Margin="10">Zapfsäule auswählen</Button>
-            <Button x:Name="_btnAdminArea" Click="_btnAdminArea_Click" Height="40" Width="120" Margin="10">Admin Area</Button>
+            <Button x:Name="_btnStatistic" Click="_btnStatistic_Click" Height="40" Width="120" Margin="10">Statistik</Button>
+            <Button x:Name="_btnConfig" Click="_btnConfig_Click" Height="40" Width="120" Margin="10">Config</Button>
         </StackPanel>
     </Grid>
-
 </Window>

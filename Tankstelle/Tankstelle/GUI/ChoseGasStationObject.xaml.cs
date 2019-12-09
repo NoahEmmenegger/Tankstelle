@@ -39,5 +39,11 @@ namespace Tankstelle.GUI
             cashRegister.GasPumpList = GasStation.GetInstance().GasPumpList;
             cashRegister.ShowDisplay();
         }
+
+        private void _btnAdminArea_Click(object sender, RoutedEventArgs e)
+        {
+            AdminArea adminArea = new AdminArea();
+            adminArea.Show();
+        }
     }
 }

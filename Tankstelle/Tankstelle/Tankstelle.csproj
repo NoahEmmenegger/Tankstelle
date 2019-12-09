@@ -77,6 +77,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Statuse.cs" />
+    <Compile Include="GUI\AdminArea.xaml.cs">
+      <DependentUpon>AdminArea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\ConfigDisplay.xaml.cs">
+      <DependentUpon>ConfigDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\StatisticDisplay.xaml.cs">
+      <DependentUpon>StatisticDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\CashRegisterDisplay.xaml.cs">
       <DependentUpon>CashRegisterDisplay.xaml</DependentUpon>
     </Compile>
@@ -128,6 +137,18 @@
     <Folder Include="Cash_register\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="GUI\AdminArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Admin\ConfigDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Admin\StatisticDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\CashRegisterDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
