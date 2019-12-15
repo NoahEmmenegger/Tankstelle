@@ -28,16 +28,16 @@
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="10 Rappen"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="20 Rappen"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="50 Rappen"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5"></Button>
-                <Button x:Name="_btnInput" Click="_btnInput_Click" Background="Aqua"  Height="50" Width="65" Margin="5">Eingabe</Button>
+                <Button Name="_btnFertig" Click="_btnFertig_Click"  Background="Green" Height="50" Width="80" Margin="5">Fertig</Button>
+                <Button x:Name="_btnContent" Click="_btnContent_Click" Background="Aqua"  Height="50" Width="65" Margin="5">Inhalt</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="1 Franken"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="2 Franken"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="5 Franken"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="10 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5"></Button>
-                <Button Name="_btnFertig" Click="_btnFertig_Click"  Background="Green"  Height="50" Width="65" Margin="5">Fertig</Button>
+                <Button Name="_btnAbbruch" Background="DarkOrange" Height="50" Width="80" Margin="5">Abbruch</Button>
+                <Button   Height="50" Width="65" Margin="5"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="20 Franken"></Button>
@@ -45,7 +45,7 @@
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="100 Franken"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="200 Franken"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="1000 Franken"></Button>
-                <Button Name="_btnAbbruch" Background="DarkOrange"  Height="50" Width="65" Margin="5">Abbruch</Button>
+                <Button   Height="50" Width="65" Margin="5"></Button>
             </StackPanel>
         </StackPanel>
         <TextBox x:Name="_tbxAnzeige" Grid.Column="2" IsReadOnly="True" Margin="10"></TextBox>

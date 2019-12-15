@@ -87,10 +87,6 @@ namespace Tankstelle.GUI
             _tbxAnzeige.Text += $"Eingabe: {Convert.ToDouble(Context.GetValueInput()) / 100} Franken\r\n";
         }
 
-        private void _btnInput_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void _btnFertig_Click(object sender, RoutedEventArgs e)
         {
             Context.AcceptValueInput();
@@ -112,6 +108,17 @@ namespace Tankstelle.GUI
             {
                 _tbxAnzeige.Text += $"Es wurde noch zu wenig Geld eingeworfen. Es fehlen noch {selectedGasPump.ToPayValue - Context.InsertValue / 100} Franken.";
             }
+        }
+
+        private void _btnContent_Click(object sender, RoutedEventArgs e)
+        {
+            int totalValue = Context.GetValueTotal();
+            QuantityCoins totalCoins = Context.GetQuantityCoins();
+        }
+
+        private void RenderNumberOfCoins(QuantityCoins coins)
+        {
+
         }
     }
 }
