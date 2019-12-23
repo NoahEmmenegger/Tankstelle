@@ -96,13 +96,8 @@ namespace Tankstelle.GUI
             {
                 int[] outputCoins = Context.GetChange(outputValue).CountCoins();
                 _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
-                for (int i = 0; i < outputCoins.Length; i++)
-                {
-                    if (outputCoins[i] > 0)
-                    {
-                        _tbxAnzeige.Text += $"{outputCoins[i]} x {_coinCategorys[i]}\r\n";
-                    }
-                }
+                RenderNumberOfCoins(outputCoins);
+                selectedGasPump.ToPayValue = 0;
             }
             else
             {
@@ -113,12 +108,21 @@ namespace Tankstelle.GUI
         private void _btnContent_Click(object sender, RoutedEventArgs e)
         {
             int totalValue = Context.GetValueTotal();
-            QuantityCoins totalCoins = Context.GetQuantityCoins();
+            _tbxAnzeige.Text += $"\r\n\r\nDer Wert von allen Münzen im Automat hat folgenden Wert:\r\n{totalValue / 100} Fr."; 
+            int[] totalCoins = Context.GetQuantityCoins().CountCoins();
+            _tbxAnzeige.Text += "\r\nFolgende Münzen sind im Apperat enthalten:\r\n";
+            RenderNumberOfCoins(totalCoins);
         }
 
-        private void RenderNumberOfCoins(QuantityCoins coins)
+        private void RenderNumberOfCoins(int[] coins)
         {
-
+            for (int i = 0; i < coins.Length; i++)
+            {
+                if (coins[i] > 0)
+                {
+                    _tbxAnzeige.Text += $"{coins[i]} x {_coinCategorys[i]}\r\n";
+                }
+            }
         }
     }
 }
