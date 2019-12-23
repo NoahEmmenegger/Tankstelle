@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Tankstelle.Business;
-using Tankstelle.Enums;
+using Tankstelle.Enums; 
 
 namespace Tankstelle.Data
 {
-    public class ConfigurationManager
+    public class ConfigurationManager : IConfigurationManager
     {
         private string filePath = @"..\..\Data\config.json";
         private List<GasPump> gasPumps = new List<GasPump>();
@@ -100,7 +100,7 @@ namespace Tankstelle.Data
             receipts.Add(receipt);
         }
 
-        public void GetDataAsJson()
+        private void GetDataAsJson()
         {
             //GASPUMP
             using (StreamReader sr = new StreamReader(@"..\..\Data\config\gasPumpConfig.json"))

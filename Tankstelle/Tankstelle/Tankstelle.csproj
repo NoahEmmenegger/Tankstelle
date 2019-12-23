@@ -76,6 +76,7 @@
     <Compile Include="Data\ConfigurationManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IConfigurationManager.cs" />
     <Compile Include="Enums\Statuse.cs" />
     <Compile Include="GUI\AdminArea.xaml.cs">
       <DependentUpon>AdminArea.xaml</DependentUpon>
