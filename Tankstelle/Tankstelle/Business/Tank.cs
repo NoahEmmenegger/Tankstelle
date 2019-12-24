@@ -12,6 +12,7 @@ namespace Tankstelle.Business
         public string Name { get; set; }
         public string FuelName { get; set; }
         public float AvailibleLiter { get; set; }
+        public float VolumeLiter { get; set; }
         public float MinAmount { get; set; }
     }
 }

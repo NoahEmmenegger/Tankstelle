@@ -28,7 +28,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Margin="0.2" Text="{Binding Name}" />
                         <TextBlock Grid.Column="1" Margin="0.2" Text="{Binding FuelName}" />
-                        <ProgressBar Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding AvailibleLiter}" />
+                        <ProgressBar Grid.Column="2" Minimum="0" Maximum="{Binding AvailibleLiter}" Value="{Binding VolumeLiter}" />
                     </Grid>
 
                 </DataTemplate>

@@ -5,6 +5,7 @@
       "Name": "Tank1",
       "FuelName": "Diesel",
       "AvailibleLiter": "30",
+      "VolumeLiter": "26",
       "MinAmount": "12"
     },
     {
@@ -12,6 +13,7 @@
       "Name": "Tank2",
       "FuelName": "Benzin",
       "AvailibleLiter": "30",
+      "VolumeLiter": "18",
       "MinAmount": "12"
     }
   ]

@@ -129,6 +129,7 @@ namespace Tankstelle.Data
                     tank.Name = tankToken["Name"].ToString();
                     tank.FuelName = tankToken["FuelName"].ToString();
                     tank.AvailibleLiter = float.Parse(tankToken["AvailibleLiter"].ToString());
+                    tank.VolumeLiter = float.Parse(tankToken["VolumeLiter"].ToString());
                     tank.MinAmount = float.Parse(tankToken["MinAmount"].ToString());
                     tanks.Add(tank);
                 }
@@ -208,6 +209,7 @@ namespace Tankstelle.Data
                     tankJson.Name = tank.Name;
                     tankJson.FuelName = tank.FuelName;
                     tankJson.AvailibleLiter = tank.AvailibleLiter.ToString();
+                    tankJson.VolumeLiter = tank.VolumeLiter.ToString();
                     tankJson.MinAmount = tank.MinAmount.ToString();
                     tankJsonArray.Add(tankJson);
 
