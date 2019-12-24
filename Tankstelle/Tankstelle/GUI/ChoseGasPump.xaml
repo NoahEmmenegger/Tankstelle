@@ -33,6 +33,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Path=Fuel.Name}"></Label>
+                        <TextBlock Text="{Binding Path=Fuel.PricePerLiter, StringFormat=' {0} CHF/Liter'}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
