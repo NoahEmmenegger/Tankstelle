@@ -43,7 +43,7 @@
             </Grid.RowDefinitions>
             <TextBox Grid.Row="0">Monatsbericht</TextBox>
             <StackPanel Width="100" Grid.Row="1">
-                <ComboBox Name="monat">
+                <ComboBox Name="monat" SelectionChanged="monatChanged">
                     <ComboBoxItem>1</ComboBoxItem>
                     <ComboBoxItem>2</ComboBoxItem>
                     <ComboBoxItem>3</ComboBoxItem>
@@ -71,9 +71,9 @@
                 <TextBlock>Einnahmen</TextBlock>
                 <TextBlock Grid.Row="1">Ausgaben</TextBlock>
                 <TextBlock Grid.Row="2">Umsatz</TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Einnahmen}"></TextBlock>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Monat}"></TextBlock>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Umsatz}"></TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Earnings}"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Outgoings}"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding MetabolicRate}"></TextBlock>
             </Grid>
         </Grid>
     </Grid>

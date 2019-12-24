@@ -25,38 +25,43 @@ namespace Tankstelle.GUI.Admin
         public StatisticDisplay()
         {
             InitializeComponent();
-            tanklist.ItemsSource = configurationManager.GetTanks();
+            tanklist.ItemsSource = configurationManager.GetTanks();           
+        }
 
+        public int GetEarnings(int month)
+        {
+            int earnings = 0;
+            foreach (Receipt receipt in configurationManager.GetReceipts())
+            {
+                if (receipt.Date.Month == month + 1)
+                {
+                    earnings += receipt.Sum;
+                }
+            }
+            return earnings;
+        }
+
+        public int GetOutgoings(int month)
+        {
+            return 0;
+        }
+
+        private void monatChanged(object sender, SelectionChangedEventArgs e)
+        {
             Statistic statistic = new Statistic();
-            statistic.Umsatz = "test";
-            statistic.Monat = monat.SelectedIndex;
+            statistic.Earnings = this.GetEarnings(monat.SelectedIndex);
+            statistic.Outgoings = this.GetOutgoings(monat.SelectedIndex);
+            statistic.MetabolicRate = statistic.Earnings - statistic.Outgoings;
 
             this.DataContext = statistic;
-
-
-            
         }
     }
 
     public class Statistic
     {
         public int Monat { get; set; }
-        public int Einnahmen { 
-            get
-            {
-                IConfigurationManager configurationManager = ConfigurationManager.CreateInstance();
-                int einnahmen = 0;
-                foreach (Receipt receipt in configurationManager.GetReceipts())
-                {
-                    if (receipt.Date.Month == 12)
-                    {
-                        einnahmen += receipt.Sum;
-                    }
-                }
-                return 0;
-            }
-        }
-        public int Ausgaben { get; set; }
-        public string Umsatz { get; set; }
+        public int Earnings { get; set; }
+        public int Outgoings { get; set; }
+        public int MetabolicRate { get; set; }
     }
 }
