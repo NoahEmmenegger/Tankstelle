@@ -63,6 +63,10 @@ namespace Tankstelle.GUI
                     e.Cancel = true;
                     MessageBox.Show("Sie dürfen das Fenster so nicht schliessen, da Sie noch etwas bezahlen müssen. Schliessen Sie es mit dem Fertigbutton", "Schliessung verweigert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
+                else
+                {
+                    Context.Status = Statuse.Frei;
+                }
             }
         }
     }

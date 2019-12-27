@@ -308,6 +308,23 @@ namespace Tankstelle.Business
                 }
                 else
                 {
+                    break;
+                }
+            }
+            while (outputValue >= 5)
+            {
+                if (containers[0].CountCoins() >= 1)
+                {
+                    outputCoins.AddCoinValue(5);
+                    containers[0].RemoveCoin();
+                    if (containers[0].GetMinPercentFlling())
+                    {
+                        AlertCoinMinimun(5);
+                    }
+                    outputValue -= 5;
+                }
+                else
+                {
                     Console.WriteLine("Wir können Ihnen leider kein Rückgeld geben, da wir die entsprechenden Münzen nicht vorhanden haben. Geben Sie Abbruch ein und Sie erhalten ihr Geld zurück");
                     throw new Exception();
                 }
