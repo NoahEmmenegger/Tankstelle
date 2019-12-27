@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
 using Tankstelle.Enums;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.GUI
 {
@@ -21,11 +22,11 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class GasPumpDisplay : Window
     {
-        public GasPump Context
+        public IGasPump Context
         {
             get
             {
-                return (GasPump)DataContext;
+                return (IGasPump)DataContext;
             }
             set
             {

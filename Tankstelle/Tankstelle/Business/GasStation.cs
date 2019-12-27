@@ -12,7 +12,6 @@ namespace Tankstelle.Business
     {
         private static GasStation instance = null;
         private List<Fuel> fuelList = new List<Fuel>();
-        private List<GasPump> gasPumpList = new List<GasPump>();
         private List<CashRegister> cashRegisterList = new List<CashRegister>();
 
         /// <summary>
@@ -22,7 +21,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Liste mit allen Zapfsäulen
         /// </summary>
-        public List<GasPump> GasPumpList { get => gasPumpList; set => gasPumpList = value; }
+        public List<GasPump> GasPumpList { get; set; } = new List<GasPump>();
         /// <summary>
         /// Liste mit allen Treibstoffsorten
         /// </summary>

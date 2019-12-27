@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
 using Tankstelle.Enums;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.GUI
 {
@@ -23,11 +24,11 @@ namespace Tankstelle.GUI
     {
         private string[] _coinCategorys = new string[] { "5 Rappen", "10 Rappen", "20 Rappen", "50 Rappen", "1 Franken", "2 Franken", "5 Franken", "10 Franken", "20 Franken", "50 Franken", "100 Franken", "200 Franken", "1000 Franken"};
         private string _zuBezahlenAusgabe;
-        public CashRegister Context
+        public ICashRegister Context
         {
             get
             {
-                return (CashRegister)DataContext;
+                return (ICashRegister)DataContext;
             }
             set
             {
@@ -35,7 +36,7 @@ namespace Tankstelle.GUI
             }
         }
 
-        public CashRegisterDisplay(CashRegister cashRegister)
+        public CashRegisterDisplay(ICashRegister cashRegister)
         {
             InitializeComponent();
             Context = cashRegister;

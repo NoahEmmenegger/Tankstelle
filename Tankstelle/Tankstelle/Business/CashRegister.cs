@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tankstelle.GUI;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business
 {
-    public class CashRegister
+    public class CashRegister : ICashRegister
     {
         public List<GasPump> GasPumpList { get; set; }
         /// <summary>

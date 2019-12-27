@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
 using Tankstelle.Enums;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.GUI
 {
@@ -21,11 +22,11 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class ChoseGasPump : Window
     {
-        public List<GasPump> Context
+        public List<IGasPump> Context
         {
             get
             {
-                return (List<GasPump>)DataContext;
+                return (List<IGasPump>)DataContext;
             }
             set
             {
@@ -35,8 +36,12 @@ namespace Tankstelle.GUI
 
         public ChoseGasPump()
         {
+            Context = new List<IGasPump>();
             InitializeComponent();
-            Context = GasStation.GetInstance().GasPumpList.Where(g => g.Status == Enums.Statuse.Frei).ToList();
+            foreach (var oneGasPump in GasStation.GetInstance().GasPumpList.Where(g => g.Status == Statuse.Frei).ToList())
+            {
+                Context.Add(oneGasPump);
+            }
         }
 
         private void _btnWaehlen_Click(object sender, RoutedEventArgs e)

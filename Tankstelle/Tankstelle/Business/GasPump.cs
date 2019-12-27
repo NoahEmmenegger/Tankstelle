@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tankstelle.Enums;
 using Tankstelle.GUI;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business
 {
-    public class GasPump : INotifyPropertyChanged
+    public class GasPump : INotifyPropertyChanged, IGasPump
     {
         private GasPumpDisplay _display;        
         private Tap _activeTap;
