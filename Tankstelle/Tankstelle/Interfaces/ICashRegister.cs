@@ -18,6 +18,7 @@ namespace Tankstelle.Interfaces
         void InsertCoin(int coin);
         int GetValueInput();
         void AcceptValueInput();
+        void NotAcceptValueInput();
         QuantityCoins GetChange(int outputValue);
         QuantityCoins GetQuantityCoins();
     }
