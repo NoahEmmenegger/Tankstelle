@@ -13,11 +13,12 @@ namespace Tankstelle.Business
         private static GasStation instance = null;
         private List<Fuel> fuelList = new List<Fuel>();
         private List<CashRegister> cashRegisterList = new List<CashRegister>();
+        private List<Tank> tankList = new List<Tank>();
 
         /// <summary>
         /// Objekt um aus der Config Datei zu lesen und in die Config Datei zu schreiben.
         /// </summary>
-        private ConfigurationManager _configManager = ConfigurationManager.CreateInstance();
+        private IConfigurationManager _configManager = ConfigurationManager.CreateInstance();
         /// <summary>
         /// Liste mit allen Zapfsäulen
         /// </summary>
@@ -26,6 +27,10 @@ namespace Tankstelle.Business
         /// Liste mit allen Treibstoffsorten
         /// </summary>
         public List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
+        /// <summary>
+        /// Liste mit allen Treibstoffsorten
+        /// </summary>
+        public List<Tank> TankList { get => tankList; set => tankList = value; }
 
         /// <summary>
         /// Liste mit allen Kassen von der Tankstelle
@@ -77,6 +82,15 @@ namespace Tankstelle.Business
                oneFuel.TankList = _configManager.GetTanks().Where(t => t.Name == oneFuel.Name).ToList();
                FuelList.Add(oneFuel);
             }
+        }
+
+        /// <summary>
+        /// Holt alle Tänke, welche im Config stehen.
+        /// </summary>
+        public void GetTanks()
+        {
+            TankList.Clear();
+            TankList = _configManager.GetTanks();
         }
 
         /// <summary>
