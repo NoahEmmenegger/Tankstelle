@@ -76,5 +76,40 @@
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding MetabolicRate}"></TextBlock>
             </Grid>
         </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0">Heute</TextBox>
+            <TextBlock Grid.Row="1">Treibstoffsorten</TextBlock>
+            <ListView Grid.Row="2" Margin="20" x:Name="treibstoffsorten">
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <Grid Margin="0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Margin="0.2" Text="Name" />
+                            <TextBlock Grid.Row="1" Margin="0.2" Text="SoldLiters" />
+                            <TextBlock Grid.Row="2" Margin="0.2" Text="Earnings" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Margin="0.2" Text="{Binding Fuel.Name}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0.2" Text="{Binding SoldLiters}" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Margin="0.2" Text="{Binding Earnings}" />
+                        </Grid>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="DayEarning"/>
+        </Grid>
     </Grid>
 </Window>

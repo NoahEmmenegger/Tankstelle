@@ -13,6 +13,20 @@
       "RelatedFuel": "TEST",
       "RelatedLiter": 2,
       "Sum": 1212
+    },
+    {
+      "Id": 3,
+      "Date": "2020/01/02 19:54:42",
+      "RelatedFuel": "Benzin",
+      "RelatedLiter": 2,
+      "Sum": 1212
+    },
+    {
+      "Id": 4,
+      "Date": "2020/01/02 19:54:42",
+      "RelatedFuel": "Benzin",
+      "RelatedLiter": 1,
+      "Sum": 1212
     }
   ]
 }
