@@ -125,5 +125,10 @@ namespace Tankstelle.GUI
                 }
             }
         }
+
+        private void _btnAbbruch_Click(object sender, RoutedEventArgs e)
+        {
+            Context.NotAcceptValueInput();
+        }
     }
 }

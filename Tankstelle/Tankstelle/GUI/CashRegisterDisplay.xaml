@@ -36,7 +36,7 @@
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="2 Franken"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="5 Franken"></Button>
                 <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="10 Franken"></Button>
-                <Button Name="_btnAbbruch" Background="DarkOrange" Height="50" Width="80" Margin="5">Abbruch</Button>
+                <Button Name="_btnAbbruch" Click="_btnAbbruch_Click" Background="DarkOrange" Height="50" Width="80" Margin="5">Abbruch</Button>
                 <Button   Height="50" Width="65" Margin="5"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">

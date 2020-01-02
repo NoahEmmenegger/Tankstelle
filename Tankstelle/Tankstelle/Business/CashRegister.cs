@@ -10,9 +10,12 @@ namespace Tankstelle.Business
 {
     public class CashRegister : ICashRegister
     {
+        /// <summary>
+        /// Liste von allen Zapfsäulen
+        /// </summary>
         public List<GasPump> GasPumpList { get; set; }
         /// <summary>
-        /// maximale Anzahl Münzen, welche im Automat sein können
+        /// Maximale Anzahl Münzen, welche im Automat sein können.
         /// </summary>
         private readonly int maxCoins;
         /// <summary>
@@ -43,12 +46,22 @@ namespace Tankstelle.Business
             containers[10] = new CoinContainer(20000, 100);
             containers[11] = new CoinContainer(100000, 100);
         }
+
+        /// <summary>
+        /// Öffnet das Fenster von der Kasse
+        /// </summary>
         public void ShowDisplay()
         {
             CashRegisterDisplay display = new CashRegisterDisplay(this);
             display.Show();
         }
 
+        /// <summary>
+        /// Schliesst die Zahlung ab, sofern die Schulden beglichen wurden
+        /// </summary>
+        /// <param name="gasPump"></param>
+        /// <param name="verifyToPayValue"></param>
+        /// <returns></returns>
         public bool FinishPayment(GasPump gasPump, bool verifyToPayValue = true)
         {
             if (verifyToPayValue)

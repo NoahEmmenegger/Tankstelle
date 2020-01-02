@@ -13,7 +13,10 @@ namespace Tankstelle.Business
 {
     public class GasPump : INotifyPropertyChanged, IGasPump
     {
-        private GasPumpDisplay _display;        
+        /// <summary>
+        /// Fenster (GUI) von der Zapfsäule
+        /// </summary>
+        private GasPumpDisplay _display;
         private Tap _activeTap;
         private decimal toPayValue;
         private double liter;
@@ -27,7 +30,7 @@ namespace Tankstelle.Business
         /// </summary>
         public List<Tap> TapList { get; set; } = new List<Tap>();
         /// <summary>
-        /// Der Zapfhahn, welcher momentan im Gebrauch ist
+        /// Der Zapfhahn von der Zapfsäule, welcher momentan im Gebrauch ist
         /// </summary>
         public Tap ActiveTap
         {
@@ -161,7 +164,9 @@ namespace Tankstelle.Business
             Liter = Liter + 0.25;
             ToPayValue = Convert.ToDecimal(Liter) * ActiveTap.Fuel.PricePerLiter;
         }
-
+        /// <summary>
+        /// Setzt die Zapfsäule auf den Zustand zurück, dass wieder getankt werden kann.
+        /// </summary>
         public void Refresh()
         {
             Status = Statuse.Frei;
