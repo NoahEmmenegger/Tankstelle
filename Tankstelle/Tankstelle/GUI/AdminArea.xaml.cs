@@ -30,11 +30,5 @@ namespace Tankstelle.GUI
             StatisticDisplay statisticDisplay = new StatisticDisplay();
             statisticDisplay.Show();
         }
-
-        private void _btnConfig_Click(object sender, RoutedEventArgs e)
-        {
-            ConfigDisplay configDisplay = new ConfigDisplay();
-            configDisplay.Show();
-        }
     }
 }

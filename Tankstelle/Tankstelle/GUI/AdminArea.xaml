@@ -15,7 +15,6 @@
         <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Admin Area</TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <Button x:Name="_btnStatistic" Click="_btnStatistic_Click" Height="40" Width="120" Margin="10">Statistik</Button>
-            <Button x:Name="_btnConfig" Click="_btnConfig_Click" Height="40" Width="120" Margin="10">Config</Button>
         </StackPanel>
     </Grid>
 </Window>

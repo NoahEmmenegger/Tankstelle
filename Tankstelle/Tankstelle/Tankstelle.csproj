@@ -81,9 +81,6 @@
     <Compile Include="GUI\AdminArea.xaml.cs">
       <DependentUpon>AdminArea.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ConfigDisplay.xaml.cs">
-      <DependentUpon>ConfigDisplay.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Admin\StatisticDisplay.xaml.cs">
       <DependentUpon>StatisticDisplay.xaml</DependentUpon>
     </Compile>
@@ -139,10 +136,6 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="GUI\AdminArea.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\Admin\ConfigDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
