@@ -83,7 +83,6 @@ namespace Tankstelle.GUI
             {
                 Context.InsertCoin(Convert.ToInt32(buttonContent.Split(' ').First()));
             }
-            var test = Context.GetValueInput();
             _tbxAnzeige.Text = _zuBezahlenAusgabe;
             _tbxAnzeige.Text += $"Eingabe: {Convert.ToDouble(Context.GetValueInput()) / 100} Franken\r\n";
         }
@@ -91,9 +90,10 @@ namespace Tankstelle.GUI
         private void _btnFertig_Click(object sender, RoutedEventArgs e)
         {
             Context.AcceptValueInput();
+            int inputValue = Context.GetValueInput();
             GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
-            int outputValue = Context.InsertValue - Convert.ToInt32((selectedGasPump.ToPayValue * 100));
-            if(Context.InsertValue / 100 >= selectedGasPump.ToPayValue)
+            int outputValue = inputValue - Convert.ToInt32((selectedGasPump.ToPayValue * 100));
+            if(inputValue / 100 >= selectedGasPump.ToPayValue)
             {
                 int[] outputCoins = Context.GetChange(outputValue).CountCoins();
                 _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
@@ -102,7 +102,7 @@ namespace Tankstelle.GUI
             }
             else
             {
-                _tbxAnzeige.Text += $"Es wurde noch zu wenig Geld eingeworfen. Es fehlen noch {selectedGasPump.ToPayValue - Context.InsertValue / 100} Franken.";
+                _tbxAnzeige.Text += $"Es wurde noch zu wenig Geld eingeworfen. Es fehlen noch {selectedGasPump.ToPayValue - Context.GetValueInput() / 100} Franken.";
             }
         }
 
