@@ -41,7 +41,7 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0">Monatsbericht</TextBox>
+            <TextBox Grid.Row="0">Monatsbericht (letzter oder aktueller Monat)</TextBox>
             <StackPanel Width="100" Grid.Row="1">
                 <ComboBox Name="monat" SelectionChanged="monatChanged">
                     <ComboBoxItem>1</ComboBoxItem>
@@ -110,6 +110,35 @@
                 </ListView.ItemTemplate>
             </ListView>
             <TextBlock Grid.Row="3" Grid.Column="1" x:Name="DayEarning"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock>allgemein</TextBlock>
+            <TextBlock Grid.Row="1">Umsatz im dieser Woche</TextBlock>
+            <TextBlock Grid.Row="2">Umsatz im letzten Woche</TextBlock>
+            <TextBlock Grid.Row="3">Umsatz im diesem Monat</TextBlock>
+            <TextBlock Grid.Row="4">Umsatz im letzten Monat</TextBlock>
+            <TextBlock Grid.Row="5">Umsatz im diesem Jahr</TextBlock>
+            <TextBlock Grid.Row="6">Umsatz im letzten Jahr</TextBlock>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="umsatzdieseWoche"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="umsatzWoche"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="umsatzdiesenMonat"></TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="umsatzMonat"></TextBlock>
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="umsatzdiesesJahr"></TextBlock>
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="umsatzJahr"></TextBlock>
         </Grid>
     </Grid>
 </Window>
