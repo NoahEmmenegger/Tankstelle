@@ -21,7 +21,7 @@ namespace Tankstelle.Business
             _maximunCoins = maximunCoins;
             for (int i = 0; i < 50; i++)
             {
-                _coins[i] = new Coin(_coinsValue, "Franken");
+                _coins[i] = new Coin(_coinsValue);
             }
 
             _percentFilling = 100.0 / _maximunCoins * _coins.Where(x => x != null).Count();

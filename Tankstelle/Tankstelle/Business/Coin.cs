@@ -9,12 +9,10 @@ namespace Tankstelle.Business
     public class Coin
     {
         private int _value;
-        private string _currency;
 
-        public Coin(int value, string currency)
+        public Coin(int value)
         {
             _value = value;
-            _currency = currency;
         }
 
         public int GetValue()

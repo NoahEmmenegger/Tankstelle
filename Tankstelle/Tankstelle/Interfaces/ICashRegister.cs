@@ -10,8 +10,6 @@ namespace Tankstelle.Interfaces
     public interface ICashRegister
     {
         List<GasPump> GasPumpList { get; set; }
-        int InsertValue { get; set; }
-
         int GetValueTotal();
         decimal Round(decimal toPayValue);
         bool FinishPayment(GasPump gasPump, bool verifyToPayValue = true);
