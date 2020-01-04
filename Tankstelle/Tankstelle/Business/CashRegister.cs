@@ -85,67 +85,67 @@ namespace Tankstelle.Business
             switch (coin)
             {
                 case 5:
-                    inputCoin = new Coin(5, "Rappen");
+                    inputCoin = new Coin(5);
                     insertCoins.Add(inputCoin);
                     InsertValue += 5;
                     break;
                 case 10:
-                    inputCoin = new Coin(10, "Rappen");
+                    inputCoin = new Coin(10);
                     insertCoins.Add(inputCoin);
                     InsertValue += 10;
                     break;
                 case 20:
-                    inputCoin = new Coin(20, "Rappen");
+                    inputCoin = new Coin(20);
                     insertCoins.Add(inputCoin);
                     InsertValue += 20;
                     break;
                 case 50:
-                    inputCoin = new Coin(50, "Rappen");
+                    inputCoin = new Coin(50);
                     insertCoins.Add(inputCoin);
                     InsertValue += 50;
                     break;
                 case 100:
-                    inputCoin = new Coin(100, "Rappen");
+                    inputCoin = new Coin(100);
                     insertCoins.Add(inputCoin);
                     InsertValue += 100;
                     break;
                 case 200:
-                    inputCoin = new Coin(200, "Rappen");
+                    inputCoin = new Coin(200);
                     insertCoins.Add(inputCoin);
                     InsertValue += 200;
                     break;
                 case 500:
-                    inputCoin = new Coin(500, "Rappen");
+                    inputCoin = new Coin(500);
                     insertCoins.Add(inputCoin);
                     InsertValue += 500;
                     break;
                 case 1000:
-                    inputCoin = new Coin(1000, "Rappen");
+                    inputCoin = new Coin(1000);
                     insertCoins.Add(inputCoin);
                     InsertValue += 1000;
                     break;
                 case 2000:
-                    inputCoin = new Coin(2000, "Rappen");
+                    inputCoin = new Coin(2000);
                     insertCoins.Add(inputCoin);
                     InsertValue += 2000;
                     break;
                 case 5000:
-                    inputCoin = new Coin(5000, "Rappen");
+                    inputCoin = new Coin(5000);
                     insertCoins.Add(inputCoin);
                     InsertValue += 5000;
                     break;
                 case 10000:
-                    inputCoin = new Coin(10000, "Rappen");
+                    inputCoin = new Coin(10000);
                     insertCoins.Add(inputCoin);
                     InsertValue += 10000;
                     break;
                 case 20000:
-                    inputCoin = new Coin(20000, "Rappen");
+                    inputCoin = new Coin(20000);
                     insertCoins.Add(inputCoin);
                     InsertValue += 20000;
                     break;
                 case 100000:
-                    inputCoin = new Coin(100000, "Rappen");
+                    inputCoin = new Coin(100000);
                     insertCoins.Add(inputCoin);
                     InsertValue += 100000;
                     break;

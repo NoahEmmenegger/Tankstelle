@@ -34,7 +34,7 @@ namespace Tankstelle.GUI
             choseGasPump.Show();
         }
 
-        private void _btnChoseCashRegister_Click(object sender, RoutedEventArgs e)
+        private void _btnCashRegister_Click(object sender, RoutedEventArgs e)
         {
             CashRegister cashRegister = new CashRegister();
             cashRegister.GasPumpList = GasStation.GetInstance().GasPumpList;
