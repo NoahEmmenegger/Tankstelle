@@ -111,6 +111,9 @@ namespace Tankstelle.Business
             }
             Status = Statuse.Frei;
         }
+        /// <summary>
+        /// Öffnet das Fenster von der Zapfsäule
+        /// </summary>
         public void OpenDisplay()
         {
             try

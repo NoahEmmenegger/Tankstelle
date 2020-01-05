@@ -338,8 +338,7 @@ namespace Tankstelle.Business
                 }
                 else
                 {
-                    Console.WriteLine("Wir können Ihnen leider kein Rückgeld geben, da wir die entsprechenden Münzen nicht vorhanden haben. Geben Sie Abbruch ein und Sie erhalten ihr Geld zurück");
-                    throw new Exception();
+                    throw new Exception("Es kann leider kein Rückgeld gegeben werden, da die entsprechenden Münzen nicht vorhanden sind. Geben Sie Abbruch ein und Sie erhalten ihr Geld zurück");
                 }
             }
             insertCoins = new List<Coin>();

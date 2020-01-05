@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tankstelle.GUI"
         mc:Ignorable="d"
-        Title="CashRegisterDisplay" Height="450" Width="800">
+        Title="CashRegisterDisplay" Height="450" Width="810">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0"></ColumnDefinition>
@@ -24,28 +24,27 @@
 
         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="5 Rappen"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="10 Rappen"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="20 Rappen"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="50 Rappen"></Button>
-                <Button Name="_btnFertig" Click="_btnFertig_Click"  Background="Green" Height="50" Width="80" Margin="5">Fertig</Button>
+                <Button x:Name="_btn5Rappen" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="5 Rappen"></Button>
+                <Button x:Name="_btn10Rappen" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="10 Rappen"></Button>
+                <Button x:Name="_btn20Rappen" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="20 Rappen"></Button>
+                <Button x:Name="_btn50Rappen" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="50 Rappen"></Button>
+                <Button Name="_btnFertig" Click="_btnFertig_Click"  Background="Green" Height="50" IsEnabled="False" Width="80" Margin="5">Fertig</Button>
                 <Button x:Name="_btnContent" Click="_btnContent_Click" Background="Aqua"  Height="50" Width="65" Margin="5">Inhalt</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="1 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="2 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="5 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="10 Franken"></Button>
-                <Button Name="_btnAbbruch" Click="_btnAbbruch_Click" Background="DarkOrange" Height="50" Width="80" Margin="5">Abbruch</Button>
-                <Button   Height="50" Width="65" Margin="5"></Button>
+                <Button x:Name="_btn1Franke" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="1 Franken"></Button>
+                <Button x:Name="_btn2Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="2 Franken"></Button>
+                <Button x:Name="_btn5Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="5 Franken"></Button>
+                <Button x:Name="_btn10Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="10 Franken"></Button>
+                <Button Name="_btnAbbruch" Click="_btnAbbruch_Click" Background="DarkOrange" Height="50" IsEnabled="False" Width="80" Margin="5">Abbruch</Button>
+                <Button Name="_btnClear" Click="_btnClear_Click" Background="DarkKhaki"  Height="50" Width="65" Margin="5">Clear</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="20 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="50 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="100 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="200 Franken"></Button>
-                <Button Height="50" Click="Nummber_Click" Width="80" Margin="5" Content="1000 Franken"></Button>
-                <Button   Height="50" Width="65" Margin="5"></Button>
+                <Button x:Name="_btn20Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="20 Franken"></Button>
+                <Button x:Name="_btn50Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="50 Franken"></Button>
+                <Button x:Name="_btn100Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="100 Franken"></Button>
+                <Button x:Name="_btn200Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="200 Franken"></Button>
+                <Button x:Name="_btn1000Franken" Height="50" Click="Nummber_Click" Width="80" Margin="5" IsEnabled="False" Content="1000 Franken"></Button>
             </StackPanel>
         </StackPanel>
         <TextBox x:Name="_tbxAnzeige" Grid.Column="2" IsReadOnly="True" Margin="10"></TextBox>
