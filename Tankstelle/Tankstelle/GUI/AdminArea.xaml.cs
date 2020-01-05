@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tankstelle.Business;
+using Tankstelle.Business.TankService;
 using Tankstelle.GUI.Admin;
 
 namespace Tankstelle.GUI
@@ -23,6 +25,21 @@ namespace Tankstelle.GUI
         public AdminArea()
         {
             InitializeComponent();
+            TankService tankService = new TankService();
+            List<Message> messages = new List<Message>();
+
+            foreach (Tank tank in GasStation.GetInstance().TankList)
+            {
+                if (tankService.HasEnoughInTank(tank))
+                {
+                    Message message = new Message();
+                    message.Status = Status.Warning;
+                    message.Description = "Nicht genügend Treibstoff in Tank " + tank.Name;
+                    messages.Add(message);
+                }
+            }
+
+            messageList.ItemsSource = messages; 
         }
 
         private void _btnStatistic_Click(object sender, RoutedEventArgs e)
@@ -30,5 +47,18 @@ namespace Tankstelle.GUI
             StatisticDisplay statisticDisplay = new StatisticDisplay();
             statisticDisplay.Show();
         }
+    }
+
+    public class Message
+    {
+        public string Description { get; set; }
+        public Status Status { get; set; }
+    }
+
+    public enum Status
+    {
+        Achtung = 0,
+        Warning = 1,
+        Error = 2
     }
 }

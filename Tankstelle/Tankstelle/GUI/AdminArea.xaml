@@ -12,9 +12,29 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Admin Area</TextBlock>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Admin Area</TextBlock>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <Button x:Name="_btnStatistic" Click="_btnStatistic_Click" Height="40" Width="120" Margin="10">Statistik</Button>
         </StackPanel>
+        <ListView Grid.Row="1" Margin="20" x:Name="messageList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="0.2" Text="{Binding Description}" />
+                    </Grid>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
