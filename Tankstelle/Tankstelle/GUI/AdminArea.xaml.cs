@@ -37,6 +37,14 @@ namespace Tankstelle.GUI
                     message.Description = "Nicht genügend Treibstoff in Tank " + tank.Name;
                     messages.Add(message);
                 }
+
+                if (true)
+                {
+                    Message message = new Message();
+                    message.Status = Status.Warning;
+                    message.Description = "Mindestmenge muss für " + tank.Name + " angepasst werden";
+                    messages.Add(message);
+                }
             }
 
             messageList.ItemsSource = messages; 

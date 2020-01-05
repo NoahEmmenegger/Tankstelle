@@ -29,6 +29,14 @@
                         <TextBlock Margin="0.2" Text="{Binding Name}" />
                         <TextBlock Grid.Column="1" Margin="0.2" Text="{Binding FuelName}" />
                         <ProgressBar Grid.Column="2" Minimum="0" Maximum="{Binding AvailibleLiter}" Value="{Binding VolumeLiter}" />
+                        <TextBlock Grid.Column="2">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}/ {1} Liter">
+                                    <Binding Path="VolumeLiter" />
+                                    <Binding Path="AvailibleLiter"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
                     </Grid>
 
                 </DataTemplate>
