@@ -72,6 +72,7 @@
     <Compile Include="Business\QuantityCoins.cs" />
     <Compile Include="Business\Receipt.cs" />
     <Compile Include="Business\Tank.cs" />
+    <Compile Include="Business\TankService\ReceiptService.cs" />
     <Compile Include="Business\TankService\TankService.cs" />
     <Compile Include="Business\Tap.cs" />
     <Compile Include="Data\ConfigurationManager.cs" />

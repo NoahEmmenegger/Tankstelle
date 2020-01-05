@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Business.TankService;
 using Tankstelle.Data;
 
 namespace Tankstelle.GUI.Admin
@@ -37,65 +38,13 @@ namespace Tankstelle.GUI.Admin
             }
             tanklist.ItemsSource = configurationManager.GetTanks();
             treibstoffsorten.ItemsSource = fuelStatistics;
-            DayEarning.Text = "Umsatz: " + GetDayEarning(DateTime.Now);
-            umsatzWoche.Text = GetWeekEarning(DateTime.Now.AddDays(-7)).ToString();
-            umsatzdieseWoche.Text = GetWeekEarning(DateTime.Now).ToString();
-            umsatzMonat.Text = GetMothEarning(DateTime.Now.AddMonths(-1)).ToString();
-            umsatzdiesenMonat.Text = GetMothEarning(DateTime.Now).ToString();
-            umsatzJahr.Text = GetYearEarning(DateTime.Now.AddYears(-1)).ToString();
-            umsatzdiesesJahr.Text = GetYearEarning(DateTime.Now).ToString();
-        }
-
-        public int GetDayEarning(DateTime date)
-        {
-            int earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date == date.Date))
-            {
-                earnings += receipt.Sum;
-            }
-            return earnings;
-        }
-
-        public int GetWeekEarning(DateTime date)
-        {
-            int earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => GetWeekBegin(x.Date) == GetWeekBegin(date)))
-            {
-                earnings += receipt.Sum;
-            }
-            return earnings;
-        }
-
-        public int GetMothEarning(DateTime date)
-        {
-            int earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Month == date.Month))
-            {
-                earnings += receipt.Sum;
-            }
-            return earnings;
-        }
-
-        public int GetYearEarning(DateTime date)
-        {
-            int earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Year == date.Year))
-            {
-                earnings += receipt.Sum;
-            }
-            return earnings;
-        }
-
-        public DateTime GetWeekBegin(DateTime date)
-        {
-            double day = Convert.ToDouble(date.DayOfWeek);
-            if (day == 0)
-            {
-                day = 7;
-            }
-            day -= 1;
-            var tet = date.Date.AddDays(-day);
-            return tet;
+            DayEarning.Text = "Umsatz: " + ReceiptService.GetDayEarning(DateTime.Now);
+            umsatzWoche.Text = ReceiptService.GetWeekEarning(DateTime.Now.AddDays(-7)).ToString();
+            umsatzdieseWoche.Text = ReceiptService.GetWeekEarning(DateTime.Now).ToString();
+            umsatzMonat.Text = ReceiptService.GetMothEarning(DateTime.Now.AddMonths(-1)).ToString();
+            umsatzdiesenMonat.Text = ReceiptService.GetMothEarning(DateTime.Now).ToString();
+            umsatzJahr.Text = ReceiptService.GetYearEarning(DateTime.Now.AddYears(-1)).ToString();
+            umsatzdiesesJahr.Text = ReceiptService.GetYearEarning(DateTime.Now).ToString();
         }
 
         public float GetSoldLiters(DateTime date, Fuel fuel)
@@ -122,12 +71,12 @@ namespace Tankstelle.GUI.Admin
         {
             if (month +1 == DateTime.Now.Month)
             {
-                return GetMothEarning(DateTime.Now);
+                return ReceiptService.GetMothEarning(DateTime.Now);
             }
             else
             {
                 DateTime date = DateTime.Now.AddMonths(-12 + month);
-                return GetMothEarning(date);
+                return ReceiptService.GetMothEarning(date);
             }
         }
 
