@@ -41,9 +41,9 @@ namespace Tankstelle.GUI.Admin
             umsatzWoche.Text = GetWeekEarning(DateTime.Now.AddDays(-7)).ToString();
             umsatzdieseWoche.Text = GetWeekEarning(DateTime.Now).ToString();
             umsatzMonat.Text = GetMothEarning(DateTime.Now.AddMonths(-1)).ToString();
-            umsatzdiesenMonat.Text = GetWeekEarning(DateTime.Now).ToString();
+            umsatzdiesenMonat.Text = GetMothEarning(DateTime.Now).ToString();
             umsatzJahr.Text = GetYearEarning(DateTime.Now.AddYears(-1)).ToString();
-            umsatzdiesesJahr.Text = GetWeekEarning(DateTime.Now).ToString();
+            umsatzdiesesJahr.Text = GetYearEarning(DateTime.Now).ToString();
         }
 
         public int GetDayEarning(DateTime date)
@@ -59,7 +59,7 @@ namespace Tankstelle.GUI.Admin
         public int GetWeekEarning(DateTime date)
         {
             int earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => GetWeekBegin(x.Date).Date == GetWeekBegin(date).Date))
+            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => GetWeekBegin(x.Date) == GetWeekBegin(date)))
             {
                 earnings += receipt.Sum;
             }
@@ -88,7 +88,14 @@ namespace Tankstelle.GUI.Admin
 
         public DateTime GetWeekBegin(DateTime date)
         {
-            return date.AddDays(- Convert.ToDouble(date.DayOfWeek) +1);
+            double day = Convert.ToDouble(date.DayOfWeek);
+            if (day == 0)
+            {
+                day = 7;
+            }
+            day -= 1;
+            var tet = date.Date.AddDays(-day);
+            return tet;
         }
 
         public float GetSoldLiters(DateTime date, Fuel fuel)
