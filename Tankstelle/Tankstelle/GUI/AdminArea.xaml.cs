@@ -30,7 +30,7 @@ namespace Tankstelle.GUI
 
             foreach (Tank tank in GasStation.GetInstance().TankList)
             {
-                if (tankService.HasEnoughInTank(tank))
+                if (!tankService.HasEnoughInTank(tank))
                 {
                     Message message = new Message();
                     message.Status = Status.Warning;

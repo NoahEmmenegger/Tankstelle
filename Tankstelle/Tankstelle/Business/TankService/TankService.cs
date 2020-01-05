@@ -12,5 +12,10 @@ namespace Tankstelle.Business.TankService
         {
             return tank.VolumeLiter >= tank.MinAmount;
         }
+
+        public bool AdjustTankMinimum(Tank tank)
+        {
+            return true;
+        }
     }
 }
