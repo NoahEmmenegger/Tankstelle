@@ -57,7 +57,7 @@ namespace Tankstelle.GUI.Admin
             return earnings;
         }
 
-        public int GetEarnings(int month)
+        public decimal GetEarnings(int month)
         {
             if (month +1 == DateTime.Now.Month)
             {
@@ -78,7 +78,7 @@ namespace Tankstelle.GUI.Admin
         private void monatChanged(object sender, SelectionChangedEventArgs e)
         {
             Statistic statistic = new Statistic();
-            statistic.Earnings = this.GetEarnings(monat.SelectedIndex);
+            statistic.Earnings = int.Parse(this.GetEarnings(monat.SelectedIndex).ToString());
             statistic.Outgoings = this.GetOutgoings(monat.SelectedIndex);
             statistic.MetabolicRate = statistic.Earnings - statistic.Outgoings;
             

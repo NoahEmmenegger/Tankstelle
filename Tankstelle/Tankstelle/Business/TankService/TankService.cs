@@ -18,9 +18,9 @@ namespace Tankstelle.Business.TankService
             return GetOutgoingLiter(tank, DateTime.Now.AddYears(-1)) <= tank.MinAmount;
         }
 
-        public static int GetOutgoingLiter(Tank tank, DateTime date)
+        public static float GetOutgoingLiter(Tank tank, DateTime date)
         {
-            int liters = 0;
+            float liters = 0;
             foreach (Receipt receipt in ReceiptService.GetReceipts().Where(x => x.Date.Month == date.Month))
             {
                 if (tank.FuelName == receipt.RelatedFuel.Name)

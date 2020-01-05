@@ -449,5 +449,19 @@ namespace Tankstelle.Business
             return roundedValue;
          
         }
+        /// <summary>
+        /// Erstellt eine Rechnung
+        /// </summary>
+        /// <param name="gasPump"></param>
+        /// <returns></returns>
+        public Receipt CreateReceipt(GasPump gasPump)
+        {
+            Receipt receipt = new Receipt();
+            receipt.RelatedFuel = gasPump.ActiveTap.Fuel;
+            receipt.RelatedLiter = float.Parse(gasPump.Liter.ToString());
+            receipt.Sum = gasPump.ToPayValue;
+            receipt.Date = DateTime.Today;
+            return receipt;
+        }
     }
 }

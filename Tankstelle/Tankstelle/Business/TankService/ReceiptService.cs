@@ -15,9 +15,9 @@ namespace Tankstelle.Business.TankService
         {
             return configurationManager.GetReceipts();
         }
-        public static int GetDayEarning(DateTime date)
+        public static decimal GetDayEarning(DateTime date)
         {
-            int earnings = 0;
+            decimal earnings = 0;
             foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date == date.Date))
             {
                 earnings += receipt.Sum;
@@ -25,9 +25,9 @@ namespace Tankstelle.Business.TankService
             return earnings;
         }
 
-        public static int GetWeekEarning(DateTime date)
+        public static decimal GetWeekEarning(DateTime date)
         {
-            int earnings = 0;
+            decimal earnings = 0;
             foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => GetWeekBegin(x.Date) == GetWeekBegin(date)))
             {
                 earnings += receipt.Sum;
@@ -35,9 +35,9 @@ namespace Tankstelle.Business.TankService
             return earnings;
         }
 
-        public static int GetMothEarning(DateTime date)
+        public static decimal GetMothEarning(DateTime date)
         {
-            int earnings = 0;
+            decimal earnings = 0;
             foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Month == date.Month))
             {
                 earnings += receipt.Sum;
@@ -45,9 +45,9 @@ namespace Tankstelle.Business.TankService
             return earnings;
         }
 
-        public static int GetYearEarning(DateTime date)
+        public static decimal GetYearEarning(DateTime date)
         {
-            int earnings = 0;
+            decimal earnings = 0;
             foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Year == date.Year))
             {
                 earnings += receipt.Sum;

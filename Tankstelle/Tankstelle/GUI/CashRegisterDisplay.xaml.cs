@@ -91,18 +91,18 @@ namespace Tankstelle.GUI
         {
             GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
             bool result = Context.FinishPayment(selectedGasPump);
-            DisableButtons();
             if (!result)
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show("Sind Sie sicher, dass Sie die Zahlung beenden wollen? Es stehen noch Rechnungen offen.", "Zahlung beednen?", MessageBoxButton.OKCancel, MessageBoxImage.Question);
                 if (MessageBoxResult.OK == messageBoxResult)
                 {
                     Context.FinishPayment(selectedGasPump, false);
+                    _tbxAnzeige.Text = "";
                 }
-                else
-                {
-                    EnableButtons();
-                }
+            }
+            else
+            {
+                _tbxAnzeige.Text = "";
             }
         }
         /// <summary>
@@ -152,7 +152,12 @@ namespace Tankstelle.GUI
                 }
                 _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
                 RenderNumberOfCoins(outputCoins);
+                Receipt receipt = Context.CreateReceipt(selectedGasPump);
                 selectedGasPump.ToPayValue = 0;
+                DisableButtons();
+                ReceiptDisplay receiptDisplay = new ReceiptDisplay();
+                receiptDisplay.Context = receipt;
+                receiptDisplay.Show();
             }
             else
             {

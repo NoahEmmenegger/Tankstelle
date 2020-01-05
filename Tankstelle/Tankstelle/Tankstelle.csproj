@@ -101,8 +101,12 @@
     <Compile Include="GUI\GasPumpDisplay.xaml.cs">
       <DependentUpon>GasPumpDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ReceiptDisplay.xaml.cs">
+      <DependentUpon>ReceiptDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ICashRegister.cs" />
     <Compile Include="Interfaces\IGasPump.cs" />
+    <Compile Include="Interfaces\IReceipt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -164,6 +168,10 @@
     <Page Include="GUI\GasPumpDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\ReceiptDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

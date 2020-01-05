@@ -19,5 +19,6 @@ namespace Tankstelle.Interfaces
         void NotAcceptValueInput();
         QuantityCoins GetChange(int outputValue);
         QuantityCoins GetQuantityCoins();
+        Receipt CreateReceipt(GasPump gasPump);
     }
 }
