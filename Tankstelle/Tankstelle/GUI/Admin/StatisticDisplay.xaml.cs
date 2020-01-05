@@ -32,7 +32,7 @@ namespace Tankstelle.GUI.Admin
             {
                 FuelStatistic fuelStatistic = new FuelStatistic();
                 fuelStatistic.Fuel = fuel;
-                fuelStatistic.SoldLiters = GetSoldLiters(DateTime.Now, fuel);
+                fuelStatistic.SoldLiters = ReceiptService.GetSoldLiters(DateTime.Now, fuel);
                 fuelStatistic.Earnings = GetFuelEarnings(fuel, DateTime.Now);
                 fuelStatistics.Add(fuelStatistic);
             }
@@ -45,16 +45,6 @@ namespace Tankstelle.GUI.Admin
             umsatzdiesenMonat.Text = ReceiptService.GetMothEarning(DateTime.Now).ToString();
             umsatzJahr.Text = ReceiptService.GetYearEarning(DateTime.Now.AddYears(-1)).ToString();
             umsatzdiesesJahr.Text = ReceiptService.GetYearEarning(DateTime.Now).ToString();
-        }
-
-        public float GetSoldLiters(DateTime date, Fuel fuel)
-        {
-            float litercount = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date  == date.Date && x.RelatedFuel == fuel))
-            {
-                litercount += receipt.RelatedLiter;
-            }
-            return litercount;
         }
 
         public decimal GetFuelEarnings(Fuel fuel, DateTime date)

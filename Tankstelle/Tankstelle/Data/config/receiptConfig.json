@@ -41,6 +41,13 @@
       "RelatedFuel": "Benzin",
       "RelatedLiter": 1,
       "Sum": 10
+    },
+    {
+      "Id": 6,
+      "Date": "2019/01/02 19:54:42",
+      "RelatedFuel": "Benzin",
+      "RelatedLiter": 25,
+      "Sum": 100
     }
   ]
 }

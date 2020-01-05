@@ -10,6 +10,11 @@ namespace Tankstelle.Business.TankService
     class ReceiptService
     {
         static IConfigurationManager configurationManager = ConfigurationManager.CreateInstance();
+
+        public static List<Receipt> GetReceipts()
+        {
+            return configurationManager.GetReceipts();
+        }
         public static int GetDayEarning(DateTime date)
         {
             int earnings = 0;
@@ -60,6 +65,16 @@ namespace Tankstelle.Business.TankService
             day -= 1;
             var tet = date.Date.AddDays(-day);
             return tet;
+        }
+
+        public static float GetSoldLiters(DateTime date, Fuel fuel)
+        {
+            float litercount = 0;
+            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date == date.Date && x.RelatedFuel == fuel))
+            {
+                litercount += receipt.RelatedLiter;
+            }
+            return litercount;
         }
     }
 }

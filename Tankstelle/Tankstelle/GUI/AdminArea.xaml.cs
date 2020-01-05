@@ -25,12 +25,11 @@ namespace Tankstelle.GUI
         public AdminArea()
         {
             InitializeComponent();
-            TankService tankService = new TankService();
             List<Message> messages = new List<Message>();
 
             foreach (Tank tank in GasStation.GetInstance().TankList)
             {
-                if (!tankService.HasEnoughInTank(tank))
+                if (!TankService.HasEnoughInTank(tank))
                 {
                     Message message = new Message();
                     message.Status = Status.Warning;
@@ -38,7 +37,7 @@ namespace Tankstelle.GUI
                     messages.Add(message);
                 }
 
-                if (true)
+                if (!TankService.AdjustTankMinimum(tank))
                 {
                     Message message = new Message();
                     message.Status = Status.Warning;
