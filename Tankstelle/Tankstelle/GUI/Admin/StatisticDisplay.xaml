@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tankstelle.GUI.Admin"
         mc:Ignorable="d"
         Title="StatisticDisplay" Height="450" Width="800">
-    <Grid>
+    <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -16,7 +16,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0">Tanks</TextBox>
+        <TextBlock Grid.Row="0" FontWeight="Bold">Tanks</TextBlock>
         <ListView Margin="20" x:Name="tanklist">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -43,13 +43,13 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Column="1">
+        <Grid Margin="10" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0">Monatsbericht (letzter oder aktueller Monat)</TextBox>
+            <TextBlock Grid.Row="0" FontWeight="Bold">Monatsbericht (letzter oder aktueller Monat)</TextBlock>
             <StackPanel Width="100" Grid.Row="1">
                 <ComboBox Name="monat" SelectionChanged="monatChanged">
                     <ComboBoxItem>1</ComboBoxItem>
@@ -84,14 +84,14 @@
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding MetabolicRate}"></TextBlock>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Margin="10" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0">Heute</TextBox>
+            <TextBlock Grid.Row="0" FontWeight="Bold">Heute</TextBlock>
             <TextBlock Grid.Row="1">Treibstoffsorten</TextBlock>
             <ListView Grid.Row="2" Margin="20" x:Name="treibstoffsorten">
                 <ListView.ItemTemplate >
@@ -119,7 +119,7 @@
             </ListView>
             <TextBlock Grid.Row="3" Grid.Column="1" x:Name="DayEarning"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Margin="10" Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -133,12 +133,12 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock>allgemein</TextBlock>
-            <TextBlock Grid.Row="1">Umsatz im dieser Woche</TextBlock>
-            <TextBlock Grid.Row="2">Umsatz im letzten Woche</TextBlock>
-            <TextBlock Grid.Row="3">Umsatz im diesem Monat</TextBlock>
+            <TextBlock FontWeight="Bold">Allgemein</TextBlock>
+            <TextBlock Grid.Row="1">Umsatz in dieser Woche</TextBlock>
+            <TextBlock Grid.Row="2">Umsatz in letzter Woche</TextBlock>
+            <TextBlock Grid.Row="3">Umsatz in diesem Monat</TextBlock>
             <TextBlock Grid.Row="4">Umsatz im letzten Monat</TextBlock>
-            <TextBlock Grid.Row="5">Umsatz im diesem Jahr</TextBlock>
+            <TextBlock Grid.Row="5">Umsatz in diesem Jahr</TextBlock>
             <TextBlock Grid.Row="6">Umsatz im letzten Jahr</TextBlock>
 
             <TextBlock Grid.Row="1" Grid.Column="1" x:Name="umsatzdieseWoche"></TextBlock>
