@@ -70,7 +70,7 @@ namespace Tankstelle.GUI.Admin
             }
         }
 
-        public int GetOutgoings(int month)
+        public decimal GetOutgoings(int month)
         {
             return 0;
         }
@@ -78,7 +78,7 @@ namespace Tankstelle.GUI.Admin
         private void monatChanged(object sender, SelectionChangedEventArgs e)
         {
             Statistic statistic = new Statistic();
-            statistic.Earnings = int.Parse(this.GetEarnings(monat.SelectedIndex).ToString());
+            statistic.Earnings = this.GetEarnings(monat.SelectedIndex);
             statistic.Outgoings = this.GetOutgoings(monat.SelectedIndex);
             statistic.MetabolicRate = statistic.Earnings - statistic.Outgoings;
             
@@ -91,9 +91,9 @@ namespace Tankstelle.GUI.Admin
     public class Statistic
     {
         public int Monat { get; set; }
-        public int Earnings { get; set; }
-        public int Outgoings { get; set; }
-        public int MetabolicRate { get; set; }
+        public decimal Earnings { get; set; }
+        public decimal Outgoings { get; set; }
+        public decimal MetabolicRate { get; set; }
     }
 
     public class FuelStatistic
