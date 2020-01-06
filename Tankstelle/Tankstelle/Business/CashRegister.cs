@@ -59,14 +59,6 @@ namespace Tankstelle.Business
 
         #region Methoden
         /// <summary>
-        /// Öffnet das Fenster von der Kasse
-        /// </summary>
-        public void ShowDisplay()
-        {
-            CashRegisterDisplay display = new CashRegisterDisplay(this);
-            display.Show();
-        }
-        /// <summary>
         /// Schliesst die Zahlung ab, sofern die Schulden beglichen wurden
         /// </summary>
         /// <param name="gasPump">Zapfsäule bei, welcher die Zahlung abgeschlossen werden soll</param>

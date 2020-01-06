@@ -46,7 +46,8 @@ namespace Tankstelle.GUI
         {
             CashRegister cashRegister = new CashRegister();
             cashRegister.GasPumpList = GasStation.GetInstance().GasPumpList;
-            cashRegister.ShowDisplay();
+            CashRegisterDisplay display = new CashRegisterDisplay(cashRegister);
+            display.Show();
         }
 
         /// <summary>

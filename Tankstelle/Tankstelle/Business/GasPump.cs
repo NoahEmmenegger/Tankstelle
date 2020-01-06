@@ -15,10 +15,6 @@ namespace Tankstelle.Business
     {
         #region private Felder
         /// <summary>
-        /// Fenster (GUI) von der Zapfsäule
-        /// </summary>
-        private GasPumpDisplay _display;
-        /// <summary>
         /// Der Zapfhahn von der Zapfsäule, welcher momentan im Gebrauch ist
         /// </summary>
         private Tap _activeTap;
@@ -134,22 +130,11 @@ namespace Tankstelle.Business
 
         #region Methoden
         /// <summary>
-        /// Öffnet das Fenster von der Zapfsäule
+        /// Wird ausgefüht wenn das GUI für die Zapfsäule geöffnet wird.
         /// </summary>
         public void OpenDisplay()
         {
-            try
-            {
-                Status = Statuse.Tankend;
-                _display = new GasPumpDisplay();
-                _display.Context = this;
-                _display.Show();
-            }
-            catch(Exception ex)
-            {
-                //TODO Exception Handling 
-            }
-
+            Status = Statuse.Tankend;
         }
         /// <summary>
         /// Startet das Tanken
@@ -177,7 +162,6 @@ namespace Tankstelle.Business
         {           
             Status = Statuse.Besetzt;
             timer.Stop();
-            _display.Close();
         }
         /// <summary>
         /// Berechnet das Tanken. Wieviel Liter Treibstoff bezogen wird und wie teuer es ist

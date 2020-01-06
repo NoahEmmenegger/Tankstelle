@@ -58,6 +58,9 @@ namespace Tankstelle.GUI
                 if(selectedGasPump.Status == Statuse.Frei)
                 {
                     selectedGasPump.OpenDisplay();
+                    GasPumpDisplay gasPumpDisplay = new GasPumpDisplay();
+                    gasPumpDisplay.Context = selectedGasPump;
+                    gasPumpDisplay.Show();
                 }
             }
             else
