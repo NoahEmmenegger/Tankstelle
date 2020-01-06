@@ -66,13 +66,12 @@ namespace Tankstelle.Business
             CashRegisterDisplay display = new CashRegisterDisplay(this);
             display.Show();
         }
-
         /// <summary>
         /// Schliesst die Zahlung ab, sofern die Schulden beglichen wurden
         /// </summary>
-        /// <param name="gasPump"></param>
-        /// <param name="verifyToPayValue"></param>
-        /// <returns></returns>
+        /// <param name="gasPump">Zapfsäule bei, welcher die Zahlung abgeschlossen werden soll</param>
+        /// <param name="verifyToPayValue">Gibt an ob die Bezahlung auch abgeschlossen werden soll, wenn noch eine Rechnung offen ist. Bei false ist es egal ob noch eine Rechnung offen ist.</param>
+        /// <returns>Gibt an ob die Rechnung abgeschlossen werden konnte oder nicht.</returns>
         public bool FinishPayment(GasPump gasPump, bool verifyToPayValue = true)
         {
             if (verifyToPayValue)
@@ -367,9 +366,9 @@ namespace Tankstelle.Business
         }
 
         /// <summary>
-        /// Gibt den totalen Geldwert von allen Münzen im Apparat zurück.
+        /// Gibt den totalen Geldwert von allen Münzen in der Kasse zurück.
         /// </summary>
-        /// <returns>Totalen Geldwert von allen Münzen im Apparat</returns>
+        /// <returns>Totalen Geldwert von allen Münzen in der Kasse</returns>
         public int GetValueTotal()
         {
             var totalValue = 0;
@@ -460,6 +459,7 @@ namespace Tankstelle.Business
             return roundedValue;
          
         }
+
         /// <summary>
         /// Erstellt eine Rechnung
         /// </summary>

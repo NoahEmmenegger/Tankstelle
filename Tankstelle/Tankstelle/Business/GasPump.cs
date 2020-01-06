@@ -164,7 +164,7 @@ namespace Tankstelle.Business
             }
         }
         /// <summary>
-        /// Stop den Tankvorgang
+        /// Stopt den Tankvorgang
         /// </summary>
         public void StopRefuel()
         {

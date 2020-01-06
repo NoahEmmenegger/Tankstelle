@@ -30,15 +30,22 @@ namespace Tankstelle.Interfaces
         /// Wert welcher bei dieser Zapfäule bezahlt werden muss.
         /// </summary>
         decimal ToPayValue { get; set; }
-
-        void FinishRefuel();
-        void StartRefuel();
-
         /// <summary>
         /// Anzahl der bereits getankten Liter an dieser Zapfsäule vom akktuellen Kunden
         /// </summary>
         double Liter { get; set; }
 
+        /// <summary>
+        /// Schliesst den Tankvorgang ab
+        /// </summary>
+        void FinishRefuel();
+        /// <summary>
+        /// Startet das Tanken
+        /// </summary>
+        void StartRefuel();
+        /// <summary>
+        /// Stopt den Tankvorgang
+        /// </summary>
         void StopRefuel();
     }
 }
