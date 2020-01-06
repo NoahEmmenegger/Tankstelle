@@ -22,9 +22,7 @@ namespace Tankstelle.GUI
     {
         public ChoseGasStationObject()
         {
-            GasStation.GetInstance().GetFuels();
-            GasStation.GetInstance().GetTanks();
-            GasStation.GetInstance().GetGasPumps();
+            Generator.Generate();
             InitializeComponent();
         }
 

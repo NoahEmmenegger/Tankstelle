@@ -69,6 +69,7 @@
     <Compile Include="Business\Fuel.cs" />
     <Compile Include="Business\GasPump.cs" />
     <Compile Include="Business\GasStation.cs" />
+    <Compile Include="Business\Generator.cs" />
     <Compile Include="Business\QuantityCoins.cs" />
     <Compile Include="Business\Receipt.cs" />
     <Compile Include="Business\Tank.cs" />

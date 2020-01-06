@@ -18,7 +18,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Objekt um aus der Config Datei zu lesen und in die Config Datei zu schreiben.
         /// </summary>
-        private IConfigurationManager _configManager = ConfigurationManager.CreateInstance();
+        private IConfigurationManager _configManager;
         /// <summary>
         /// Liste mit allen Zapfsäulen
         /// </summary>
@@ -100,6 +100,15 @@ namespace Tankstelle.Business
         {
             _configManager.AddFuel(fuel);
             _configManager.SaveChanges();
+        }
+
+        /// <summary>
+        /// Setzt den Configuration Manager
+        /// </summary>
+        /// <param name="configurationManager">Mitgegebenes Configuration Manager Objekt</param>
+        public void SetConfigurationManager(IConfigurationManager configurationManager)
+        {
+            _configManager = configurationManager;
         }
     }
 }

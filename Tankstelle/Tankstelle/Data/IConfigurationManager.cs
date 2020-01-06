@@ -7,7 +7,7 @@ using Tankstelle.Business;
 
 namespace Tankstelle.Data
 {
-    interface IConfigurationManager
+    public interface IConfigurationManager
     {
         void AddGasPump(GasPump gasPump);
         List<GasPump> GetGasPumps();
