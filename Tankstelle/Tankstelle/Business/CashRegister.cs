@@ -8,12 +8,12 @@ using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Ist die Kasse. Beinhaltet alle Methoden und Variablen, welche zum Bezahlen benötigt werden.
+    /// </summary>
     public class CashRegister : ICashRegister
     {
-        /// <summary>
-        /// Liste von allen Zapfsäulen
-        /// </summary>
-        public List<GasPump> GasPumpList { get; set; }
+        #region private Felder
         /// <summary>
         /// Maximale Anzahl Münzen, welche im Automat sein können.
         /// </summary>
@@ -30,7 +30,16 @@ namespace Tankstelle.Business
         /// Der insgesamte Wert von den Münzen, welche eingeworfen worden sind.
         /// </summary>
         private int insertValue = 0;
+        #endregion
 
+        #region public Properties
+        /// <summary>
+        /// Liste von allen Zapfsäulen
+        /// </summary>
+        public List<GasPump> GasPumpList { get; set; }
+        #endregion
+
+        #region Konstruktor
         public CashRegister()
         {
             containers[0] = new CoinContainer(10, 100);
@@ -46,7 +55,9 @@ namespace Tankstelle.Business
             containers[10] = new CoinContainer(20000, 100);
             containers[11] = new CoinContainer(100000, 100);
         }
+        #endregion
 
+        #region Methoden
         /// <summary>
         /// Öffnet das Fenster von der Kasse
         /// </summary>
@@ -463,5 +474,6 @@ namespace Tankstelle.Business
             receipt.Date = DateTime.Today;
             return receipt;
         }
+        #endregion
     }
 }

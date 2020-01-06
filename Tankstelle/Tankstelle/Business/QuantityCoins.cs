@@ -8,6 +8,7 @@ namespace Tankstelle.Business
 {
     public struct QuantityCoins
     {
+        //Die Anzahl der einzelenm Münznen und Noten
         private int _numberOf5Coins;
         private int _numberOf10Coins;
         private int _numberOf20Coins;
@@ -21,6 +22,11 @@ namespace Tankstelle.Business
         private int _numberOf10000Coins;
         private int _numberOf20000Coins;
         private int _numberOf100000Coins;
+
+        /// <summary>
+        /// Zählt wie viele Münzen im QuantityCoins vorhanden sind
+        /// </summary>
+        /// <returns></returns>
         public int[] CountCoins()
         {
             var numberOfAllCoins = new int[13];
@@ -39,6 +45,10 @@ namespace Tankstelle.Business
             numberOfAllCoins[12] = _numberOf100000Coins;
             return numberOfAllCoins;
         }
+        /// <summary>
+        /// Fügt dem QuantityCoins noch Münzen hinzu
+        /// </summary>
+        /// <param name="value"></param>
         public void AddCoinValue(int value)
         {
             switch (value)

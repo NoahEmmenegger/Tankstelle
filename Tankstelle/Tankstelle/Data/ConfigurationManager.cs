@@ -14,13 +14,23 @@ namespace Tankstelle.Data
 {
     public class ConfigurationManager : IConfigurationManager
     {
+        #region private Felder
         private string filePath = @"..\..\Data\config.json";
         private List<GasPump> gasPumps = new List<GasPump>();
         private List<Fuel> fuels = new List<Fuel>();
         private List<Tank> tanks = new List<Tank>();
         private List<Receipt> receipts = new List<Receipt>();
         private static ConfigurationManager uniqueInstance = null;
+        #endregion
 
+        #region Konstruktor
+        private ConfigurationManager()
+        {
+
+        }
+        #endregion
+
+        #region Methoden
         public static ConfigurationManager CreateInstance()
         {
             if (uniqueInstance == null)
@@ -30,12 +40,6 @@ namespace Tankstelle.Data
             }
             return uniqueInstance;
         }
-
-        private ConfigurationManager()
-        {
-
-        }
-
         public void AddGasPump(GasPump gasPump)
         {
             gasPumps.Add(gasPump);
@@ -268,5 +272,6 @@ namespace Tankstelle.Data
                 sr.Write(baseJson.ToString());
             }
         }
+        #endregion
     }
 }

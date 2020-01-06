@@ -22,6 +22,9 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class GasPumpDisplay : Window
     {
+        /// <summary>
+        /// DataContext
+        /// </summary>
         public IGasPump Context
         {
             get
@@ -39,21 +42,39 @@ namespace Tankstelle.GUI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Startet die Abschliessung vom Tankvorgang
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnFertig_Click(object sender, RoutedEventArgs e)
         {
             Context.FinishRefuel();
         }
 
+        /// <summary>
+        /// Startet den Tankvorgang
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnTanken_Click(object sender, RoutedEventArgs e)
         {
             Context.StartRefuel();
         }
-
+        /// <summary>
+        /// Unterbricht den Tankvorgang
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnStopp_Click(object sender, RoutedEventArgs e)
         {
             Context.StopRefuel();
         }
-
+        /// <summary>
+        /// Wird ausgefüht, wenn das Fenster geschlossen werden soll
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if(Context.Status == Statuse.Tankend)

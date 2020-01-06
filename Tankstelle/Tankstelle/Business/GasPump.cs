@@ -13,18 +13,35 @@ namespace Tankstelle.Business
 {
     public class GasPump : INotifyPropertyChanged, IGasPump
     {
+        #region private Felder
         /// <summary>
         /// Fenster (GUI) von der Zapfsäule
         /// </summary>
         private GasPumpDisplay _display;
+        /// <summary>
+        /// Der Zapfhahn von der Zapfsäule, welcher momentan im Gebrauch ist
+        /// </summary>
         private Tap _activeTap;
+        /// <summary>
+        /// Wert welcher bei dieser Zapfäule bezahlt werden muss.
+        /// </summary>
+        /// 
         private decimal toPayValue;
+        /// <summary>
+        /// Anzahl der bereits getankten Liter an dieser Zapfsäule vom akktuellen Kunden
+        /// </summary>
         private double liter;
+        /// <summary>
+        /// Zeigt auf in welchem Status sich dieser Zapfhan gerade befindet, ob z.B. getankt wird.
+        /// </summary>
         private Statuse _status;
+        /// <summary>
+        /// Timer, welcher den Rythmus vom Tanken angibt.
+        /// </summary>
         private Timer timer = new Timer();
+        #endregion
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        #region public Properties
         /// <summary>
         /// Liste mit allen Zapfhähnen, welche es bei dieser Zapfsäule gibt.
         /// </summary>
@@ -97,11 +114,13 @@ namespace Tankstelle.Business
                     PropertyChanged(this, new PropertyChangedEventArgs("Liter"));
             }
         }
-        /// <summary>
-        /// Öffnet das Fenster zur Zapfsäule
-        /// </summary>
-        /// 
+        #endregion
 
+        #region Events
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region Konstruktor
         public GasPump(int gasPumpNumber)
         {
             GasPumpNumber = gasPumpNumber;
@@ -111,6 +130,9 @@ namespace Tankstelle.Business
             }
             Status = Statuse.Frei;
         }
+        #endregion
+
+        #region Methoden
         /// <summary>
         /// Öffnet das Fenster von der Zapfsäule
         /// </summary>
@@ -176,5 +198,6 @@ namespace Tankstelle.Business
             Liter = 0;
             ToPayValue = 0;
         }
+        #endregion
     }
 }

@@ -8,6 +8,9 @@ namespace Tankstelle.Business
 {
     public class Coin
     {
+        /// <summary>
+        /// Wert vom der Münze/Note
+        /// </summary>
         private int _value;
 
         public Coin(int value)
@@ -15,6 +18,10 @@ namespace Tankstelle.Business
             _value = value;
         }
 
+        /// <summary>
+        /// Gibt den Wert von der Münze zurück
+        /// </summary>
+        /// <returns></returns>
         public int GetValue()
         {
             return _value;

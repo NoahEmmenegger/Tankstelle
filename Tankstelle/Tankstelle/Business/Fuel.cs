@@ -20,15 +20,5 @@ namespace Tankstelle.Business
         /// Name von der Treibstoffsorte
         /// </summary>
         public string Name { get; set; }
-
-        public Fuel()
-        {
-
-        }
-
-        public Fuel(List<Tank> tankList)
-        {
-            TankList = tankList;
-        }
     }
 }

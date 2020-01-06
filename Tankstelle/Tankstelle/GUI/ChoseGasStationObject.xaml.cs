@@ -26,12 +26,22 @@ namespace Tankstelle.GUI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Öffnet das Fenster, bei welchem die Zapfsäule ausgewählt werden kann.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnChoseGasPump_Click(object sender, RoutedEventArgs e)
         {
             ChoseGasPump choseGasPump = new ChoseGasPump();
             choseGasPump.Show();
         }
 
+        /// <summary>
+        /// Öffnet das Fenster von der Kasse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnCashRegister_Click(object sender, RoutedEventArgs e)
         {
             CashRegister cashRegister = new CashRegister();
@@ -39,6 +49,11 @@ namespace Tankstelle.GUI
             cashRegister.ShowDisplay();
         }
 
+        /// <summary>
+        /// Öffnet das Fenster vom Administratorenbereich
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnAdminArea_Click(object sender, RoutedEventArgs e)
         {
             AdminArea adminArea = new AdminArea();

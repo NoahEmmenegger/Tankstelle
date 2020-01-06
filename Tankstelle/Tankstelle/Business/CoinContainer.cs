@@ -8,17 +8,38 @@ namespace Tankstelle.Business
 {
     public class CoinContainer
     {
+        #region private Felder
+        /// <summary>
+        /// Der maximale Füllungsgrad, welcher der CoinContainer haben darf.
+        /// </summary>
         private readonly float _maxPercentFilling = 90;
+        /// <summary>
+        /// Der minimale Füllungsgrad welcher der CoinContainer haben darf.
+        /// </summary>
         private readonly float _minPercentFilling = 10;
+        /// <summary>
+        /// Die Coins, welche sich im CoinContainer befinden
+        /// </summary>
         private Coin[] _coins = new Coin[200];
+        /// <summary>
+        /// Werte von den Münzen/Noten, welche sich im CoinContainer befinden
+        /// </summary>
         private int _coinsValue;
+        /// <summary>
+        /// Der prozentualle Füllungsgrad
+        /// </summary>
         private double _percentFilling;
+        /// <summary>
+        /// Maximale Anzahl Coins, welche in der Kasse sein können.
+        /// </summary>
         private int _maximunCoins;
+        #endregion
 
+        #region Konstruktor
         public CoinContainer(int coinValue, int maximunCoins)
         {
             _coinsValue = coinValue;
-            _maximunCoins = maximunCoins;
+            _maximunCoins = maximunCoins; 
             for (int i = 0; i < 49; i++)
             {
                 _coins[i] = new Coin(_coinsValue);
@@ -26,7 +47,9 @@ namespace Tankstelle.Business
 
             _percentFilling = 100.0 / _maximunCoins * _coins.Where(x => x != null).Count();
         }
+        #endregion
 
+        #region Methoden
         /// <summary>
         /// Gibt den Wert von den Coins zurück, welche sich in diesem CoinContainer befinden.
         /// </summary>
@@ -127,5 +150,6 @@ namespace Tankstelle.Business
         {
             return _percentFilling;
         }
+        #endregion
     }
 }

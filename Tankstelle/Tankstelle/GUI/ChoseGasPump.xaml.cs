@@ -44,6 +44,11 @@ namespace Tankstelle.GUI
             }
         }
 
+        /// <summary>
+        /// Wählt eine Zapfsäule zum Tanken aus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
         {
             if(_livZapfsauulen.SelectedItem != null && _livZapfhaenen.SelectedItem != null)

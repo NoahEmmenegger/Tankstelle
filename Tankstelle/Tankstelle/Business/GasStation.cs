@@ -8,17 +8,23 @@ using Tankstelle.Data;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Ist die zentralle Businessklasse von hier aus, hat man überallhin zugriff.
+    /// </summary>
     public class GasStation
     {
+        #region private Felder
+        /// <summary>
+        /// Das Singelton Objekt von der Klasse GasStation
+        /// </summary>
         private static GasStation instance = null;
-        private List<Fuel> fuelList = new List<Fuel>();
-        private List<CashRegister> cashRegisterList = new List<CashRegister>();
-        private List<Tank> tankList = new List<Tank>();
-
         /// <summary>
         /// Objekt um aus der Config Datei zu lesen und in die Config Datei zu schreiben.
         /// </summary>
         private IConfigurationManager _configManager;
+        #endregion
+
+        #region public Propertys
         /// <summary>
         /// Liste mit allen Zapfsäulen
         /// </summary>
@@ -26,32 +32,29 @@ namespace Tankstelle.Business
         /// <summary>
         /// Liste mit allen Treibstoffsorten
         /// </summary>
-        public List<Fuel> FuelList { get => fuelList; set => fuelList = value; }
+        public List<Fuel> FuelList { get; set; } = new List<Fuel>();
         /// <summary>
-        /// Liste mit allen Treibstoffsorten
+        /// Liste mit allen Tanksorten
         /// </summary>
-        public List<Tank> TankList { get => tankList; set => tankList = value; }
-
+        public List<Tank> TankList { get; set; } = new List<Tank>();
         /// <summary>
         /// Liste mit allen Kassen von der Tankstelle
         /// </summary>
-        public List<CashRegister> CashRegisterList
-        {
-            get
-            {
-                return cashRegisterList;
-            }
-            set
-            {
-                cashRegisterList = value;
-            }
-        }
+        public List<CashRegister> CashRegisterList { get; set; }
+        #endregion
 
+        #region Konstruktor
         private GasStation()
         {
             //Do Nothing
         }
+        #endregion
 
+        #region Methoden
+        /// <summary>
+        /// Erstellt eine neue Instanz, sofern noch keine vorhanden ist und ansonsten wird die vorhandene Instanz zurückgegeben.
+        /// </summary>
+        /// <returns></returns>
         public static GasStation GetInstance()
         {
             if (instance == null)
@@ -110,5 +113,6 @@ namespace Tankstelle.Business
         {
             _configManager = configurationManager;
         }
+        #endregion
     }
 }
