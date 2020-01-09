@@ -35,6 +35,7 @@ namespace Tankstelle.Interfaces
         /// </summary>
         double Liter { get; set; }
 
+        bool PrepareForRefuel(Tap selectedTap);
         /// <summary>
         /// Schliesst den Tankvorgang ab
         /// </summary>

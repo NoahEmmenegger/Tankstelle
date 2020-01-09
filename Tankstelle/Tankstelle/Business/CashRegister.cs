@@ -64,17 +64,42 @@ namespace Tankstelle.Business
         /// <param name="gasPump">Zapfsäule bei, welcher die Zahlung abgeschlossen werden soll</param>
         /// <param name="verifyToPayValue">Gibt an ob die Bezahlung auch abgeschlossen werden soll, wenn noch eine Rechnung offen ist. Bei false ist es egal ob noch eine Rechnung offen ist.</param>
         /// <returns>Gibt an ob die Rechnung abgeschlossen werden konnte oder nicht.</returns>
-        public bool FinishPayment(GasPump gasPump, bool verifyToPayValue = true)
+        public int FinishPayment(GasPump gasPump, bool verifyToPayValue = true)
         {
-            if (verifyToPayValue)
+            if (gasPump != null)
             {
-                if (gasPump.ToPayValue > 0)
+                if (verifyToPayValue)
                 {
-                    return false;
+                    if (gasPump.ToPayValue > 0)
+                    {
+                        return 1;
+                    }
                 }
+                GasPumpList.Find(g => g == gasPump).Refresh();
+                return 0;
             }
-            GasPumpList.Find(g => g == gasPump).Refresh();
-            return true;
+            return 2;
+        }
+        /// <summary>
+        /// Schliesst die Eingabe vom Geld ab und gibt das Rückgeld
+        /// </summary>
+        /// <param name="gasPump"></param>
+        /// <returns>Das Rückgeld oder -1 wenn noch zu wenig Geld eingeworfen wurde</returns>
+        public int[] FinishInput(GasPump gasPump)
+        {
+            AcceptValueInput();
+            int inputValue = GetValueInput();
+            int outputValue = inputValue - Convert.ToInt32((gasPump.ToPayValue * 100));
+            if (decimal.Parse(inputValue.ToString()) / 100 >= gasPump.ToPayValue)
+            {
+                int[] outputCoins = new int[1];
+                outputCoins = GetChange(outputValue).CountCoins();
+                return outputCoins;
+            }
+            else
+            {
+                return new int[] { -1 };
+            }
         }
 
         /// <summary>
@@ -203,8 +228,110 @@ namespace Tankstelle.Business
         /// <param name="outputValue">Betrag, welcher ausbezahlt werden muss</param>
         /// <returns>Die Anzahl von den verschiedenen Münzen, welche ausgegeben werden müssen</returns>
         public QuantityCoins GetChange(int outputValue)
-        {           
+        {
             var outputCoins = new QuantityCoins();
+            while (outputValue >= 100000)
+            {
+                if (containers[11].CountCoins() > 0)
+                {
+                    outputCoins.AddCoinValue(100000);
+                    containers[11].RemoveCoin();
+                    if (containers[11].GetMinPercentFlling())
+                    {
+                        AlertCoinMinimun(100000);
+                    }
+                    outputValue -= 100000;
+                }
+                else
+                {
+                    break;
+                }
+            } 
+            while (outputValue >= 20000)
+            {
+                if (containers[10].CountCoins() > 0)
+                {
+                    outputCoins.AddCoinValue(20000);
+                    containers[10].RemoveCoin();
+                    if (containers[10].GetMinPercentFlling())
+                    {
+                        AlertCoinMinimun(20000);
+                    }
+                    outputValue -= 20000;
+                }
+                else
+                {
+                    break;
+                }
+            } 
+            while (outputValue >= 10000)
+            {
+                if (containers[9].CountCoins() > 0)
+                {
+                    outputCoins.AddCoinValue(10000);
+                    containers[9].RemoveCoin();
+                    if (containers[9].GetMinPercentFlling())
+                    {
+                        AlertCoinMinimun(10000);
+                    }
+                    outputValue -= 10000;
+                }
+                else
+                {
+                    break;
+                }
+            } 
+            while (outputValue >= 5000)
+            {
+                if (containers[8].CountCoins() > 0)
+                {
+                    outputCoins.AddCoinValue(5000);
+                    containers[8].RemoveCoin();
+                    if (containers[8].GetMinPercentFlling())
+                    {
+                        AlertCoinMinimun(5000);
+                    }
+                    outputValue -= 5000;
+                }
+                else
+                {
+                    break;
+                }
+            } 
+            while (outputValue >= 2000)
+            {
+                if (containers[7].CountCoins() > 0)
+                {
+                    outputCoins.AddCoinValue(2000);
+                    containers[7].RemoveCoin();
+                    if (containers[7].GetMinPercentFlling())
+                    {
+                        AlertCoinMinimun(2000);
+                    }
+                    outputValue -= 2000;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while (outputValue >= 1000)
+            {
+                if (containers[6].CountCoins() > 0)
+                {
+                    outputCoins.AddCoinValue(1000);
+                    containers[6].RemoveCoin();
+                    if (containers[6].GetMinPercentFlling())
+                    {
+                        AlertCoinMinimun(1000);
+                    }
+                    outputValue -= 1000;
+                }
+                else
+                {
+                    break;
+                }
+            }
             while (outputValue >= 500)
             {
                 if (containers[5].CountCoins() > 0)
@@ -442,14 +569,14 @@ namespace Tankstelle.Business
         {
             decimal roundedValue = Math.Round(value, 2);
             decimal lastNumber = decimal.Parse(roundedValue.ToString().ToCharArray().Last().ToString());
-                  
-            if(lastNumber > 5)
-                roundedValue = roundedValue + (10 - lastNumber)/100;
-            else if(lastNumber < 5)
+
+            if (lastNumber > 5)
+                roundedValue = roundedValue + (10 - lastNumber) / 100;
+            else if (lastNumber < 5)
                 roundedValue = roundedValue - lastNumber / 100;
 
             return roundedValue;
-         
+
         }
 
         /// <summary>

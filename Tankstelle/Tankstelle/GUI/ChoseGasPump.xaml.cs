@@ -53,14 +53,15 @@ namespace Tankstelle.GUI
         {
             if(_livZapfsauulen.SelectedItem != null && _livZapfhaenen.SelectedItem != null)
             {
-                GasPump selectedGasPump = GasStation.GetInstance().GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
-                selectedGasPump.ActiveTap = selectedGasPump.TapList.First(t => t == _livZapfhaenen.SelectedItem);
-                if(selectedGasPump.Status == Statuse.Frei)
+                IGasPump selectedGasPump = GasStation.GetInstance().GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
+                if(selectedGasPump != null)
                 {
-                    selectedGasPump.OpenDisplay();
-                    GasPumpDisplay gasPumpDisplay = new GasPumpDisplay();
-                    gasPumpDisplay.Context = selectedGasPump;
-                    gasPumpDisplay.Show();
+                    if (selectedGasPump.PrepareForRefuel(selectedGasPump.TapList.First(t => t == _livZapfhaenen.SelectedItem)))
+                    {
+                        GasPumpDisplay gasPumpDisplay = new GasPumpDisplay();
+                        gasPumpDisplay.Context = selectedGasPump;
+                        gasPumpDisplay.Show();
+                    }
                 }
             }
             else

@@ -26,7 +26,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Anzahl der bereits getankten Liter an dieser Zapfsäule vom akktuellen Kunden
         /// </summary>
-        private double liter;
+        private double liter = 0;
         /// <summary>
         /// Zeigt auf in welchem Status sich dieser Zapfhan gerade befindet, ob z.B. getankt wird.
         /// </summary>
@@ -129,12 +129,24 @@ namespace Tankstelle.Business
         #endregion
 
         #region Methoden
+
         /// <summary>
-        /// Wird ausgefüht wenn das GUI für die Zapfsäule geöffnet wird.
+        /// Bereitet die Zapfsäule für das Tanken vor.
         /// </summary>
-        public void OpenDisplay()
+        /// <param name="selectedTap">Zapfhahan mit welche getankt werden soll.</param>
+        /// <returns>Gibt an ob Sie erfolgreich vorbereitet werden konnte.</returns>
+        public bool PrepareForRefuel(Tap selectedTap)
         {
-            Status = Statuse.Tankend;
+            if(Status == Statuse.Frei)
+            {
+                Status = Statuse.Tankend;
+                ActiveTap = selectedTap;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         /// <summary>
         /// Startet das Tanken

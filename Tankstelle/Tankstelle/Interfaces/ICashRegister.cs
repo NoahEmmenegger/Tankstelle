@@ -28,7 +28,13 @@ namespace Tankstelle.Interfaces
         /// <param name="gasPump">Zapfsäule bei, welcher die Zahlung abgeschlossen werden soll</param>
         /// <param name="verifyToPayValue">Gibt an ob die Bezahlung auch abgeschlossen werden soll, wenn noch eine Rechnung offen ist. Bei false ist es egal ob noch eine Rechnung offen ist.</param>
         /// <returns>Gibt an ob die Rechnung abgeschlossen werden konnte oder nicht.</returns>
-        bool FinishPayment(GasPump gasPump, bool verifyToPayValue = true);
+        int FinishPayment(GasPump gasPump, bool verifyToPayValue = true);
+        /// <summary>
+        /// Schliesst die Eingabe vom Geld ab und gibt das Rückgeld
+        /// </summary>
+        /// <param name="gasPump"></param>
+        /// <returns>Das Rückgeld oder -1 wenn noch zu wenig Geld eingeworfen wurde</returns>
+        int[] FinishInput(GasPump gasPump);
         /// <summary>
         /// Findet heraus was für eine Münze eingeworfen wurde und fügt Sie dem entsprechenden CoinContainer hinzu.
         /// </summary>

@@ -68,18 +68,21 @@ namespace Tankstelle.GUI
         /// <param name="e"></param>
         private void _btnWaehlen_Click(object sender, RoutedEventArgs e)
         {
-            GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
-            if (selectedGasPump.Status != Statuse.Besetzt)
+            IGasPump selectedGasPump = (IGasPump)GasPumpComboBox.SelectedItem;
+            if (selectedGasPump != null)
             {
-                MessageBox.Show("Die Zapfsäule kann nicht zum bezahlen ausgewählt werden, da es der momentane Status nicht zulässt. Sie muss den Status \"Besetzt\" haben, damit sie ausgewählt werden kann.", "Nicht auswählbar", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
-            {
-                selectedGasPump.Status = Statuse.Bezahlen;
-                selectedGasPump.ToPayValue = Context.Round(selectedGasPump.ToPayValue);
-                _tbxAnzeige.Text = _zuBezahlenAusgabe = $"Zu bezahlen: {selectedGasPump.ToPayValue} Franken\r\n";
-                _tbxAnzeige.Text += "Eingabe: 0 Franken";
-                EnableButtons();
+                if (selectedGasPump.Status != Statuse.Besetzt)
+                {
+                    MessageBox.Show("Die Zapfsäule kann nicht zum bezahlen ausgewählt werden, da es der momentane Status nicht zulässt. Sie muss den Status \"Besetzt\" haben, damit sie ausgewählt werden kann.", "Nicht auswählbar", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    selectedGasPump.Status = Statuse.Bezahlen;
+                    selectedGasPump.ToPayValue = Context.Round(selectedGasPump.ToPayValue);
+                    _tbxAnzeige.Text = _zuBezahlenAusgabe = $"Zu bezahlen: {selectedGasPump.ToPayValue} Franken\r\n";
+                    _tbxAnzeige.Text += "Eingabe: 0 Franken";
+                    EnableButtons();
+                }
             }
         }
         /// <summary>
@@ -90,8 +93,12 @@ namespace Tankstelle.GUI
         private void _btnAbschliessen_Click(object sender, RoutedEventArgs e)
         {
             GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
-            bool result = Context.FinishPayment(selectedGasPump);
-            if (!result)
+            int result = Context.FinishPayment(selectedGasPump);
+            if (result == 0)
+            {
+                _tbxAnzeige.Text = "";
+            }
+            else if (result == 1)
             {
                 MessageBoxResult messageBoxResult = MessageBox.Show("Sind Sie sicher, dass Sie die Zahlung beenden wollen? Es stehen noch Rechnungen offen.", "Zahlung beednen?", MessageBoxButton.OKCancel, MessageBoxImage.Question);
                 if (MessageBoxResult.OK == messageBoxResult)
@@ -99,10 +106,6 @@ namespace Tankstelle.GUI
                     Context.FinishPayment(selectedGasPump, false);
                     _tbxAnzeige.Text = "";
                 }
-            }
-            else
-            {
-                _tbxAnzeige.Text = "";
             }
         }
         /// <summary>
@@ -131,37 +134,36 @@ namespace Tankstelle.GUI
         /// <param name="e"></param>
         private void _btnFertig_Click(object sender, RoutedEventArgs e)
         {
-            Context.AcceptValueInput();
-            int inputValue = Context.GetValueInput();
             GasPump selectedGasPump = (GasPump)GasPumpComboBox.SelectedItem;
-            int outputValue = inputValue - Convert.ToInt32((selectedGasPump.ToPayValue * 100));
-            if (decimal.Parse(inputValue.ToString()) / 100 >= selectedGasPump.ToPayValue)
+            int[] outputCoins = new int[1];
+            try
             {
-                int[] outputCoins = new int[1];
-                try
+                outputCoins = Context.FinishInput(selectedGasPump);
+                if (outputCoins[0] == -1)
                 {
-                    outputCoins = Context.GetChange(outputValue).CountCoins();
+                    _tbxAnzeige.Text += $"\r\nEs wurde noch zu wenig Geld eingeworfen. Es fehlen noch {selectedGasPump.ToPayValue - decimal.Parse(Context.GetValueInput().ToString()) / 100} Franken.";
                 }
-                catch (Exception ex)
+                else
                 {
-                    if (ex.Message.StartsWith("Es kann leider kein Rückgeld"))
-                        MessageBox.Show(ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    else
-                        MessageBox.Show(ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
+                    RenderNumberOfCoins(outputCoins);
+                    DisableButtons();
+
+                    IReceipt receipt = Context.CreateReceipt(selectedGasPump);
+                    selectedGasPump.ToPayValue = 0;
+                    ReceiptDisplay receiptDisplay = new ReceiptDisplay();
+                    receiptDisplay.Context = receipt;
+                    receiptDisplay.Show();
                 }
-                _tbxAnzeige.Text += "\r\nAusgabe:\r\n";
-                RenderNumberOfCoins(outputCoins);
-                Receipt receipt = Context.CreateReceipt(selectedGasPump);
-                selectedGasPump.ToPayValue = 0;
-                DisableButtons();
-                ReceiptDisplay receiptDisplay = new ReceiptDisplay();
-                receiptDisplay.Context = receipt;
-                receiptDisplay.Show();
+
             }
-            else
+            catch (Exception ex)
             {
-                _tbxAnzeige.Text += $"\r\nEs wurde noch zu wenig Geld eingeworfen. Es fehlen noch {selectedGasPump.ToPayValue - decimal.Parse(Context.GetValueInput().ToString()) / 100} Franken.";
+                if (ex.Message.StartsWith("Es kann leider kein Rückgeld gegeben werden."))
+                    MessageBox.Show(ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Warning);
+                else
+                    MessageBox.Show(ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
         /// <summary>
