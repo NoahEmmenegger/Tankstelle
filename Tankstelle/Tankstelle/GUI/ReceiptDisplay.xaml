@@ -31,7 +31,7 @@
         <Label FontWeight="Bold" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Content="{Binding Path=Sum}"></Label>
         <Label FontWeight="Bold" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Content="{Binding Path=RelatedLiter}"></Label>
         <Label FontWeight="Bold" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Content="{Binding Path=RelatedFuel.Name}"></Label>
-        <Label FontWeight="Bold" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Content="{Binding Path=Date}"></Label>
+        <Label FontWeight="Bold" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Content="{Binding Path=DateString}"></Label>
 
     </Grid>
 </Window>

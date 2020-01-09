@@ -29,5 +29,15 @@ namespace Tankstelle.Business
         /// Der Gesamtbetrag von der Rechnung. Wieviel der Kunde bezahlen musste.
         /// </summary>
         public decimal Sum { get; set; }
+        /// <summary>
+        /// Das Datum und die Uhrzeit in string Format
+        /// </summary>
+        public string DateString
+        {
+            get
+            {
+                return Date.ToString();
+            }
+        }
     }
 }

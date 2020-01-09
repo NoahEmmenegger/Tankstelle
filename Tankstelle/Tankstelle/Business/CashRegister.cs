@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -590,7 +591,10 @@ namespace Tankstelle.Business
             receipt.RelatedFuel = gasPump.ActiveTap.Fuel;
             receipt.RelatedLiter = float.Parse(gasPump.Liter.ToString());
             receipt.Sum = gasPump.ToPayValue;
-            receipt.Date = DateTime.Today;
+            DateTime datum = DateTime.Now;
+            CultureInfo german = new CultureInfo("de");
+            receipt.Date = DateTime.Parse(DateTime.Parse(datum.ToString()).ToString("yyyy/MM/dd HH:mm:ss"));
+            //GasStation.GetInstance().AddReceipt(receipt);
             return receipt;
         }
         #endregion

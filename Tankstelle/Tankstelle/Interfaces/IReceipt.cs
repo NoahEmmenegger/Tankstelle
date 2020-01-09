@@ -29,5 +29,12 @@ namespace Tankstelle.Interfaces
         /// Der Gesamtbetrag von der Rechnung. Wieviel der Kunde bezahlen musste.
         /// </summary>
         decimal Sum { get; set; }
+        /// <summary>
+        /// Das Datum und die Uhrzeit in string Format
+        /// </summary>
+        string DateString
+        {
+            get;
+        }
     }
 }

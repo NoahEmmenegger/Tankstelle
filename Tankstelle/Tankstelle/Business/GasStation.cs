@@ -105,6 +105,12 @@ namespace Tankstelle.Business
             _configManager.SaveChanges();
         }
 
+        public void AddReceipt(Receipt receipt)
+        {
+            _configManager.AddReceipt(receipt);
+            _configManager.SaveChanges();
+        }
+
         /// <summary>
         /// Setzt den Configuration Manager
         /// </summary>
