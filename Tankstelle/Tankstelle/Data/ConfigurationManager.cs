@@ -106,76 +106,107 @@ namespace Tankstelle.Data
 
         private void GetDataAsJson()
         {
-            //GASPUMP
-            using (StreamReader sr = new StreamReader(@"..\..\Data\config\gasPumpConfig.json"))
+            try
             {
-                string fileString = sr.ReadToEnd();
-                JToken gasPumpJson = JObject.Parse(fileString)["gasPumps"];
-
-                foreach (JToken gasPumpToken in gasPumpJson)
+                //GASPUMP
+                using (StreamReader sr = new StreamReader(@"..\..\Data\config\gasPumpConfig.json"))
                 {
-                    GasPump gasPump = new GasPump(Convert.ToInt32(gasPumpToken["GasPumpNumber"]));
-                    gasPump.Status = (Statuse)Convert.ToInt32(gasPumpToken["Status"]);
-                    gasPumps.Add(gasPump);
-                }
-            }
+                    string fileString = sr.ReadToEnd();
+                    JToken gasPumpJson = JObject.Parse(fileString)["gasPumps"];
 
-            //TANK
-            using (StreamReader sr = new StreamReader(@"..\..\Data\config\tankConfig.json"))
-            {
-                string fileString = sr.ReadToEnd();
-                JToken tankJson = JObject.Parse(fileString)["tanks"];
-
-                foreach (JToken tankToken in tankJson)
-                {
-                    Tank tank = new Tank();
-                    tank.Number = Convert.ToInt32(tankToken["Number"]);
-                    tank.Name = tankToken["Name"].ToString();
-                    tank.FuelName = tankToken["FuelName"].ToString();
-                    tank.AvailibleLiter = float.Parse(tankToken["AvailibleLiter"].ToString());
-                    tank.VolumeLiter = float.Parse(tankToken["VolumeLiter"].ToString());
-                    tank.MinAmount = float.Parse(tankToken["MinAmount"].ToString());
-                    tanks.Add(tank);
-                }
-            }
-
-            //FUEL
-            using (StreamReader sr = new StreamReader(@"..\..\Data\config\fuelConfig.json"))
-            {
-                string fileString = sr.ReadToEnd();
-                JToken fuelJson = JObject.Parse(fileString)["fuels"];
-
-                foreach (JToken fuelToken in fuelJson)
-                {
-                    Fuel fuel = new Fuel();
-                    fuel.Name = fuelToken["Name"].ToString();
-                    fuel.PricePerLiter = Convert.ToDecimal(fuelToken["PricePerLiter"]);
-                    fuel.TankList = new List<Tank>();
-                    foreach (JToken tankToken in fuelToken["TankList"])
+                    foreach (JToken gasPumpToken in gasPumpJson)
                     {
-                        Tank tank = GetTankByNumber(Convert.ToInt32(tankToken["Number"]));
-                        fuel.TankList.Add(tank);
+                        GasPump gasPump = new GasPump(Convert.ToInt32(gasPumpToken["GasPumpNumber"]));
+                        gasPump.Status = (Statuse)Convert.ToInt32(gasPumpToken["Status"]);
+                        gasPumps.Add(gasPump);
                     }
-                    fuels.Add(fuel);
                 }
             }
-
-            //RECEIPT
-            using (StreamReader sr = new StreamReader(@"..\..\Data\config\receiptConfig.json"))
+            catch (Exception ex)
             {
-                string fileString = sr.ReadToEnd();
-                JToken receiptJson = JObject.Parse(fileString)["receipts"];
+                throw ex;
+            }
 
-                foreach (JToken receiptToken in receiptJson)
+            try
+            {
+                //TANK
+                using (StreamReader sr = new StreamReader(@"..\..\Data\config\tankConfig.json"))
                 {
-                    Receipt receipt = new Receipt();
-                    receipt.Id = Convert.ToInt32(receiptToken["Id"]);
-                    receipt.Date = DateTime.Parse(receiptToken["Date"].ToString());
-                    receipt.RelatedFuel = GetFuelByName(receiptToken["RelatedFuel"].ToString());
-                    receipt.RelatedLiter = Convert.ToInt32(receiptToken["RelatedLiter"].ToString());
-                    receipt.Sum = Convert.ToInt32(receiptToken["Sum"].ToString());
-                    receipts.Add(receipt);
+                    string fileString = sr.ReadToEnd();
+                    JToken tankJson = JObject.Parse(fileString)["tanks"];
+
+                    foreach (JToken tankToken in tankJson)
+                    {
+                        Tank tank = new Tank();
+                        tank.Number = Convert.ToInt32(tankToken["Number"]);
+                        tank.Name = tankToken["Name"].ToString();
+                        tank.FuelName = tankToken["FuelName"].ToString();
+                        tank.AvailibleLiter = float.Parse(tankToken["AvailibleLiter"].ToString());
+                        tank.VolumeLiter = float.Parse(tankToken["VolumeLiter"].ToString());
+                        tank.MinAmount = float.Parse(tankToken["MinAmount"].ToString());
+                        tanks.Add(tank);
+                    }
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            try
+            {
+                //FUEL
+                using (StreamReader sr = new StreamReader(@"..\..\Data\config\fuelConfig.json"))
+                {
+                    string fileString = sr.ReadToEnd();
+                    JToken fuelJson = JObject.Parse(fileString)["fuels"];
+
+                    foreach (JToken fuelToken in fuelJson)
+                    {
+                        Fuel fuel = new Fuel();
+                        fuel.Name = fuelToken["Name"].ToString();
+                        fuel.PricePerLiter = Convert.ToDecimal(fuelToken["PricePerLiter"]);
+                        fuel.TankList = new List<Tank>();
+                        foreach (JToken tankToken in fuelToken["TankList"])
+                        {
+                            Tank tank = GetTankByNumber(Convert.ToInt32(tankToken["Number"]));
+                            fuel.TankList.Add(tank);
+                        }
+                        fuels.Add(fuel);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            try
+            {
+                //RECEIPT
+                using (StreamReader sr = new StreamReader(@"..\..\Data\config\receiptConfig.json"))
+                {
+                    string fileString = sr.ReadToEnd();
+                    JToken receiptJson = JObject.Parse(fileString)["receipts"];
+
+                    foreach (JToken receiptToken in receiptJson)
+                    {
+                        Receipt receipt = new Receipt();
+                        receipt.Id = Convert.ToInt32(receiptToken["Id"]);
+                        receipt.Date = DateTime.Parse(receiptToken["Date"].ToString());
+                        receipt.RelatedFuel = GetFuelByName(receiptToken["RelatedFuel"].ToString());
+                        receipt.RelatedLiter = Convert.ToInt32(receiptToken["RelatedLiter"].ToString());
+                        receipt.Sum = Convert.ToInt32(receiptToken["Sum"].ToString());
+                        receipts.Add(receipt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
 
