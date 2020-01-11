@@ -9,8 +9,17 @@ namespace Tankstelle.Business.Statistics
 {
     public class FuelStatistic : IFuelStatistic
     {
+        /// <summary>
+        /// Der Treibstoff, welcher Angezeigt wird
+        /// </summary>
         public Fuel Fuel { get; set; }
+        /// <summary>
+        /// Die verkauften Liters des Treibstoffes
+        /// </summary>
         public float SoldLiters { get; set; }
+        /// <summary>
+        /// Der Umsatz des Treibstoffes
+        /// </summary>
         public decimal Earnings { get; set; }
     }
 }

@@ -8,16 +8,32 @@ namespace Tankstelle.Business.TankService
 {
     class TankService
     {
+        /// <summary>
+        /// Schaue, ob noch genug Liter im Tank ist
+        /// </summary>
+        /// <param name="tank"></param>
+        /// <returns></returns>
         public static bool HasEnoughInTank(Tank tank)
         {
             return tank.VolumeLiter >= tank.MinAmount;
         }
 
+        /// <summary>
+        /// Vergleiche mit dem letzt Jährigen Monat
+        /// </summary>
+        /// <param name="tank"></param>
+        /// <returns></returns>
         public static bool AdjustTankMinimum(Tank tank)
         {
             return GetOutgoingLiter(tank, DateTime.Now.AddYears(-1)) <= tank.MinAmount;
         }
 
+        /// <summary>
+        /// Erhalte die verkauften Liter eines Datums
+        /// </summary>
+        /// <param name="tank"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static float GetOutgoingLiter(Tank tank, DateTime date)
         {
             float liters = 0;
