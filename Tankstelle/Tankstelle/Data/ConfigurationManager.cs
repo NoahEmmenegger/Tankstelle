@@ -105,6 +105,16 @@ namespace Tankstelle.Data
             receipts.Add(receipt);
         }
 
+        public List<Coin> GetCoins()
+        {
+            return coins;
+        }
+
+        public void AddCoin(Coin coin)
+        {
+            coins.Add(coin);
+        }
+
         private void GetDataAsJson()
         {
             try
