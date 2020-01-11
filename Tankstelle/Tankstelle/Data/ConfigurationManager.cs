@@ -73,7 +73,7 @@ namespace Tankstelle.Data
             return tanks;
         }
 
-        public Tank GetTankByNumber(int number)
+        private Tank GetTankByNumber(int number)
         {
             foreach (Tank tank in tanks)
             {
@@ -82,10 +82,11 @@ namespace Tankstelle.Data
                     return tank;
                 }
             }
+            MessageService.AddMessage("Bitte überprüfen Sie ihr fuelConfig.json", "Ungültiger Tank mit der Id " + number + " wurde hinzugefügt");
             return null;
         }
 
-        public Fuel GetFuelByName(string fuelName)
+        private Fuel GetFuelByName(string fuelName)
         {
             foreach (Fuel fuel in fuels)
             {
@@ -94,7 +95,7 @@ namespace Tankstelle.Data
                     return fuel;
                 }
             }
-            MessageService.AddMessage("Ungültige Rechnung mit dem fuelName " + fuelName + " wurde hinzugefügt", "Bitte überprüfen Sie ihr receiptConfig.json");
+            MessageService.AddMessage("Bitte überprüfen Sie ihr receiptConfig.json", "Ungültige Rechnung mit dem fuelName " + fuelName + " wurde hinzugefügt");
             return null;
         }
 
@@ -117,6 +118,10 @@ namespace Tankstelle.Data
         {
             coins.Add(coin);
         }
+
+        #endregion
+
+        #region GetData
 
         private void GetDataAsJson()
         {
@@ -236,120 +241,187 @@ namespace Tankstelle.Data
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
+            {
+                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+            }
+        }
+        #endregion
+
+        #region SaveChanges
+        public void SaveGasPumpChanges()
+        {
+            try
+            {
+                //GASPUMP
+                using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\gasPumpConfig.json"))
+                {
+                    dynamic baseJson = new JObject();
+
+                    JArray gasPumpJsonArray = new JArray();
+                    foreach (GasPump gasPump in gasPumps)
+                    {
+                        dynamic gasPumpJson = new JObject();
+                        gasPumpJson.GasPumpNumber = gasPump.GasPumpNumber;
+                        gasPumpJson.Status = gasPump.Status;
+                        gasPumpJsonArray.Add(gasPumpJson);
+
+                    }
+                    baseJson.gasPumps = gasPumpJsonArray;
+
+                    sr.Write(baseJson.ToString());
+                }
+            }
+            catch (Exception)
             {
                 MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
             }
         }
 
-        public void SaveChanges()
+        public void SaveTankChanges()
         {
-            //GASPUMP
-            using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\gasPumpConfig.json"))
+            try
             {
-                dynamic baseJson = new JObject();
-
-                JArray gasPumpJsonArray = new JArray();
-                foreach (GasPump gasPump in gasPumps)
+                //TANK
+                using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\tankConfig.json"))
                 {
-                    dynamic gasPumpJson = new JObject();
-                    gasPumpJson.GasPumpNumber = gasPump.GasPumpNumber;
-                    gasPumpJson.Status = gasPump.Status;
-                    gasPumpJsonArray.Add(gasPumpJson);
+                    dynamic baseJson = new JObject();
 
-                }
-                baseJson.gasPumps = gasPumpJsonArray;
-
-                sr.Write(baseJson.ToString());
-            }
-
-            //TANK
-            using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\tankConfig.json"))
-            {
-                dynamic baseJson = new JObject();
-
-                JArray tankJsonArray = new JArray();
-                foreach (Tank tank in tanks)
-                {
-                    dynamic tankJson = new JObject();
-                    tankJson.Number = tank.Number;
-                    tankJson.Name = tank.Name;
-                    tankJson.FuelName = tank.FuelName;
-                    tankJson.AvailibleLiter = tank.AvailibleLiter.ToString();
-                    tankJson.VolumeLiter = tank.VolumeLiter.ToString();
-                    tankJson.MinAmount = tank.MinAmount.ToString();
-                    tankJsonArray.Add(tankJson);
-
-                }
-                baseJson.tanks = tankJsonArray;
-
-                sr.Write(baseJson.ToString());
-            }
-
-            //FUEL
-            using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\fuelConfig.json"))
-            {
-                dynamic baseJson = new JObject();
-
-                JArray fuelJsonArray = new JArray();
-                foreach (Fuel fuel in fuels)
-                {
-                    dynamic fuelJson = new JObject();
-                    fuelJson.Name = fuel.Name;
-                    fuelJson.PricePerLiter = fuel.PricePerLiter.ToString();
                     JArray tankJsonArray = new JArray();
-                    foreach (Tank tank in fuel.TankList)
+                    foreach (Tank tank in tanks)
                     {
                         dynamic tankJson = new JObject();
                         tankJson.Number = tank.Number;
+                        tankJson.Name = tank.Name;
+                        tankJson.FuelName = tank.FuelName;
+                        tankJson.AvailibleLiter = tank.AvailibleLiter.ToString();
+                        tankJson.VolumeLiter = tank.VolumeLiter.ToString();
+                        tankJson.MinAmount = tank.MinAmount.ToString();
                         tankJsonArray.Add(tankJson);
+
                     }
-                    fuelJson.TankList = tankJsonArray;
-                    fuelJsonArray.Add(fuelJson);
+                    baseJson.tanks = tankJsonArray;
 
+                    sr.Write(baseJson.ToString());
                 }
-                baseJson.fuels = fuelJsonArray;
-
-                sr.Write(baseJson.ToString());
             }
+            catch (Exception)
+            {
+                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+            }
+        }
+
+        public void SaveFuelChanges()
+        {
+            try
+            {
+                //FUEL
+                using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\fuelConfig.json"))
+                {
+                    dynamic baseJson = new JObject();
+
+                    JArray fuelJsonArray = new JArray();
+                    foreach (Fuel fuel in fuels)
+                    {
+                        dynamic fuelJson = new JObject();
+                        fuelJson.Name = fuel.Name;
+                        fuelJson.PricePerLiter = fuel.PricePerLiter.ToString();
+                        JArray tankJsonArray = new JArray();
+                        foreach (Tank tank in fuel.TankList)
+                        {
+                            dynamic tankJson = new JObject();
+                            tankJson.Number = tank.Number;
+                            tankJsonArray.Add(tankJson);
+                        }
+                        fuelJson.TankList = tankJsonArray;
+                        fuelJsonArray.Add(fuelJson);
+
+                    }
+                    baseJson.fuels = fuelJsonArray;
+
+                    sr.Write(baseJson.ToString());
+                }
+            }
+            catch (Exception)
+            {
+                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+            }
+        }
+
+        public void SaveReceiptChanges()
+        {
+            try
+            {
+                //RECEIPT
+                using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\receiptConfig.json"))
+                {
+                    dynamic baseJson = new JObject();
+
+                    JArray receiptJsonArray = new JArray();
+                    foreach (Receipt receipt in receipts)
+                    {
+                        dynamic receiptJson = new JObject();
+                        receiptJson.Id = receipt.Id;
+                        receiptJson.Date = receipt.Date.ToString("yyyy'/'MM'/'dd HH:mm:ss");
+                        receiptJson.RelatedFuel = receipt.RelatedFuel.Name;
+                        receiptJson.RelatedLiter = receipt.RelatedLiter;
+                        receiptJson.Sum = receipt.Sum;
+                        receiptJsonArray.Add(receiptJson);
+
+                    }
+                    baseJson.receipts = receiptJsonArray;
+
+                    sr.Write(baseJson.ToString());
+                }
+            }
+            catch (Exception)
+            {
+                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+            }
+        }
+
+        public void SaveCoinChanges()
+        {
+            try
+            {
+                //Coin
+                using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\coinConfig.json"))
+                {
+                    dynamic baseJson = new JObject();
+
+                    JArray coinJsonArray = new JArray();
+                    foreach (Coin coin in coins)
+                    {
+                        coinJsonArray.Add(coin.GetValue());
+
+                    }
+                    baseJson.coins = coinJsonArray;
+
+                    sr.Write(baseJson.ToString());
+                }
+            }
+            catch (Exception)
+            {
+                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+            }
+        }
+
+        public void SaveAllChanges()
+        {
+            //GASPUMP
+            SaveGasPumpChanges();
+
+            //TANK
+            SaveTankChanges();
+
+            //FUEL
+            SaveFuelChanges();
 
             //RECEIPT
-            using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\receiptConfig.json"))
-            {
-                dynamic baseJson = new JObject();
-
-                JArray receiptJsonArray = new JArray();
-                foreach (Receipt receipt in receipts)
-                {
-                    dynamic receiptJson = new JObject();
-                    receiptJson.Id = receipt.Id;
-                    receiptJson.Date = receipt.Date.ToString("yyyy'/'MM'/'dd HH:mm:ss");
-                    receiptJson.RelatedFuel = receipt.RelatedFuel.Name;
-                    receiptJson.RelatedLiter = receipt.RelatedLiter;
-                    receiptJson.Sum = receipt.Sum;
-                    receiptJsonArray.Add(receiptJson);
-
-                }
-                baseJson.receipts = receiptJsonArray;
-
-                sr.Write(baseJson.ToString());
-            }
+            SaveReceiptChanges();
 
             //Coin
-            using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\coinConfig.json"))
-            {
-                dynamic baseJson = new JObject();
-
-                JArray coinJsonArray = new JArray();
-                foreach (Coin coin in coins)
-                {
-                    coinJsonArray.Add(coin.GetValue());
-
-                }
-                baseJson.coins = coinJsonArray;
-
-                sr.Write(baseJson.ToString());
-            }
+            SaveCoinChanges();
         }
         #endregion
     }

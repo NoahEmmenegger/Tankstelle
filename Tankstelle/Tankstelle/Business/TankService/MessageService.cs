@@ -12,11 +12,7 @@ namespace Tankstelle.Business.TankService
     {
         public static void AddMessage(string title, string description)
         {
-            Message message = new Message();
-            message.Title = title;
-            message.Description = description;
-            MessageBoxResult messageBoxResult = MessageBox.Show(description, title, MessageBoxButton.OK);
-            if (MessageBoxResult.OK == messageBoxResult)
+            if (MessageBox.Show(description, title, MessageBoxButton.OK) == MessageBoxResult.OK)
             {
                 Application.Current.Shutdown();
             }

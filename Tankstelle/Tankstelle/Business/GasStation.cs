@@ -103,13 +103,13 @@ namespace Tankstelle.Business
         public void AddFuels(Fuel fuel)
         {
             _configManager.AddFuel(fuel);
-            _configManager.SaveChanges();
+            _configManager.SaveFuelChanges();
         }
 
         public void AddReceipt(Receipt receipt)
         {
             _configManager.AddReceipt(receipt);
-            _configManager.SaveChanges();
+            _configManager.SaveReceiptChanges();
         }
 
         /// <summary>

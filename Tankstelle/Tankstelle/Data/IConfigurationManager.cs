@@ -14,16 +14,18 @@ namespace Tankstelle.Data
 
         void AddFuel(Fuel fuel);
         List<Fuel> GetFuels();
-        Fuel GetFuelByName(string fuelName); // noch entfernen
 
         void AddTank(Tank tank);
         List<Tank> GetTanks();
-        Tank GetTankByNumber(int number); //noch entfernen
 
         void AddReceipt(Receipt receipt);
         List<Receipt> GetReceipts();
-
-        void SaveChanges();
+        void SaveGasPumpChanges();
+        void SaveTankChanges();
+        void SaveFuelChanges();
+        void SaveReceiptChanges();
+        void SaveCoinChanges();
+        void SaveAllChanges();
 
     }
 }
