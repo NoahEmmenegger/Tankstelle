@@ -9,52 +9,80 @@ namespace Tankstelle.Business.TankService
 {
     class ReceiptService
     {
-        static IConfigurationManager configurationManager = ConfigurationManager.CreateInstance();
-
+        /// <summary>
+        /// Holt alle Quittungen
+        /// </summary>
+        /// <returns></returns>
         public static List<Receipt> GetReceipts()
         {
-            return configurationManager.GetReceipts();
+            return GasStation.GetInstance().ReceipList;
         }
+
+        /// <summary>
+        /// Erhalte die Einnahmen eines Tages
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static decimal GetDayEarning(DateTime date)
         {
             decimal earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date == date.Date))
+            foreach (Receipt receipt in GasStation.GetInstance().ReceipList.Where(x => x.Date.Date == date.Date))
             {
                 earnings += receipt.Sum;
             }
             return earnings;
         }
 
+        /// <summary>
+        /// Erhalte die Einnahmen einer Woche
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static decimal GetWeekEarning(DateTime date)
         {
             decimal earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => GetWeekBegin(x.Date) == GetWeekBegin(date)))
+            foreach (Receipt receipt in GasStation.GetInstance().ReceipList.Where(x => GetWeekBegin(x.Date) == GetWeekBegin(date)))
             {
                 earnings += receipt.Sum;
             }
             return earnings;
         }
 
+        /// <summary>
+        /// Erhalte die Einnahmen eines Monates
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static decimal GetMothEarning(DateTime date)
         {
             decimal earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Month == date.Month))
+            foreach (Receipt receipt in GasStation.GetInstance().ReceipList.Where(x => x.Date.Month == date.Month))
             {
                 earnings += receipt.Sum;
             }
             return earnings;
         }
 
+        /// <summary>
+        /// Erhalte die Einnahmen eines Jahres
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static decimal GetYearEarning(DateTime date)
         {
             decimal earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Year == date.Year))
+            foreach (Receipt receipt in GasStation.GetInstance().ReceipList.Where(x => x.Date.Year == date.Year))
             {
                 earnings += receipt.Sum;
             }
             return earnings;
         }
 
+        /// <summary>
+        /// Erhalte das Anfangsdatum einer Woche
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static DateTime GetWeekBegin(DateTime date)
         {
             double day = Convert.ToDouble(date.DayOfWeek);
@@ -67,10 +95,16 @@ namespace Tankstelle.Business.TankService
             return tet;
         }
 
+        /// <summary>
+        /// Erhalte die anzahl Liter eines Tages
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="fuel"></param>
+        /// <returns></returns>
         public static float GetSoldLiters(DateTime date, Fuel fuel)
         {
             float litercount = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date == date.Date && x.RelatedFuel == fuel))
+            foreach (Receipt receipt in GasStation.GetInstance().ReceipList.Where(x => x.Date.Date == date.Date && x.RelatedFuel == fuel))
             {
                 litercount += receipt.RelatedLiter;
             }

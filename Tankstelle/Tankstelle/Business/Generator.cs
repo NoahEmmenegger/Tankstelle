@@ -22,6 +22,7 @@ namespace Tankstelle.Business
             gasStation.SetConfigurationManager(configurationManager);
             gasStation.GetFuels();
             gasStation.GetTanks();
+            gasStation.GetReceipt();
             gasStation.GetGasPumps();
             return gasStation;
         }

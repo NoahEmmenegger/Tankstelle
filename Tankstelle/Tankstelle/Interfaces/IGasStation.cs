@@ -27,5 +27,9 @@ namespace Tankstelle.Interfaces
         /// Holt alle Tänke, welche im Config stehen.
         /// </summary>
         void GetTanks();
+        /// <summary>
+        /// Holt alle Quittungen, welche im Config stehen.
+        /// </summary>
+        void GetReceipt();
     }
 }

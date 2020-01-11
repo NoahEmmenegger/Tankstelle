@@ -39,6 +39,10 @@ namespace Tankstelle.Business
         /// </summary>
         public List<Tank> TankList { get; set; } = new List<Tank>();
         /// <summary>
+        /// Liste von allen Quittungen
+        /// </summary>
+        public List<Receipt> ReceipList { get; set; } = new List<Receipt>();
+        /// <summary>
         /// Liste mit allen Kassen von der Tankstelle
         /// </summary>
         public List<CashRegister> CashRegisterList { get; set; }
@@ -95,6 +99,12 @@ namespace Tankstelle.Business
         {
             TankList.Clear();
             TankList = _configManager.GetTanks();
+        }
+
+        public void GetReceipt()
+        {
+            ReceipList.Clear();
+            ReceipList = _configManager.GetReceipts();
         }
 
         /// <summary>
