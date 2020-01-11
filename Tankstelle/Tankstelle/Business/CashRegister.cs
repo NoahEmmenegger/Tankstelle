@@ -594,7 +594,7 @@ namespace Tankstelle.Business
             DateTime datum = DateTime.Now;
             CultureInfo german = new CultureInfo("de");
             receipt.Date = DateTime.Parse(DateTime.Parse(datum.ToString()).ToString("yyyy/MM/dd HH:mm:ss"));
-            //GasStation.GetInstance().AddReceipt(receipt);
+            GasStation.GetInstance().AddReceipt(receipt);
             return receipt;
         }
         #endregion
