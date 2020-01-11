@@ -122,6 +122,11 @@ namespace Tankstelle.Business
             _configManager.SaveReceiptChanges();
         }
 
+        public void UpdateTanks()
+        {
+            _configManager.SaveTankChanges();
+        }
+
         /// <summary>
         /// Setzt den Configuration Manager
         /// </summary>

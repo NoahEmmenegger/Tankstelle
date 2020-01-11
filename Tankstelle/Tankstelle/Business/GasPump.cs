@@ -156,7 +156,7 @@ namespace Tankstelle.Business
         {
             if (Status != Statuse.Besetzt)
             {
-                timer.Interval = 10000;
+                timer.Interval = 1000;
                 timer.Elapsed += Refuel;
                 timer.Start();
             }
@@ -167,6 +167,7 @@ namespace Tankstelle.Business
         public void StopRefuel()
         {
             timer.Stop();
+            GasStation.GetInstance().UpdateTanks();
         }
         /// <summary>
         /// Schliesst den Tankvorgang ab
@@ -185,10 +186,10 @@ namespace Tankstelle.Business
         {
             try
             {
-                Tank tank = _activeTap.Fuel.TankList.First(t => t.AvailibleLiter >= 0.25);
+                Tank tank = _activeTap.Fuel.TankList.First(t => t.VolumeLiter >= 0.25);
                 if (tank != null)
                 {
-                    tank.AvailibleLiter = tank.AvailibleLiter - 0.25f;
+                    tank.VolumeLiter = tank.VolumeLiter - 0.25f;
                 }
                 else
                 {
