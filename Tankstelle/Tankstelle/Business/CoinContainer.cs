@@ -40,7 +40,7 @@ namespace Tankstelle.Business
         {
             _coinsValue = coinValue;
             _maximunCoins = maximunCoins; 
-            for (int i = 0; i < 49; i++)
+            for (int i = 0; i < 20; i++)
             {
                 _coins[i] = new Coin(_coinsValue);
             }

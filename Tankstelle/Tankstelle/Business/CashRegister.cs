@@ -41,20 +41,21 @@ namespace Tankstelle.Business
         #endregion
 
         #region Konstruktor
-        public CashRegister()
+        public CashRegister(List<GasPump> gasPumps)
         {
+            GasPumpList = gasPumps;
             containers[0] = new CoinContainer(10, 100);
             containers[1] = new CoinContainer(20, 100);
             containers[2] = new CoinContainer(50, 100);
-            containers[3] = new CoinContainer(100, 100);
-            containers[4] = new CoinContainer(200, 100);
-            containers[5] = new CoinContainer(500, 100);
-            containers[6] = new CoinContainer(1000, 100);
-            containers[7] = new CoinContainer(2000, 100);
-            containers[8] = new CoinContainer(5000, 100);
-            containers[9] = new CoinContainer(10000, 100);
-            containers[10] = new CoinContainer(20000, 100);
-            containers[11] = new CoinContainer(100000, 100);
+            containers[3] = new CoinContainer(100, 50);
+            containers[4] = new CoinContainer(200, 50);
+            containers[5] = new CoinContainer(500, 30);
+            containers[6] = new CoinContainer(1000, 50);
+            containers[7] = new CoinContainer(2000, 50);
+            containers[8] = new CoinContainer(5000, 50);
+            containers[9] = new CoinContainer(10000, 40);
+            containers[10] = new CoinContainer(20000, 40);
+            containers[11] = new CoinContainer(100000, 40);
         }
         #endregion
 
