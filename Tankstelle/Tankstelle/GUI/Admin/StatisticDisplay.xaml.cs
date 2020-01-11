@@ -13,8 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Business.Statistics;
 using Tankstelle.Business.TankService;
 using Tankstelle.Data;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.GUI.Admin
 {
@@ -27,10 +29,10 @@ namespace Tankstelle.GUI.Admin
         public StatisticDisplay()
         {
             InitializeComponent();
-            List<FuelStatistic> fuelStatistics = new List<FuelStatistic>();
+            List<IFuelStatistic> fuelStatistics = new List<IFuelStatistic>();
             foreach (Fuel fuel in configurationManager.GetFuels())
             {
-                FuelStatistic fuelStatistic = new FuelStatistic();
+                IFuelStatistic fuelStatistic = new FuelStatistic();
                 fuelStatistic.Fuel = fuel;
                 fuelStatistic.SoldLiters = ReceiptService.GetSoldLiters(DateTime.Now, fuel);
                 fuelStatistic.Earnings = GetFuelEarnings(fuel, DateTime.Now);
@@ -50,7 +52,7 @@ namespace Tankstelle.GUI.Admin
         public decimal GetFuelEarnings(Fuel fuel, DateTime date)
         {
             decimal earnings = 0;
-            foreach (Receipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date == date.Date && x.RelatedFuel == fuel))
+            foreach (IReceipt receipt in configurationManager.GetReceipts().Where(x => x.Date.Date == date.Date && x.RelatedFuel == fuel))
             {
                 earnings += receipt.Sum;
             }
@@ -77,7 +79,7 @@ namespace Tankstelle.GUI.Admin
 
         private void monatChanged(object sender, SelectionChangedEventArgs e)
         {
-            Statistic statistic = new Statistic();
+            IStatistic statistic = new Statistic();
             statistic.Earnings = this.GetEarnings(monat.SelectedIndex);
             statistic.Outgoings = this.GetOutgoings(monat.SelectedIndex);
             statistic.MetabolicRate = statistic.Earnings - statistic.Outgoings;
@@ -87,19 +89,4 @@ namespace Tankstelle.GUI.Admin
         }
     }
 
-    //Alle Klassen noch entfernen
-    public class Statistic
-    {
-        public int Monat { get; set; }
-        public decimal Earnings { get; set; }
-        public decimal Outgoings { get; set; }
-        public decimal MetabolicRate { get; set; }
-    }
-
-    public class FuelStatistic
-    {
-        public Fuel Fuel { get; set; }
-        public float SoldLiters { get; set; }
-        public decimal Earnings { get; set; }
-    }
 }

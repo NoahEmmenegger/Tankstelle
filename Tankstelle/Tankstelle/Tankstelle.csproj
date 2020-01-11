@@ -72,6 +72,8 @@
     <Compile Include="Business\Generator.cs" />
     <Compile Include="Business\QuantityCoins.cs" />
     <Compile Include="Business\Receipt.cs" />
+    <Compile Include="Business\Statistics\FuelStatistic.cs" />
+    <Compile Include="Business\Statistics\Statistic.cs" />
     <Compile Include="Business\Tank.cs" />
     <Compile Include="Business\Service\MessageService.cs" />
     <Compile Include="Business\Service\ReceiptService.cs" />
@@ -107,9 +109,12 @@
       <DependentUpon>ReceiptDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICashRegister.cs" />
+    <Compile Include="Interfaces\IFuel.cs" />
+    <Compile Include="Interfaces\IFuelStatistic.cs" />
     <Compile Include="Interfaces\IGasPump.cs" />
     <Compile Include="Interfaces\IGasStation.cs" />
     <Compile Include="Interfaces\IReceipt.cs" />
+    <Compile Include="Interfaces\IStatistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
