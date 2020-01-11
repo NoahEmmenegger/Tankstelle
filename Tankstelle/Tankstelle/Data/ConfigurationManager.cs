@@ -188,7 +188,7 @@ namespace Tankstelle.Data
                         fuel.TankList = new List<Tank>();
                         foreach (JToken tankToken in fuelToken["TankList"])
                         {
-                            Tank tank = GetTankByNumber(Convert.ToInt32(tankToken["Number"]));
+                            Tank tank = GetTankByNumber(Convert.ToInt32(tankToken));
                             fuel.TankList.Add(tank);
                         }
                         fuels.Add(fuel);
