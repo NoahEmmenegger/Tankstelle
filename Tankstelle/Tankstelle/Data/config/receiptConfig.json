@@ -4,50 +4,57 @@
       "Id": 1,
       "Date": "2019/12/24 00:00:00",
       "RelatedFuel": "Diesel",
-      "RelatedLiter": 5,
-      "Sum": 20000
+      "RelatedLiter": 5.0,
+      "Sum": 20000.0
     },
     {
       "Id": 2,
       "Date": "2019/12/24 19:54:42",
       "RelatedFuel": "Benzin",
-      "RelatedLiter": 2,
-      "Sum": 100
+      "RelatedLiter": 2.0,
+      "Sum": 100.0
     },
     {
       "Id": 3,
       "Date": "2019/12/01 00:00:00",
       "RelatedFuel": "Diesel",
-      "RelatedLiter": 5,
-      "Sum": 1
+      "RelatedLiter": 5.0,
+      "Sum": 1.0
     },
     {
       "Id": 3,
       "Date": "2019/03/02 00:00:00",
       "RelatedFuel": "Diesel",
-      "RelatedLiter": 5,
-      "Sum": 1
+      "RelatedLiter": 5.0,
+      "Sum": 1.0
     },
     {
       "Id": 4,
       "Date": "2020/01/02 19:54:42",
       "RelatedFuel": "Benzin",
-      "RelatedLiter": 2,
-      "Sum": 10
+      "RelatedLiter": 2.0,
+      "Sum": 10.0
     },
     {
       "Id": 5,
       "Date": "2020/01/02 19:54:42",
       "RelatedFuel": "Benzin",
-      "RelatedLiter": 1,
-      "Sum": 10
+      "RelatedLiter": 1.0,
+      "Sum": 10.0
     },
     {
       "Id": 6,
       "Date": "2019/01/02 19:54:42",
       "RelatedFuel": "Benzin",
-      "RelatedLiter": 25,
-      "Sum": 100
+      "RelatedLiter": 25.0,
+      "Sum": 100.0
+    },
+    {
+      "Id": 0,
+      "Date": "2020/01/11 17:55:51",
+      "RelatedFuel": "Diesel",
+      "RelatedLiter": 0.75,
+      "Sum": 0.40
     }
   ]
-} 
+}

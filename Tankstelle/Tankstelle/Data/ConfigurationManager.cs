@@ -215,8 +215,8 @@ namespace Tankstelle.Data
                         receipt.Id = Convert.ToInt32(receiptToken["Id"]);
                         receipt.Date = DateTime.Parse(receiptToken["Date"].ToString());
                         receipt.RelatedFuel = GetFuelByName(receiptToken["RelatedFuel"].ToString());
-                        receipt.RelatedLiter = Convert.ToInt32(receiptToken["RelatedLiter"].ToString());
-                        receipt.Sum = Convert.ToInt32(receiptToken["Sum"].ToString());
+                        receipt.RelatedLiter = float.Parse(receiptToken["RelatedLiter"].ToString());
+                        receipt.Sum = Convert.ToDecimal(receiptToken["Sum"].ToString());
                         receipts.Add(receipt);
                     }
                 }
