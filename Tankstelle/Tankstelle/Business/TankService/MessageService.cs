@@ -20,10 +20,7 @@ namespace Tankstelle.Business.TankService
 
         public static void AddMessage(string title, string description)
         {
-            if (MessageBox.Show(description, title, MessageBoxButton.OK) == MessageBoxResult.OK)
-            {
-                Application.Current.Shutdown();
-            }
+            MessageBox.Show(description, title, MessageBoxButton.OK);
         }
     }
 }
