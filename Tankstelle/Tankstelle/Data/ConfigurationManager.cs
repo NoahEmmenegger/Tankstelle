@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Tankstelle.Business;
+using Tankstelle.Business.TankService;
 using Tankstelle.Enums; 
 
 namespace Tankstelle.Data
@@ -133,9 +134,9 @@ namespace Tankstelle.Data
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                MessageService.CreateInstance().AddMessage("GasPump kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
             }
 
             try
@@ -161,8 +162,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-
-                throw;
+                MessageService.CreateInstance().AddMessage("TANK kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
             }
 
             try
@@ -191,7 +191,7 @@ namespace Tankstelle.Data
             catch (Exception)
             {
 
-                throw;
+                MessageService.CreateInstance().AddMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
             }
 
             try
@@ -216,8 +216,7 @@ namespace Tankstelle.Data
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageService.CreateInstance().AddMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
             }
 
             try
@@ -237,7 +236,7 @@ namespace Tankstelle.Data
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageService.CreateInstance().AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
             }
         }
 

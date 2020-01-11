@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Business.TankService;
 using Tankstelle.Interfaces;
 
 namespace Tankstelle.GUI
@@ -25,6 +26,14 @@ namespace Tankstelle.GUI
         public ChoseGasStationObject()
         {
             _gasStation  = Generator.Generate();
+            foreach (Business.Message message in MessageService.CreateInstance().GetMessages())
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show(message.Description, message.Title, MessageBoxButton.OK);
+                if (MessageBoxResult.OK == messageBoxResult)
+                {
+                    Application.Current.Shutdown();
+                }
+            }
             InitializeComponent();
         }
 
