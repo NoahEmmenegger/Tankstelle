@@ -35,9 +35,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button Height="40" Width="120" Margin="10">Tank auffüllen</Button>
-            <Button Height="40" Width="120" Margin="10">Kasse auffüllen</Button>
-        </StackPanel>
     </Grid>
 </Window>
