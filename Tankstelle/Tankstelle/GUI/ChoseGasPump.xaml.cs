@@ -22,6 +22,7 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class ChoseGasPump : Window
     {
+        IGasStation _gasStation;
         public List<IGasPump> Context
         {
             get
@@ -34,11 +35,12 @@ namespace Tankstelle.GUI
             }
         }
 
-        public ChoseGasPump()
+        public ChoseGasPump(IGasStation gasStation)
         {
+            _gasStation = gasStation;
             Context = new List<IGasPump>();
             InitializeComponent();
-            foreach (var oneGasPump in GasStation.GetInstance().GasPumpList.Where(g => g.Status == Statuse.Frei).ToList())
+            foreach (var oneGasPump in gasStation.GasPumpList.Where(g => g.Status == Statuse.Frei).ToList())
             {
                 Context.Add(oneGasPump);
             }
@@ -53,7 +55,7 @@ namespace Tankstelle.GUI
         {
             if(_livZapfsauulen.SelectedItem != null && _livZapfhaenen.SelectedItem != null)
             {
-                IGasPump selectedGasPump = GasStation.GetInstance().GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
+                IGasPump selectedGasPump = _gasStation.GasPumpList.First(g => g == _livZapfsauulen.SelectedItem);
                 if(selectedGasPump != null)
                 {
                     if (selectedGasPump.PrepareForRefuel(selectedGasPump.TapList.First(t => t == _livZapfhaenen.SelectedItem)))

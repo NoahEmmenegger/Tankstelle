@@ -3,26 +3,12 @@
     {
       "Name": "Diesel",
       "PricePerLiter": "0.5",
-      "TankList": [
-        {
-          "Number": 1
-        },
-        {
-          "Number": 2
-        }
-      ]
+      "TankList": []
     },
     {
       "Name": "Benzin",
       "PricePerLiter": "0.5",
-      "TankList": [
-        {
-          "Number": 1
-        },
-        {
-          "Number": 2
-        }
-      ]
+      "TankList": []
     }
   ]
 }

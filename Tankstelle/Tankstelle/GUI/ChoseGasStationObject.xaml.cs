@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.GUI
 {
@@ -20,9 +21,10 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class ChoseGasStationObject : Window
     {
+        IGasStation _gasStation;
         public ChoseGasStationObject()
         {
-            Generator.Generate();
+            _gasStation  = Generator.Generate();
             InitializeComponent();
         }
 
@@ -33,7 +35,7 @@ namespace Tankstelle.GUI
         /// <param name="e"></param>
         private void _btnChoseGasPump_Click(object sender, RoutedEventArgs e)
         {
-            ChoseGasPump choseGasPump = new ChoseGasPump();
+            ChoseGasPump choseGasPump = new ChoseGasPump(_gasStation);
             choseGasPump.Show();
         }
 
@@ -44,8 +46,8 @@ namespace Tankstelle.GUI
         /// <param name="e"></param>
         private void _btnCashRegister_Click(object sender, RoutedEventArgs e)
         {
-            CashRegister cashRegister = new CashRegister();
-            cashRegister.GasPumpList = GasStation.GetInstance().GasPumpList;
+            ICashRegister cashRegister = new CashRegister();
+            cashRegister.GasPumpList = _gasStation.GasPumpList;
             CashRegisterDisplay display = new CashRegisterDisplay(cashRegister);
             display.Show();
         }

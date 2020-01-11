@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Interfaces\ICashRegister.cs" />
     <Compile Include="Interfaces\IGasPump.cs" />
+    <Compile Include="Interfaces\IGasStation.cs" />
     <Compile Include="Interfaces\IReceipt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

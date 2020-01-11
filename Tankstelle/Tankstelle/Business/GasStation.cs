@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Tankstelle;
 using Tankstelle.Data;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business
 {
     /// <summary>
     /// Ist die zentralle Businessklasse von hier aus, hat man überallhin zugriff.
     /// </summary>
-    public class GasStation
+    public class GasStation : IGasStation
     {
         #region private Felder
         /// <summary>

@@ -15,13 +15,15 @@ namespace Tankstelle.Business
         /// <summary>
         /// Erstellt die Tankstelle, damit Sie einstatzfähig ist.
         /// </summary>
-        public static void Generate()
+        public static GasStation Generate()
         {
+            GasStation gasStation = GasStation.GetInstance();
             IConfigurationManager configurationManager = ConfigurationManager.CreateInstance();
-            GasStation.GetInstance().SetConfigurationManager(configurationManager);
-            GasStation.GetInstance().GetFuels();
-            GasStation.GetInstance().GetTanks();
-            GasStation.GetInstance().GetGasPumps();
+            gasStation.SetConfigurationManager(configurationManager);
+            gasStation.GetFuels();
+            gasStation.GetTanks();
+            gasStation.GetGasPumps();
+            return gasStation;
         }
     }
 }
