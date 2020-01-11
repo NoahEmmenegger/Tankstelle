@@ -87,7 +87,7 @@ namespace Tankstelle.Business
             FuelList.Clear();
             foreach (Fuel oneFuel in _configManager.GetFuels())
             {
-               oneFuel.TankList = _configManager.GetTanks().Where(t => t.Name == oneFuel.Name).ToList();
+               oneFuel.TankList = TankList.Where(t => t.FuelName == oneFuel.Name).ToList();
                FuelList.Add(oneFuel);
             }
         }

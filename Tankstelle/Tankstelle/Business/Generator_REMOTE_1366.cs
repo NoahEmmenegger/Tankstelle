@@ -21,11 +21,7 @@ namespace Tankstelle.Business
             IConfigurationManager configurationManager = ConfigurationManager.CreateInstance();
             gasStation.SetConfigurationManager(configurationManager);
             gasStation.GetTanks();
-<<<<<<< Updated upstream
-            gasStation.GetReceipt();
-=======
             gasStation.GetFuels();
->>>>>>> Stashed changes
             gasStation.GetGasPumps();
             return gasStation;
         }

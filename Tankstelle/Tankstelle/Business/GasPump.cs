@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Tankstelle.Business.TankService;
 using Tankstelle.Enums;
 using Tankstelle.GUI;
 using Tankstelle.Interfaces;
@@ -137,7 +138,7 @@ namespace Tankstelle.Business
         /// <returns>Gibt an ob Sie erfolgreich vorbereitet werden konnte.</returns>
         public bool PrepareForRefuel(Tap selectedTap)
         {
-            if(Status == Statuse.Frei)
+            if (Status == Statuse.Frei)
             {
                 Status = Statuse.Tankend;
                 ActiveTap = selectedTap;
@@ -153,9 +154,9 @@ namespace Tankstelle.Business
         /// </summary>
         public void StartRefuel()
         {
-            if(Status != Statuse.Besetzt)
+            if (Status != Statuse.Besetzt)
             {
-                timer.Interval = 1000;
+                timer.Interval = 10000;
                 timer.Elapsed += Refuel;
                 timer.Start();
             }
@@ -171,7 +172,7 @@ namespace Tankstelle.Business
         /// Schliesst den Tankvorgang ab
         /// </summary>
         public void FinishRefuel()
-        {           
+        {
             Status = Statuse.Besetzt;
             timer.Stop();
         }
@@ -182,6 +183,25 @@ namespace Tankstelle.Business
         /// <param name="e"></param>
         public void Refuel(Object source, ElapsedEventArgs e)
         {
+            try
+            {
+                Tank tank = _activeTap.Fuel.TankList.First(t => t.AvailibleLiter >= 0.25);
+                if (tank != null)
+                {
+                    tank.AvailibleLiter = tank.AvailibleLiter - 0.25f;
+                }
+                else
+                {
+                    StopRefuel();
+                    MessageService.AddWarningMessage("Zu wenig Treibstoff", "Es ist zu wenig Treibstoff vorhanden, um weiter zu tanken können. Gehen Sie bitte an die Kasse und zahlen Sie das bereits getankte.");
+                    return;
+                }
+            }
+            catch
+            {
+                StopRefuel();
+                return;
+            }
             Liter = Liter + 0.25;
             ToPayValue = Convert.ToDecimal(Liter) * ActiveTap.Fuel.PricePerLiter;
         }
