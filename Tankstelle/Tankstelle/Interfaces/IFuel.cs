@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tankstelle.Interfaces;
+using Tankstelle.Business;
 
-namespace Tankstelle.Business
+namespace Tankstelle.Interfaces
 {
-    public class Fuel : IFuel
+    public interface IFuel
     {
         /// <summary>
         /// Preis wie Teuer ein Liter vom Treibstoff ist. Angabe in Rappen.
         /// </summary>
-        public decimal PricePerLiter { get; set; }
+        decimal PricePerLiter { get; set; }
         /// <summary>
         /// Liste von den Tanks, welche diese Treibstoffsorte beinhalten
         /// </summary>
-        public List<Tank> TankList { get; set; }
+        List<Tank> TankList { get; set; }
         /// <summary>
         /// Name von der Treibstoffsorte
         /// </summary>
-        public string Name { get; set; }
+        string Name { get; set; }
     }
 }
