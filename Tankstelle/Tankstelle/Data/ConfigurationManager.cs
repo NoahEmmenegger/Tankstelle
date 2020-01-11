@@ -82,7 +82,7 @@ namespace Tankstelle.Data
                     return tank;
                 }
             }
-            MessageService.AddMessage("Bitte überprüfen Sie ihr fuelConfig.json", "Ungültiger Tank mit der Id " + number + " wurde hinzugefügt");
+            MessageService.AddShutDownMessage("Bitte überprüfen Sie ihr fuelConfig.json", "Ungültiger Tank mit der Id " + number + " wurde hinzugefügt");
             return null;
         }
 
@@ -95,7 +95,7 @@ namespace Tankstelle.Data
                     return fuel;
                 }
             }
-            MessageService.AddMessage("Bitte überprüfen Sie ihr receiptConfig.json", "Ungültige Rechnung mit dem fuelName " + fuelName + " wurde hinzugefügt");
+            MessageService.AddShutDownMessage("Bitte überprüfen Sie ihr receiptConfig.json", "Ungültige Rechnung mit dem fuelName " + fuelName + " wurde hinzugefügt");
             return null;
         }
 
@@ -143,7 +143,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("GasPump kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
+                MessageService.AddShutDownMessage("GasPump kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
             }
 
             try
@@ -169,7 +169,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("TANK kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
+                MessageService.AddShutDownMessage("TANK kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
             }
 
             try
@@ -198,7 +198,7 @@ namespace Tankstelle.Data
             catch (Exception)
             {
 
-                MessageService.AddMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
+                MessageService.AddShutDownMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
             }
 
             try
@@ -223,7 +223,7 @@ namespace Tankstelle.Data
             }
             catch (Exception ex)
             {
-                MessageService.AddMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
+                MessageService.AddShutDownMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
             }
 
             try
@@ -243,7 +243,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddShutDownMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
             }
         }
         #endregion
@@ -274,7 +274,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddShutDownMessage("GASPUMP kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
             }
         }
 
@@ -307,7 +307,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddShutDownMessage("Tank kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
             }
         }
 
@@ -344,7 +344,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddShutDownMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
             }
         }
 
@@ -376,7 +376,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddShutDownMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
             }
         }
 
@@ -402,7 +402,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddShutDownMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
             }
         }
 
