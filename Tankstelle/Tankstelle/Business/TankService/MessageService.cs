@@ -10,9 +10,9 @@ namespace Tankstelle.Business.TankService
 {
     class MessageService
     {
-        public static void AddShutDownMessage(string title, string description)
+        public static void AddErrorMessage(string title, string description)
         {
-            if (MessageBox.Show(description, title, MessageBoxButton.OK) == MessageBoxResult.OK)
+            if (MessageBox.Show(description, title, MessageBoxButton.OK, MessageBoxImage.Error) == MessageBoxResult.OK)
             {
                 Application.Current.Shutdown();
             }
@@ -21,6 +21,11 @@ namespace Tankstelle.Business.TankService
         public static void AddMessage(string title, string description)
         {
             MessageBox.Show(description, title, MessageBoxButton.OK);
+        }
+
+        public static void AddWarningMessage(string title, string description)
+        {
+            MessageBox.Show(description, title, MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }
