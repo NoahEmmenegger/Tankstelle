@@ -20,6 +20,7 @@ namespace Tankstelle.Data
         private List<Fuel> fuels = new List<Fuel>();
         private List<Tank> tanks = new List<Tank>();
         private List<Receipt> receipts = new List<Receipt>();
+        private List<Coin> coins = new List<Coin>();
         private static ConfigurationManager uniqueInstance = null;
         #endregion
 
@@ -208,6 +209,26 @@ namespace Tankstelle.Data
 
                 throw ex;
             }
+
+            try
+            {
+                //Coin
+                using (StreamReader sr = new StreamReader(@"..\..\Data\config\coinConfig.json"))
+                {
+                    string fileString = sr.ReadToEnd();
+                    JToken coinJson = JObject.Parse(fileString)["coins"];
+
+                    foreach (JToken coinToken in coinJson)
+                    {
+                        Coin coin = new Coin(Convert.ToInt32(coinToken));
+                        coins.Add(coin);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void SaveChanges()
@@ -299,6 +320,22 @@ namespace Tankstelle.Data
 
                 }
                 baseJson.receipts = receiptJsonArray;
+
+                sr.Write(baseJson.ToString());
+            }
+
+            //Coin
+            using (StreamWriter sr = new StreamWriter(@"..\..\Data\config\coinConfig.json"))
+            {
+                dynamic baseJson = new JObject();
+
+                JArray coinJsonArray = new JArray();
+                foreach (Coin coin in coins)
+                {
+                    coinJsonArray.Add(coin.GetValue());
+
+                }
+                baseJson.coins = coinJsonArray;
 
                 sr.Write(baseJson.ToString());
             }
