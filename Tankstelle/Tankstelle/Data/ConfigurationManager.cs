@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using System.Windows;
 using Tankstelle.Business;
 using Tankstelle.Business.TankService;
 using Tankstelle.Enums; 
@@ -93,6 +94,7 @@ namespace Tankstelle.Data
                     return fuel;
                 }
             }
+            MessageService.AddMessage("Ungültige Rechnung mit dem fuelName " + fuelName + " wurde hinzugefügt", "Bitte überprüfen Sie ihr receiptConfig.json");
             return null;
         }
 
@@ -136,7 +138,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.CreateInstance().AddMessage("GasPump kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
+                MessageService.AddMessage("GasPump kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
             }
 
             try
@@ -162,7 +164,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.CreateInstance().AddMessage("TANK kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
+                MessageService.AddMessage("TANK kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
             }
 
             try
@@ -191,7 +193,7 @@ namespace Tankstelle.Data
             catch (Exception)
             {
 
-                MessageService.CreateInstance().AddMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
+                MessageService.AddMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
             }
 
             try
@@ -216,7 +218,7 @@ namespace Tankstelle.Data
             }
             catch (Exception ex)
             {
-                MessageService.CreateInstance().AddMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
+                MessageService.AddMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
             }
 
             try
@@ -236,7 +238,7 @@ namespace Tankstelle.Data
             }
             catch (Exception ex)
             {
-                MessageService.CreateInstance().AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
             }
         }
 
