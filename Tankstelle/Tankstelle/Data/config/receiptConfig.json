@@ -1,0 +1,53 @@
+{
+  "receipts": [
+    {
+      "Id": 1,
+      "Date": "2019/12/24 00:00:00",
+      "RelatedFuel": "Diesel",
+      "RelatedLiter": 5,
+      "Sum": 20000
+    },
+    {
+      "Id": 2,
+      "Date": "2019/12/24 19:54:42",
+      "RelatedFuel": "TEST",
+      "RelatedLiter": 2,
+      "Sum": 100
+    },
+    {
+      "Id": 3,
+      "Date": "2019/12/01 00:00:00",
+      "RelatedFuel": "Diesel",
+      "RelatedLiter": 5,
+      "Sum": 1
+    },
+    {
+      "Id": 3,
+      "Date": "2019/03/02 00:00:00",
+      "RelatedFuel": "Diesel",
+      "RelatedLiter": 5,
+      "Sum": 1
+    },
+    {
+      "Id": 4,
+      "Date": "2020/01/02 19:54:42",
+      "RelatedFuel": "Benzin",
+      "RelatedLiter": 2,
+      "Sum": 10
+    },
+    {
+      "Id": 5,
+      "Date": "2020/01/02 19:54:42",
+      "RelatedFuel": "Benzin",
+      "RelatedLiter": 1,
+      "Sum": 10
+    },
+    {
+      "Id": 6,
+      "Date": "2019/01/02 19:54:42",
+      "RelatedFuel": "Benzin",
+      "RelatedLiter": 25,
+      "Sum": 100
+    }
+  ]
+}
