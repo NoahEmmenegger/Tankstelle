@@ -14,15 +14,35 @@ using Tankstelle.Enums;
 
 namespace Tankstelle.Data
 {
+    /// <summary>
+    /// Erhalte die Daten als Objekt, welche im config stehen und speichere Änderungen ab
+    /// </summary>
     public class ConfigurationManager : IConfigurationManager
     {
         #region private Felder
-        private string filePath = @"..\..\Data\config.json";
+        /// <summary>
+        /// Liste von allen Zapfsäulen
+        /// </summary>
         private List<GasPump> gasPumps = new List<GasPump>();
+        /// <summary>
+        /// Liste mit allen Treibstoffsorten
+        /// </summary>
         private List<Fuel> fuels = new List<Fuel>();
+        /// <summary>
+        /// Liste von allen Tanks
+        /// </summary>
         private List<Tank> tanks = new List<Tank>();
+        /// <summary>
+        /// Liste von Quitungen
+        /// </summary>
         private List<Receipt> receipts = new List<Receipt>();
+        /// <summary>
+        /// Liste von Geld
+        /// </summary>
         private List<Coin> coins = new List<Coin>();
+        /// <summary>
+        /// Instanz von ConfigurationManager
+        /// </summary>
         private static ConfigurationManager uniqueInstance = null;
         #endregion
 
@@ -34,6 +54,10 @@ namespace Tankstelle.Data
         #endregion
 
         #region Methoden
+        /// <summary>
+        /// Erstellt oder nimmt eine Instanz und gibt diese zurück
+        /// </summary>
+        /// <returns></returns>
         public static ConfigurationManager CreateInstance()
         {
             if (uniqueInstance == null)
@@ -43,49 +67,48 @@ namespace Tankstelle.Data
             }
             return uniqueInstance;
         }
+
+        /// <summary>
+        /// Neue Zapfsäulen hinzufügen
+        /// </summary>
+        /// <param name="gasPump"></param>
         public void AddGasPump(GasPump gasPump)
         {
             gasPumps.Add(gasPump);
         }
 
+        /// <summary>
+        /// Alle Zapfsäulen erhalten
+        /// </summary>
+        /// <returns></returns>
         public List<GasPump> GetGasPumps()
         {
             return gasPumps;
         }
 
+        /// <summary>
+        /// Neue Treibstoffsorten hinzufügenss
+        /// </summary>
+        /// <param name="fuel"></param>
         public void AddFuel(Fuel fuel)
         {
             fuels.Add(fuel);
         }
 
+        /// <summary>
+        /// Erhalte alle Treibstoffsorten
+        /// </summary>
+        /// <returns></returns>
         public List<Fuel> GetFuels()
         {
             return fuels;
         }
 
-        public void AddTank(Tank tank)
-        {
-            tanks.Add(tank);
-        }
-
-        public List<Tank> GetTanks()
-        {
-            return tanks;
-        }
-
-        private Tank GetTankByNumber(int number)
-        {
-            foreach (Tank tank in tanks)
-            {
-                if (tank.Number == number)
-                {
-                    return tank;
-                }
-            }
-            MessageService.AddErrorMessage("Bitte überprüfen Sie ihr fuelConfig.json", "Ungültiger Tank mit der Id " + number + " wurde hinzugefügt");
-            return null;
-        }
-
+        /// <summary>
+        /// Erhalte Treibstoffsorte anhand dem Namen
+        /// </summary>
+        /// <param name="fuelName"></param>
+        /// <returns></returns>
         private Fuel GetFuelByName(string fuelName)
         {
             foreach (Fuel fuel in fuels)
@@ -99,21 +122,73 @@ namespace Tankstelle.Data
             return null;
         }
 
+        /// <summary>
+        /// Neuer Tank hinzufügen
+        /// </summary>
+        /// <param name="tank"></param>
+        public void AddTank(Tank tank)
+        {
+            tanks.Add(tank);
+        }
+
+        /// <summary>
+        /// Erhalte alle Tanks
+        /// </summary>
+        /// <returns></returns>
+        public List<Tank> GetTanks()
+        {
+            return tanks;
+        }
+
+        /// <summary>
+        /// Erhalte ein Tank anhand der Nummer
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        private Tank GetTankByNumber(int number)
+        {
+            foreach (Tank tank in tanks)
+            {
+                if (tank.Number == number)
+                {
+                    return tank;
+                }
+            }
+            MessageService.AddErrorMessage("Bitte überprüfen Sie ihr fuelConfig.json", "Ungültiger Tank mit der Id " + number + " wurde hinzugefügt");
+            return null;
+        }
+
+        /// <summary>
+        /// Erhalte Quittungen
+        /// </summary>
+        /// <returns></returns>
         public List<Receipt> GetReceipts()
         {
             return receipts;
         }
 
+        /// <summary>
+        /// Neue Quittung hinzufügen
+        /// </summary>
+        /// <param name="receipt"></param>
         public void AddReceipt(Receipt receipt)
         {
             receipts.Add(receipt);
         }
 
+        /// <summary>
+        /// Erhalte alle Münzen
+        /// </summary>
+        /// <returns></returns>
         public List<Coin> GetCoins()
         {
             return coins;
         }
 
+        /// <summary>
+        /// Neue Münze hinzufügen
+        /// </summary>
+        /// <param name="coin"></param>
         public void AddCoin(Coin coin)
         {
             coins.Add(coin);
@@ -123,6 +198,9 @@ namespace Tankstelle.Data
 
         #region GetData
 
+        /// <summary>
+        /// Scannt alle json und füllt die Daten in Objekte ab
+        /// </summary>
         private void GetDataAsJson()
         {
             try
@@ -249,6 +327,9 @@ namespace Tankstelle.Data
         #endregion
 
         #region SaveChanges
+        /// <summary>
+        /// speichert alle Zapfsäulen welche in diesem Objekt existieren
+        /// </summary>
         public void SaveGasPumpChanges()
         {
             try
@@ -278,6 +359,9 @@ namespace Tankstelle.Data
             }
         }
 
+        /// <summary>
+        /// speichert alle Tanks welche in diesem Objekt existieren
+        /// </summary>
         public void SaveTankChanges()
         {
             try
@@ -311,6 +395,9 @@ namespace Tankstelle.Data
             }
         }
 
+        /// <summary>
+        /// speichert alle Treibstoffsorten welche in diesem Objekt existieren
+        /// </summary>
         public void SaveFuelChanges()
         {
             try
@@ -348,6 +435,9 @@ namespace Tankstelle.Data
             }
         }
 
+        /// <summary>
+        /// speichert alle Quittungen welche in diesem Objekt existieren
+        /// </summary>
         public void SaveReceiptChanges()
         {
             try
@@ -380,6 +470,9 @@ namespace Tankstelle.Data
             }
         }
 
+        /// <summary>
+        /// speichert alle Münzen welche in diesem Objekt existieren
+        /// </summary>
         public void SaveCoinChanges()
         {
             try
@@ -406,6 +499,9 @@ namespace Tankstelle.Data
             }
         }
 
+        /// <summary>
+        /// Schreibt alle Änderungen in ein json
+        /// </summary>
         public void SaveAllChanges()
         {
             //GASPUMP

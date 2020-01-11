@@ -35,7 +35,7 @@ namespace Tankstelle.Business
         /// </summary>
         public List<Fuel> FuelList { get; set; } = new List<Fuel>();
         /// <summary>
-        /// Liste mit allen Tanksorten
+        /// Liste von allen Tanks
         /// </summary>
         public List<Tank> TankList { get; set; } = new List<Tank>();
         /// <summary>
