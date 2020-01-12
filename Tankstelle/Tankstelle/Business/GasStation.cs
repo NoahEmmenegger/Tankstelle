@@ -41,7 +41,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Liste von allen Quittungen
         /// </summary>
-        public List<Receipt> ReceipList { get; set; } = new List<Receipt>();
+        public List<Receipt> ReceiptList { get; set; } = new List<Receipt>();
         /// <summary>
         /// Liste mit allen Kassen von der Tankstelle
         /// </summary>
@@ -103,8 +103,8 @@ namespace Tankstelle.Business
 
         public void GetReceipt()
         {
-            ReceipList.Clear();
-            ReceipList = _configManager.GetReceipts();
+            ReceiptList.Clear();
+            ReceiptList = _configManager.GetReceipts();
         }
 
         /// <summary>
@@ -116,12 +116,19 @@ namespace Tankstelle.Business
             _configManager.SaveFuelChanges();
         }
 
+        /// <summary>
+        /// Fügt der Konfigruationsdatei eine neue Rechnung hinzu.
+        /// </summary>
+        /// <param name="receipt"></param>
         public void AddReceipt(Receipt receipt)
         {
-            _configManager.AddReceipt(receipt);
+            ReceiptList.Add(receipt);
             _configManager.SaveReceiptChanges();
         }
 
+        /// <summary>
+        /// Aktualisiert die Daten von den Tanks in der Konfigurationsdatei
+        /// </summary>
         public void UpdateTanks()
         {
             _configManager.SaveTankChanges();

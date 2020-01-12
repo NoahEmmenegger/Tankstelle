@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tankstelle.Business.TankService;
 using Tankstelle.GUI;
 using Tankstelle.Interfaces;
 
@@ -478,15 +479,6 @@ namespace Tankstelle.Business
         }
 
         /// <summary>
-        /// Gibt an wieviele effektive Münzen schon in den Automaten geworfen wurden.
-        /// </summary>
-        /// <returns>Anzahl der Münzen</returns>
-        public List<Coin> GetInsertCoins()
-        {
-            return insertCoins;
-        }
-
-        /// <summary>
         /// Gibt den totalen Geldwert von allen Münzen in der Kasse zurück.
         /// </summary>
         /// <returns>Totalen Geldwert von allen Münzen in der Kasse</returns>
@@ -498,33 +490,6 @@ namespace Tankstelle.Business
                 totalValue += oneContainer.GetCoinsValue() * oneContainer.CountCoins();
             }
             return totalValue;
-        }
-
-        /// <summary>
-        /// Überprpüft ob der Maximalewert an Münzen im Automat überschritten wurde und wenn ja wird dies mitgeteilt.
-        /// </summary>
-        /// <param name="valueToal">Anzahl der Münzen, welche im Automat vorhanden sind</param>
-        public void AlertValueTotalMaximum(int valueTotal)
-        {
-            if (valueTotal > maxCoins)
-            {
-                Console.WriteLine("Der Maximalwert von den Münzen, welche im Automat sein können, wurde überschritten");
-            }
-        }
-
-        /// <summary>
-        /// Prozentueller Füllungsgrad von einem Behälter abfragen
-        /// </summary>
-        public double GetPercentCoin(int coin)
-        {
-            foreach (var oneContainer in containers)
-            {
-                if (oneContainer.GetCoinsValue() == coin)
-                {
-                    return oneContainer.GetPercentCoin();
-                }
-            }
-            return 101;
         }
 
         /// <summary>
@@ -550,7 +515,7 @@ namespace Tankstelle.Business
         /// <param name="coin">Münzwert vom unterschrittenen CoinContainer</param>
         private void AlertCoinMinimun(int coin)
         {
-            Console.WriteLine($"Der CoinContainer von der Münze {coin} hat den minimalen Füllungsgrad unterschritten");
+            MessageService.AddWarningMessage("Minimaler Füllungsgrad unterschritten", $"Der CoinContainer von der Münze {coin} hat den minimalen Füllungsgrad unterschritten");
         }
 
         /// <summary>
@@ -559,7 +524,7 @@ namespace Tankstelle.Business
         /// <param name="coin">Münzwert vom überschritenen CoinContainer</param>
         private void AlertCoinMaximun(int coin)
         {
-            Console.WriteLine($"Der CoinContainer von der Münzen {coin} hat den maximalen Füllungsgrad überschritten");
+            MessageService.AddWarningMessage("Maximaler Füllungsgrad überschritten", $"Der CoinContainer von der Münzen {coin} hat den maximalen Füllungsgrad überschritten");
         }
 
         /// <summary>
