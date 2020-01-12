@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\AdminMessage.cs" />
     <Compile Include="Business\CashRegister.cs" />
     <Compile Include="Business\Coin.cs" />
     <Compile Include="Business\CoinContainer.cs" />
@@ -83,7 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\IConfigurationManager.cs" />
-    <Compile Include="Enums\Statuse.cs" />
+    <Compile Include="Enums\GasPumpStatus.cs" />
+    <Compile Include="Enums\MessageStatus.cs" />
     <Compile Include="GUI\AdminArea.xaml.cs">
       <DependentUpon>AdminArea.xaml</DependentUpon>
     </Compile>
@@ -108,6 +110,7 @@
     <Compile Include="GUI\ReceiptDisplay.xaml.cs">
       <DependentUpon>ReceiptDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IAdminMessage.cs" />
     <Compile Include="Interfaces\ICashRegister.cs" />
     <Compile Include="Interfaces\IFuel.cs" />
     <Compile Include="Interfaces\IFuelStatistic.cs" />
