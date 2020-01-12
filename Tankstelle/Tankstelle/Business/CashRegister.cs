@@ -27,7 +27,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Ein Array für die CoinContainer
         /// </summary>
-        private CoinContainer[] containers = new CoinContainer[12];
+        private CoinContainer[] containers = new CoinContainer[13];
         /// <summary>
         /// Der insgesamte Wert von den Münzen, welche eingeworfen worden sind.
         /// </summary>
@@ -45,18 +45,19 @@ namespace Tankstelle.Business
         public CashRegister(List<GasPump> gasPumps)
         {
             GasPumpList = gasPumps;
-            containers[0] = new CoinContainer(10, 100);
-            containers[1] = new CoinContainer(20, 100);
-            containers[2] = new CoinContainer(50, 100);
-            containers[3] = new CoinContainer(100, 50);
-            containers[4] = new CoinContainer(200, 50);
-            containers[5] = new CoinContainer(500, 30);
-            containers[6] = new CoinContainer(1000, 50);
-            containers[7] = new CoinContainer(2000, 50);
-            containers[8] = new CoinContainer(5000, 50);
-            containers[9] = new CoinContainer(10000, 40);
-            containers[10] = new CoinContainer(20000, 40);
-            containers[11] = new CoinContainer(100000, 40);
+            containers[0] = new CoinContainer(5, 100);
+            containers[1] = new CoinContainer(10, 100);
+            containers[2] = new CoinContainer(20, 100);
+            containers[3] = new CoinContainer(50, 100);
+            containers[4] = new CoinContainer(100, 50);
+            containers[5] = new CoinContainer(200, 50);
+            containers[6] = new CoinContainer(500, 30);
+            containers[7] = new CoinContainer(1000, 50);
+            containers[8] = new CoinContainer(2000, 50);
+            containers[9] = new CoinContainer(5000, 50);
+            containers[10] = new CoinContainer(10000, 40);
+            containers[11] = new CoinContainer(20000, 40);
+            containers[12] = new CoinContainer(100000, 40);
         }
         #endregion
 
@@ -97,6 +98,13 @@ namespace Tankstelle.Business
             {
                 int[] outputCoins = new int[1];
                 outputCoins = GetChange(outputValue).CountCoins();
+                GasStation.GetInstance().DeleteCoins();
+                List<Coin> coins = new List<Coin>();
+                foreach (var oneContainer in containers)
+                {
+                    coins.AddRange(oneContainer.GetCoins().Where(c => c != null));
+                }
+                GasStation.GetInstance().UpdateCoins(coins);
                 return outputCoins;
             }
             else
@@ -213,13 +221,6 @@ namespace Tankstelle.Business
                     }
                 }
             }
-            GasStation.GetInstance().DeleteCoins();
-            List<Coin> coins = new List<Coin>();
-            foreach (var oneContainer in containers)
-            {
-                coins.AddRange(oneContainer.GetCoins());
-            }
-            GasStation.GetInstance().UpdateCoins(coins);
         }
 
         /// <summary>
@@ -241,11 +242,11 @@ namespace Tankstelle.Business
             var outputCoins = new QuantityCoins();
             while (outputValue >= 100000)
             {
-                if (containers[11].CountCoins() > 0)
+                if (containers[12].CountCoins() > 0)
                 {
                     outputCoins.AddCoinValue(100000);
-                    containers[11].RemoveCoin();
-                    if (containers[11].GetMinPercentFlling())
+                    containers[12].RemoveCoin();
+                    if (containers[12].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(100000);
                     }
@@ -258,11 +259,11 @@ namespace Tankstelle.Business
             } 
             while (outputValue >= 20000)
             {
-                if (containers[10].CountCoins() > 0)
+                if (containers[11].CountCoins() > 0)
                 {
                     outputCoins.AddCoinValue(20000);
-                    containers[10].RemoveCoin();
-                    if (containers[10].GetMinPercentFlling())
+                    containers[11].RemoveCoin();
+                    if (containers[11].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(20000);
                     }
@@ -275,11 +276,11 @@ namespace Tankstelle.Business
             } 
             while (outputValue >= 10000)
             {
-                if (containers[9].CountCoins() > 0)
+                if (containers[10].CountCoins() > 0)
                 {
                     outputCoins.AddCoinValue(10000);
-                    containers[9].RemoveCoin();
-                    if (containers[9].GetMinPercentFlling())
+                    containers[10].RemoveCoin();
+                    if (containers[10].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(10000);
                     }
@@ -292,11 +293,11 @@ namespace Tankstelle.Business
             } 
             while (outputValue >= 5000)
             {
-                if (containers[8].CountCoins() > 0)
+                if (containers[9].CountCoins() > 0)
                 {
                     outputCoins.AddCoinValue(5000);
-                    containers[8].RemoveCoin();
-                    if (containers[8].GetMinPercentFlling())
+                    containers[9].RemoveCoin();
+                    if (containers[9].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(5000);
                     }
@@ -309,11 +310,11 @@ namespace Tankstelle.Business
             } 
             while (outputValue >= 2000)
             {
-                if (containers[7].CountCoins() > 0)
+                if (containers[8].CountCoins() > 0)
                 {
                     outputCoins.AddCoinValue(2000);
-                    containers[7].RemoveCoin();
-                    if (containers[7].GetMinPercentFlling())
+                    containers[8].RemoveCoin();
+                    if (containers[8].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(2000);
                     }
@@ -326,11 +327,11 @@ namespace Tankstelle.Business
             }
             while (outputValue >= 1000)
             {
-                if (containers[6].CountCoins() > 0)
+                if (containers[7].CountCoins() > 0)
                 {
                     outputCoins.AddCoinValue(1000);
-                    containers[6].RemoveCoin();
-                    if (containers[6].GetMinPercentFlling())
+                    containers[7].RemoveCoin();
+                    if (containers[7].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(1000);
                     }
@@ -343,11 +344,11 @@ namespace Tankstelle.Business
             }
             while (outputValue >= 500)
             {
-                if (containers[5].CountCoins() > 0)
+                if (containers[6].CountCoins() > 0)
                 {
                     outputCoins.AddCoinValue(500);
-                    containers[5].RemoveCoin();
-                    if (containers[5].GetMinPercentFlling())
+                    containers[6].RemoveCoin();
+                    if (containers[6].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(500);
                     }
@@ -360,11 +361,11 @@ namespace Tankstelle.Business
             }
             while (outputValue >= 200)
             {
-                if (containers[4].CountCoins() >= 1)
+                if (containers[5].CountCoins() >= 1)
                 {
                     outputCoins.AddCoinValue(200);
-                    containers[4].RemoveCoin();
-                    if (containers[4].GetMinPercentFlling())
+                    containers[5].RemoveCoin();
+                    if (containers[5].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(200);
                     }
@@ -377,11 +378,11 @@ namespace Tankstelle.Business
             }
             while (outputValue >= 100)
             {
-                if (containers[3].CountCoins() >= 1)
+                if (containers[4].CountCoins() >= 1)
                 {
                     outputCoins.AddCoinValue(100);
-                    containers[3].RemoveCoin();
-                    if (containers[3].GetMinPercentFlling())
+                    containers[4].RemoveCoin();
+                    if (containers[4].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(100);
                     }
@@ -394,7 +395,7 @@ namespace Tankstelle.Business
             }
             while (outputValue >= 50)
             {
-                if (containers[2].CountCoins() >= 1)
+                if (containers[3].CountCoins() >= 1)
                 {
                     if (outputValue < 100)
                     {
@@ -416,8 +417,8 @@ namespace Tankstelle.Business
                         }
                     }
                     outputCoins.AddCoinValue(50);
-                    containers[2].RemoveCoin();
-                    if (containers[2].GetMinPercentFlling())
+                    containers[3].RemoveCoin();
+                    if (containers[3].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(50);
                     }
@@ -430,14 +431,14 @@ namespace Tankstelle.Business
             }
             while (outputValue >= 20)
             {
-                if (containers[1].CountCoins() >= 1)
+                if (containers[2].CountCoins() >= 1)
                 {
                     outputCoins.AddCoinValue(20);
-                    if (containers[1].GetMinPercentFlling())
+                    if (containers[2].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(20);
                     }
-                    containers[1].RemoveCoin();
+                    containers[2].RemoveCoin();
                     outputValue -= 20;
                 }
                 else
@@ -447,11 +448,11 @@ namespace Tankstelle.Business
             }
             while (outputValue >= 10)
             {
-                if (containers[0].CountCoins() >= 1)
+                if (containers[1].CountCoins() >= 1)
                 {
                     outputCoins.AddCoinValue(10);
-                    containers[0].RemoveCoin();
-                    if (containers[0].GetMinPercentFlling())
+                    containers[1].RemoveCoin();
+                    if (containers[1].GetMinPercentFlling())
                     {
                         AlertCoinMinimun(10);
                     }

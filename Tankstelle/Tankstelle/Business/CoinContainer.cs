@@ -111,9 +111,10 @@ namespace Tankstelle.Business
                 if (_coins[i] == null)
                 {
                     _coins[i - 1] = null;
-                    break;
+                    return;
                 }
             }
+            _coins[199] = null;
         }
 
         /// <summary>
