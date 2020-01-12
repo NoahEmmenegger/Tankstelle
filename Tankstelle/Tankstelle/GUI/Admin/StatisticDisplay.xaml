@@ -92,8 +92,9 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" FontWeight="Bold">Heute</TextBlock>
-            <TextBlock Grid.Row="1">Treibstoffsorten</TextBlock>
-            <ListView Grid.Row="2" Margin="20" x:Name="treibstoffsorten">
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="DayEarning"/>
+            <TextBlock Grid.Row="2">Treibstoffsorten</TextBlock>
+            <ListView Grid.Row="3" Margin="20" x:Name="treibstoffsorten">
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <Grid Margin="0,2">
@@ -117,7 +118,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="DayEarning"/>
         </Grid>
         <Grid Margin="10" Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
