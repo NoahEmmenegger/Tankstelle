@@ -45,7 +45,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Die Kasse von der Tankstelle
         /// </summary>
-        public CashRegister chashRegister { get; set; }
+        public CashRegister ChashRegister { get; set; }
         #endregion
 
         #region Konstruktor
