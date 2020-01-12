@@ -12,7 +12,13 @@ namespace Tankstelle.Interfaces
     /// </summary>
     public interface IAdminMessage
     {
+        /// <summary>
+        /// Beschreibung der Nachricht
+        /// </summary>
         string Description { get; set; }
+        /// <summary>
+        /// Der Status der Nachricht
+        /// </summary>
         MessageStatus Status { get; set; }
     }
 }

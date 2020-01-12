@@ -20,8 +20,6 @@ namespace Tankstelle.Interfaces
         /// Die Kasse von der Tankstelle
         /// </summary>
         CashRegister chashRegister { get; set; }
-
-
         /// <summary>
         /// Holt die Informationen über die GasPumps, welche im Config stehen und erzeugt anhand dieser Informationen GasPumps.
         /// </summary>
