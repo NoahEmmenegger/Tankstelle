@@ -25,7 +25,7 @@ namespace Tankstelle.Business.TankService
         /// <returns></returns>
         public static bool AdjustTankMinimum(Tank tank)
         {
-            return GetOutgoingLiter(tank, DateTime.Now.AddYears(-1)) <= tank.MinAmount;
+            return tank.AvailibleLiter - GetOutgoingLiter(tank, DateTime.Now.AddYears(-1)) <= tank.MinAmount;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Tankstelle.Business.TankService
         public static float GetOutgoingLiter(Tank tank, DateTime date)
         {
             float liters = 0;
-            foreach (Receipt receipt in ReceiptService.GetReceipts().Where(x => x.Date.Month == date.Month))
+            foreach (Receipt receipt in ReceiptService.GetReceipts().Where(x => x.Date.Month == date.Month && x.Date.Year == date.Year))
             {
                 if (tank.FuelName == receipt.RelatedFuel.Name)
                 {

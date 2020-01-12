@@ -56,7 +56,7 @@ namespace Tankstelle.Business.TankService
         public static decimal GetMothEarning(DateTime date)
         {
             decimal earnings = 0;
-            foreach (Receipt receipt in GasStation.GetInstance().ReceiptList.Where(x => x.Date.Month == date.Month))
+            foreach (Receipt receipt in GasStation.GetInstance().ReceiptList.Where(x => x.Date.Month == date.Month && x.Date.Year == date.Year))
             {
                 earnings += receipt.Sum;
             }

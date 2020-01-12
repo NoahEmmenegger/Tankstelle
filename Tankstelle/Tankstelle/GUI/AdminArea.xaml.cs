@@ -37,16 +37,16 @@ namespace Tankstelle.GUI
                 {
                     Message message = new Message();
                     message.Status = Status.Warning;
-                    message.Description = "Nicht genügend Treibstoff in Tank " + tank.Name;
+                    message.Description = "Das Tank minimum wurde im Tank " + tank.Name + " erreicht";
                     messages.Add(message);
                 }
 
                 //Vergleicht mit dem letzten Jahr und schaut ob genügend Treibstoff im Tank ist
-                if (!TankService.AdjustTankMinimum(tank))
+                if (TankService.AdjustTankMinimum(tank))
                 {
                     Message message = new Message();
                     message.Status = Status.Warning;
-                    message.Description = "Mindestmenge muss für " + tank.Name + " angepasst werden";
+                    message.Description = "Letztes Jahr wurde im Tank: " + tank.Name + " der Treibstoff sehr knapp";
                     messages.Add(message);
                 }
             }
