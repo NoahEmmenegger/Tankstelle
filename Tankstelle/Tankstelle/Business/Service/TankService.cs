@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Business.TankService
 {
+    /// <summary>
+    /// Erhalte weitere Informationen zu einem Tank
+    /// </summary>
     class TankService
     {
         /// <summary>

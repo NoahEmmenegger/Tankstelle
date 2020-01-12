@@ -7,6 +7,9 @@ using Tankstelle.Data;
 
 namespace Tankstelle.Business.TankService
 {
+    /// <summary>
+    /// Erhalte weiter Informationen zu einer Quittung
+    /// </summary>
     class ReceiptService
     {
         /// <summary>

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Zapfhahn
+    /// </summary>
     public class Tap
     {
         /// <summary>
@@ -18,6 +21,10 @@ namespace Tankstelle.Business
         /// </summary>
         public Fuel Fuel { get; set; }
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="fuel"></param>
         public Tap(Fuel fuel)
         {
             Fuel = fuel;

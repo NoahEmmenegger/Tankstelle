@@ -7,6 +7,9 @@ using Tankstelle.Business.TankService;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Für jede Münzenart der Speicherort
+    /// </summary>
     public class CoinContainer
     {
         #region private Felder

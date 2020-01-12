@@ -12,6 +12,9 @@ using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Zapfsäule
+    /// </summary>
     public class GasPump : INotifyPropertyChanged, IGasPump
     {
         #region private Felder

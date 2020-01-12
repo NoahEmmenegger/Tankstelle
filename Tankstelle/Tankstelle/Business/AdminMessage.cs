@@ -8,9 +8,18 @@ using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Hinweis Nachricht, welche dem Admin angezeigt wird
+    /// </summary>
     class AdminMessage : IAdminMessage
     {
+        /// <summary>
+        /// Beschreibung der Nachricht
+        /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// Der Status der Nachricht
+        /// </summary>
         public MessageStatus Status { get; set; }
     }
 }

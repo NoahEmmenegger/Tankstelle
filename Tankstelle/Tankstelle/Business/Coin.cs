@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Einzelne Münze, welche sich in der Kasse Befindet
+    /// </summary>
     public class Coin
     {
         /// <summary>

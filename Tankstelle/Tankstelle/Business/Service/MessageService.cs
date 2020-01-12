@@ -8,6 +8,9 @@ using Tankstelle.Data;
 
 namespace Tankstelle.Business.TankService
 {
+    /// <summary>
+    /// Erstelle neue Meldungen im Frontend
+    /// </summary>
     class MessageService
     {
         /// <summary>

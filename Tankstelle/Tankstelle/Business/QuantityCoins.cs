@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Um münzen zu bekommen
+    /// </summary>
     public struct QuantityCoins
     {
         //Die Anzahl der einzelenm Münznen und Noten

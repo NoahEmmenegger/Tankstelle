@@ -7,6 +7,9 @@ using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business.Statistics
 {
+    /// <summary>
+    /// Statistikdaten für Treibstoff
+    /// </summary>
     public class FuelStatistic : IFuelStatistic
     {
         /// <summary>

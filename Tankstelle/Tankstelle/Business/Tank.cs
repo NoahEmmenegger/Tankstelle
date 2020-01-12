@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Tank
+    /// </summary>
     public class Tank
     {
         /// <summary>

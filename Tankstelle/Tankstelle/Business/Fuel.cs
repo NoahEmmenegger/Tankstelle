@@ -7,6 +7,9 @@ using Tankstelle.Interfaces;
 
 namespace Tankstelle.Business
 {
+    /// <summary>
+    /// Treibstoff
+    /// </summary>
     public class Fuel : IFuel
     {
         /// <summary>
