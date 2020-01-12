@@ -11,16 +11,25 @@ namespace Tankstelle.Business.TankService
     class MessageService
     {
         /// <summary>
-        /// Zeigt Error Message an. Nach bestätigung wird das Program geschlossen
+        /// Zeigt eine fatal Error Message an. Nach bestätigung wird das Program geschlossen
         /// </summary>
         /// <param name="title"></param>
         /// <param name="description"></param>
-        public static void AddErrorMessage(string title, string description)
+        public static void AddFatalErrorMessage(string title, string description)
         {
             if (MessageBox.Show(description, title, MessageBoxButton.OK, MessageBoxImage.Error) == MessageBoxResult.OK)
             {
                 Application.Current.Shutdown();
             }
+        }
+        /// <summary>
+        /// Zeigt eine Error Message an.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        public static void AddErrorMessage(string title, string description)
+        {
+            MessageBox.Show(description, title, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         /// <summary>

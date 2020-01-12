@@ -21,7 +21,7 @@ namespace Tankstelle.Interfaces
         /// <summary>
         /// Zeigt auf in welchem Status sich dieser Zapfhan gerade befindet, ob z.B. getankt wird.
         /// </summary>
-        Statuse Status { get; set; }
+        GasPumpStatus Status { get; set; }
         /// <summary>
         /// Nummer von der Zapfsäule
         /// </summary>

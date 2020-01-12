@@ -78,7 +78,7 @@ namespace Tankstelle.GUI
         /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(Context.Status == Statuse.Tankend)
+            if(Context.Status == GasPumpStatus.Tankend)
             {
                 if(Context.ToPayValue != 0)
                 {
@@ -87,7 +87,7 @@ namespace Tankstelle.GUI
                 }
                 else
                 {
-                    Context.Status = Statuse.Frei;
+                    Context.Status = GasPumpStatus.Frei;
                 }
             }
         }

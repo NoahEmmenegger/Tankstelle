@@ -31,7 +31,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Zeigt auf in welchem Status sich dieser Zapfhan gerade befindet, ob z.B. getankt wird.
         /// </summary>
-        private Statuse _status;
+        private GasPumpStatus _status;
         /// <summary>
         /// Timer, welcher den Rythmus vom Tanken angibt.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Tankstelle.Business
         /// <summary>
         /// Zeigt auf in welchem Status sich dieser Zapfhan gerade befindet, ob z.B. getankt wird.
         /// </summary>
-        public Statuse Status
+        public GasPumpStatus Status
         {
             get
             {
@@ -125,7 +125,7 @@ namespace Tankstelle.Business
             {
                 TapList.Add(new Tap(oneFuel));
             }
-            Status = Statuse.Frei;
+            Status = GasPumpStatus.Frei;
         }
         #endregion
 
@@ -138,9 +138,9 @@ namespace Tankstelle.Business
         /// <returns>Gibt an ob Sie erfolgreich vorbereitet werden konnte.</returns>
         public bool PrepareForRefuel(Tap selectedTap)
         {
-            if (Status == Statuse.Frei)
+            if (Status == GasPumpStatus.Frei)
             {
-                Status = Statuse.Tankend;
+                Status = GasPumpStatus.Tankend;
                 ActiveTap = selectedTap;
                 return true;
             }
@@ -154,7 +154,7 @@ namespace Tankstelle.Business
         /// </summary>
         public void StartRefuel()
         {
-            if (Status != Statuse.Besetzt)
+            if (Status != GasPumpStatus.Besetzt)
             {
                 timer.Interval = 1000;
                 timer.Elapsed += Refuel;
@@ -174,7 +174,7 @@ namespace Tankstelle.Business
         /// </summary>
         public void FinishRefuel()
         {
-            Status = Statuse.Besetzt;
+            Status = GasPumpStatus.Besetzt;
             timer.Stop();
         }
         /// <summary>
@@ -198,9 +198,10 @@ namespace Tankstelle.Business
                     return;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 StopRefuel();
+                MessageService.AddErrorMessage("Fehler", ex.Message);
                 return;
             }
             Liter = Liter + 0.25;
@@ -211,7 +212,7 @@ namespace Tankstelle.Business
         /// </summary>
         public void Refresh()
         {
-            Status = Statuse.Frei;
+            Status = GasPumpStatus.Frei;
             Liter = 0;
             ToPayValue = 0;
         }
