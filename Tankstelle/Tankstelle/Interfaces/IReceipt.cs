@@ -7,6 +7,9 @@ using Tankstelle.Business;
 
 namespace Tankstelle.Interfaces
 {
+    /// <summary>
+    /// Interface für Quittung
+    /// </summary>
     public interface IReceipt
     {
         /// <summary>

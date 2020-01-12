@@ -7,6 +7,9 @@ using Tankstelle.Business;
 
 namespace Tankstelle.Interfaces
 {
+    /// <summary>
+    /// Interface für Treibstoff Statistik
+    /// </summary>
     public interface IFuelStatistic
     {
         Fuel Fuel { get; set; }

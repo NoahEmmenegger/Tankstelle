@@ -8,6 +8,9 @@ using Tankstelle.Enums;
 
 namespace Tankstelle.Interfaces
 {
+    /// <summary>
+    /// Interface für Zapfsäule
+    /// </summary>
     public interface IGasPump
     {
         /// <summary>

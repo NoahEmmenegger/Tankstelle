@@ -7,6 +7,9 @@ using Tankstelle.Enums;
 
 namespace Tankstelle.Interfaces
 {
+    /// <summary>
+    /// Interface für Hinweis Nachricht, welche dem Admin angezeigt wird
+    /// </summary>
     public interface IAdminMessage
     {
         string Description { get; set; }

@@ -7,8 +7,14 @@ using Tankstelle.Business;
 
 namespace Tankstelle.Interfaces
 {
+    /// <summary>
+    /// Interface für die Kasse
+    /// </summary>
     public interface ICashRegister
     {
+        /// <summary>
+        /// Liste von allen Zapfsäulen
+        /// </summary>
         List<GasPump> GasPumpList { get; set; }
 
         /// <summary>

@@ -7,6 +7,9 @@ using Tankstelle.Business;
 
 namespace Tankstelle.Interfaces
 {
+    /// <summary>
+    /// Interface für Tankstelle
+    /// </summary>
     public interface IGasStation
     {
         /// <summary>

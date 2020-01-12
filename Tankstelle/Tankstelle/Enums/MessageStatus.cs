@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Enums
 {
+    /// <summary>
+    /// Status einer Message
+    /// </summary>
     public enum MessageStatus
     {
         Achtung = 0,

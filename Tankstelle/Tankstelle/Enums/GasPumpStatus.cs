@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Enums
 {
+    /// <summary>
+    /// Status einer Zapfsäule
+    /// </summary>
     public enum GasPumpStatus
     {
         Geschlossen = 0,
