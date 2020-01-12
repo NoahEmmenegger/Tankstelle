@@ -198,9 +198,10 @@ namespace Tankstelle.Business
                     return;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 StopRefuel();
+                MessageService.AddErrorMessage("Fehler", ex.Message);
                 return;
             }
             Liter = Liter + 0.25;
