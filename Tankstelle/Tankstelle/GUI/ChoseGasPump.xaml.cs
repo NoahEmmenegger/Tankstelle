@@ -40,7 +40,7 @@ namespace Tankstelle.GUI
             _gasStation = gasStation;
             Context = new List<IGasPump>();
             InitializeComponent();
-            foreach (var oneGasPump in gasStation.GasPumpList.Where(g => g.Status == Statuse.Frei).ToList())
+            foreach (var oneGasPump in gasStation.GasPumpList.Where(g => g.Status == GasPumpStatus.Frei).ToList())
             {
                 Context.Add(oneGasPump);
             }

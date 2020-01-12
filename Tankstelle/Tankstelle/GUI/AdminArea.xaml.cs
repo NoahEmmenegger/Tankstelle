@@ -13,7 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
 using Tankstelle.Business.TankService;
+using Tankstelle.Enums;
 using Tankstelle.GUI.Admin;
+using Tankstelle.Interfaces;
 
 namespace Tankstelle.GUI
 {
@@ -28,15 +30,15 @@ namespace Tankstelle.GUI
         public AdminArea()
         {
             InitializeComponent();
-            List<Message> messages = new List<Message>();
+            List<IAdminMessage> messages = new List<IAdminMessage>();
 
             foreach (Tank tank in GasStation.GetInstance().TankList)
             {
                 //Schaut ob genügend Treibstoff im Tank ist
                 if (!TankService.HasEnoughInTank(tank))
                 {
-                    Message message = new Message();
-                    message.Status = Status.Warning;
+                    IAdminMessage message = new AdminMessage();
+                    message.Status = MessageStatus.Warning;
                     message.Description = "Nicht genügend Treibstoff in Tank " + tank.Name;
                     messages.Add(message);
                 }
@@ -44,8 +46,8 @@ namespace Tankstelle.GUI
                 //Vergleicht mit dem letzten Jahr und schaut ob genügend Treibstoff im Tank ist
                 if (!TankService.AdjustTankMinimum(tank))
                 {
-                    Message message = new Message();
-                    message.Status = Status.Warning;
+                    IAdminMessage message = new AdminMessage();
+                    message.Status = MessageStatus.Warning;
                     message.Description = "Mindestmenge muss für " + tank.Name + " angepasst werden";
                     messages.Add(message);
                 }
@@ -64,18 +66,5 @@ namespace Tankstelle.GUI
             StatisticDisplay statisticDisplay = new StatisticDisplay();
             statisticDisplay.Show();
         }
-    }
-
-    public class Message
-    {
-        public string Description { get; set; }
-        public Status Status { get; set; }
-    }
-
-    public enum Status
-    {
-        Achtung = 0,
-        Warning = 1,
-        Error = 2
     }
 }

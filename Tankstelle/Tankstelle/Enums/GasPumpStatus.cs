@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tankstelle.Enums
 {
-    public enum Statuse
+    public enum GasPumpStatus
     {
         Geschlossen = 0,
         Frei = 1,

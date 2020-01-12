@@ -71,13 +71,13 @@ namespace Tankstelle.GUI
             IGasPump selectedGasPump = (IGasPump)GasPumpComboBox.SelectedItem;
             if (selectedGasPump != null)
             {
-                if (selectedGasPump.Status != Statuse.Besetzt)
+                if (selectedGasPump.Status != GasPumpStatus.Besetzt)
                 {
                     MessageBox.Show("Die Zapfsäule kann nicht zum bezahlen ausgewählt werden, da es der momentane Status nicht zulässt. Sie muss den Status \"Besetzt\" haben, damit sie ausgewählt werden kann.", "Nicht auswählbar", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
-                    selectedGasPump.Status = Statuse.Bezahlen;
+                    selectedGasPump.Status = GasPumpStatus.Bezahlen;
                     selectedGasPump.ToPayValue = Context.Round(selectedGasPump.ToPayValue);
                     _tbxAnzeige.Text = _zuBezahlenAusgabe = $"Zu bezahlen: {selectedGasPump.ToPayValue} Franken\r\n";
                     _tbxAnzeige.Text += "Eingabe: 0 Franken";

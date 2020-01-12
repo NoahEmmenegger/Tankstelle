@@ -214,7 +214,7 @@ namespace Tankstelle.Data
                     foreach (JToken gasPumpToken in gasPumpJson)
                     {
                         GasPump gasPump = new GasPump(Convert.ToInt32(gasPumpToken["GasPumpNumber"]));
-                        gasPump.Status = (Statuse)Convert.ToInt32(gasPumpToken["Status"]);
+                        gasPump.Status = (GasPumpStatus)Convert.ToInt32(gasPumpToken["Status"]);
                         gasPumps.Add(gasPump);
                     }
                 }
