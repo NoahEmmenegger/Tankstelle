@@ -39,7 +39,7 @@ namespace Tankstelle.GUI
                 {
                     IAdminMessage message = new AdminMessage();
                     message.Status = MessageStatus.Warning;
-                    message.Description = "Nicht genügend Treibstoff in Tank " + tank.Name;
+                    message.Description = "Das Tank minimum wurde im Tank " + tank.Name + " erreicht";
                     messages.Add(message);
                 }
 
@@ -48,7 +48,7 @@ namespace Tankstelle.GUI
                 {
                     IAdminMessage message = new AdminMessage();
                     message.Status = MessageStatus.Warning;
-                    message.Description = "Mindestmenge muss für " + tank.Name + " angepasst werden";
+                    message.Description = "Letztes Jahr wurde im Tank: " + tank.Name + " der Treibstoff sehr knapp";
                     messages.Add(message);
                 }
             }
