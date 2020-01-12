@@ -22,6 +22,9 @@ namespace Tankstelle.GUI
     /// </summary>
     public partial class AdminArea : Window
     {
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public AdminArea()
         {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace Tankstelle.GUI
 
             foreach (Tank tank in GasStation.GetInstance().TankList)
             {
+                //Schaut ob genügend Treibstoff im Tank ist
                 if (!TankService.HasEnoughInTank(tank))
                 {
                     Message message = new Message();
@@ -37,6 +41,7 @@ namespace Tankstelle.GUI
                     messages.Add(message);
                 }
 
+                //Vergleicht mit dem letzten Jahr und schaut ob genügend Treibstoff im Tank ist
                 if (!TankService.AdjustTankMinimum(tank))
                 {
                     Message message = new Message();
@@ -49,6 +54,11 @@ namespace Tankstelle.GUI
             messageList.ItemsSource = messages; 
         }
 
+        /// <summary>
+        /// Knopf für Statistik
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnStatistic_Click(object sender, RoutedEventArgs e)
         {
             StatisticDisplay statisticDisplay = new StatisticDisplay();
