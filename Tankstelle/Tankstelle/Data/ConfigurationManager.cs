@@ -221,7 +221,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("GasPump kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr gasPumpConfig.json", "GasPump kann nicht ausgelesen werden");
             }
 
             try
@@ -247,7 +247,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("TANK kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr tankConfig.json", "Tank kann nicht ausgelesen werden");
             }
 
             try
@@ -270,7 +270,7 @@ namespace Tankstelle.Data
             catch (Exception)
             {
 
-                MessageService.AddFatalErrorMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr fuelConfig.json", "Fuel kann nicht ausgelesen werden");
             }
 
             try
@@ -295,7 +295,7 @@ namespace Tankstelle.Data
             }
             catch (Exception ex)
             {
-                MessageService.AddFatalErrorMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr receiptConfig.json", "Receipt kann nicht ausgelesen werden");
             }
 
             try
@@ -315,7 +315,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr coinConfig.json", "Coin kann nicht ausgelesen werden");
             }
         }
         #endregion
@@ -349,7 +349,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("GASPUMP kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr gasPumpConfig.json", "GASPUMP kann nicht abgespeichert werden");
             }
         }
 
@@ -385,7 +385,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Tank kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr tankConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr tankConfig.json", "Tank kann nicht abgespeichert werden");
             }
         }
 
@@ -417,7 +417,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Fuel kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr fuelConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr fuelConfig.json", "Fuel kann nicht abgespeichert werden");
             }
         }
 
@@ -452,7 +452,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Receipt kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr receiptConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr receiptConfig.json", "Receipt kann nicht abgespeichert werden");
             }
         }
 
@@ -481,7 +481,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Coin kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr coinConfig.json", "Coin kann nicht abgespeichert werden");
             }
         }
 
