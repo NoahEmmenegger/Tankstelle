@@ -263,12 +263,6 @@ namespace Tankstelle.Data
                         Fuel fuel = new Fuel();
                         fuel.Name = fuelToken["Name"].ToString();
                         fuel.PricePerLiter = Convert.ToDecimal(fuelToken["PricePerLiter"]);
-                        fuel.TankList = new List<Tank>();
-                        foreach (JToken tankToken in fuelToken["TankList"])
-                        {
-                            Tank tank = GetTankByNumber(Convert.ToInt32(tankToken));
-                            fuel.TankList.Add(tank);
-                        }
                         fuels.Add(fuel);
                     }
                 }
@@ -413,14 +407,6 @@ namespace Tankstelle.Data
                         dynamic fuelJson = new JObject();
                         fuelJson.Name = fuel.Name;
                         fuelJson.PricePerLiter = fuel.PricePerLiter.ToString();
-                        JArray tankJsonArray = new JArray();
-                        foreach (Tank tank in fuel.TankList)
-                        {
-                            dynamic tankJson = new JObject();
-                            tankJson.Number = tank.Number;
-                            tankJsonArray.Add(tankJson);
-                        }
-                        fuelJson.TankList = tankJsonArray;
                         fuelJsonArray.Add(fuelJson);
 
                     }

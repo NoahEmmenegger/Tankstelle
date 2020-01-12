@@ -2,13 +2,11 @@
   "fuels": [
     {
       "Name": "Diesel",
-      "PricePerLiter": "0.5",
-      "TankList": [1,2]
+      "PricePerLiter": "0.5"
     },
     {
       "Name": "Benzin",
-      "PricePerLiter": "0.5",
-      "TankList": [1]
+      "PricePerLiter": "0.5"
     }
   ]
 }
