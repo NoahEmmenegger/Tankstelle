@@ -19,7 +19,7 @@ namespace Tankstelle.Business.TankService
         {
             if (MessageBox.Show(description, title, MessageBoxButton.OK, MessageBoxImage.Error) == MessageBoxResult.OK)
             {
-                Application.Current.Shutdown();
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
             }
         }
         /// <summary>

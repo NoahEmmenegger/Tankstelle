@@ -349,7 +349,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("GASPUMP kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
+                MessageService.AddFatalErrorMessage("GASPUMP kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr gasPumpConfig.json");
             }
         }
 
@@ -385,7 +385,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Tank kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr tankConfig.json");
+                MessageService.AddFatalErrorMessage("Tank kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr tankConfig.json");
             }
         }
 
@@ -417,7 +417,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Fuel kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr fuelConfig.json");
+                MessageService.AddFatalErrorMessage("Fuel kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr fuelConfig.json");
             }
         }
 
@@ -452,7 +452,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Receipt kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr receiptConfig.json");
+                MessageService.AddFatalErrorMessage("Receipt kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr receiptConfig.json");
             }
         }
 
@@ -481,7 +481,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Coin kann nicht ausgelesen werden", "Bitte überprüfe Sie ihr coinConfig.json");
+                MessageService.AddFatalErrorMessage("Coin kann nicht abgespeichert werden", "Bitte überprüfe Sie ihr coinConfig.json");
             }
         }
 

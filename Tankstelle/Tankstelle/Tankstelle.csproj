@@ -135,7 +135,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Data\config.json" />
     <None Include="Data\config\coinConfig.json" />
     <None Include="Data\config\fuelConfig.json" />
     <None Include="Data\config\gasPumpConfig.json" />
