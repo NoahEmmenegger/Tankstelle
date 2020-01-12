@@ -54,6 +54,13 @@
       "Date": "2020/01/11 17:55:51",
       "RelatedFuel": "Diesel",
       "RelatedLiter": 0.75,
+      "Sum": 0.4
+    },
+    {
+      "Id": 0,
+      "Date": "2020/01/12 22:06:29",
+      "RelatedFuel": "Diesel",
+      "RelatedLiter": 0.75,
       "Sum": 0.40
     }
   ]
