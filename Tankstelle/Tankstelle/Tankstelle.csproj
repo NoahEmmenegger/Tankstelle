@@ -137,7 +137,6 @@
     <None Include="Data\config\gasPumpConfig.json" />
     <None Include="Data\config\receiptConfig.json" />
     <None Include="Data\config\tankConfig.json" />
-    <None Include="Data\testconfig.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
