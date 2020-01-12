@@ -194,6 +194,14 @@ namespace Tankstelle.Data
             coins.Add(coin);
         }
 
+        /// <summary>
+        /// Alle Münzen löschen
+        /// </summary>
+        public void ClearAllCoins()
+        {
+            coins.Clear();
+        }
+
         #endregion
 
         #region GetData
