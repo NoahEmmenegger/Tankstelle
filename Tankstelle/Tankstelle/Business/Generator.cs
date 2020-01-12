@@ -24,6 +24,7 @@ namespace Tankstelle.Business
             gasStation.GetFuels();
             gasStation.GetReceipt();
             gasStation.GetGasPumps();
+            gasStation.chashRegister = new CashRegister(gasStation.GasPumpList);
             return gasStation;
         }
     }

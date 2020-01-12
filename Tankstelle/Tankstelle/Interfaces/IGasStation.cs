@@ -13,6 +13,10 @@ namespace Tankstelle.Interfaces
         /// Liste mit allen Zapfsäulen
         /// </summary>
         List<GasPump> GasPumpList { get; set; }
+        // <summary>
+        /// Die Kasse von der Tankstelle
+        /// </summary>
+        CashRegister chashRegister { get; set; }
 
 
         /// <summary>

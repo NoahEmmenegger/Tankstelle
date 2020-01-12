@@ -1,16 +1,10 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
-using System.Windows;
 using Tankstelle.Business;
 using Tankstelle.Business.TankService;
-using Tankstelle.Enums; 
+using Tankstelle.Enums;
 
 namespace Tankstelle.Data
 {

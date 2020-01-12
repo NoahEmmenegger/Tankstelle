@@ -213,7 +213,13 @@ namespace Tankstelle.Business
                     }
                 }
             }
-
+            GasStation.GetInstance().DeleteCoins();
+            List<Coin> coins = new List<Coin>();
+            foreach (var oneContainer in containers)
+            {
+                coins.AddRange(oneContainer.GetCoins());
+            }
+            GasStation.GetInstance().UpdateCoins(coins);
         }
 
         /// <summary>

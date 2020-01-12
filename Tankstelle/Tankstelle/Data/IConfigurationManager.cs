@@ -86,6 +86,10 @@ namespace Tankstelle.Data
         /// Schreibt alle Änderungen in ein json
         /// </summary>
         void SaveAllChanges();
+        /// <summary>
+        /// Alle Münzen löschen
+        /// </summary>
+        void ClearAllCoins();
 
     }
 }

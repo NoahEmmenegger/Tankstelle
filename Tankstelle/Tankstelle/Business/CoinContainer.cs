@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tankstelle.Business.TankService;
 
 namespace Tankstelle.Business
 {
@@ -39,11 +40,25 @@ namespace Tankstelle.Business
         public CoinContainer(int coinValue, int maximunCoins)
         {
             _coinsValue = coinValue;
-            _maximunCoins = maximunCoins; 
-            for (int i = 0; i < 20; i++)
+            _maximunCoins = maximunCoins;
+            Coin[] coins = GasStation.GetInstance().GetCoins().Where(c => c.GetValue() == coinValue).ToArray();
+
+            for (int i = 0; i < coins.Count(); i++)
             {
-                _coins[i] = new Coin(_coinsValue);
+                try
+                {
+                    _coins[i] = coins[i];
+                }
+                catch(IndexOutOfRangeException ex)
+                {
+                   
+                }
             }
+
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    _coins[i] = new Coin(_coinsValue);
+            //}
 
             _percentFilling = 100.0 / _maximunCoins * _coins.Where(x => x != null).Count();
         }
@@ -69,8 +84,15 @@ namespace Tankstelle.Business
             {
                 if (_coins[i] == null)
                 {
-                    _coins[i] = coin;
-                    break;
+                    try
+                    {
+                        _coins[i] = coin;
+                        break;
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        MessageService.AddWarningMessage("Zu viele Münzen/Noten", $"Das Limit für die Noten/Münzen {coin.GetValue()} wurde erreicht. Es können keine weiteren Geldstücken mit diesem Wert eingeworfen werden. Das Geldstück mit dem Wert {coin.GetValue()} wird nicht in der Kasse gespeichert.");
+                    }
                 }
             }
             _percentFilling = 100.0 / _maximunCoins * _coins.Where(x => x != null).Count();
@@ -134,12 +156,9 @@ namespace Tankstelle.Business
             return false;
         }
 
-        /// <summary>
-        /// Gibt den insgesamten Wert von den Münzen in diesem Container zurück
-        /// </summary>
-        public int GetTotalCoinsValue()
+        public Coin[] GetCoins()
         {
-            return _coins.Count() * _coinsValue;
+            return _coins;
         }
 
         /// <summary>

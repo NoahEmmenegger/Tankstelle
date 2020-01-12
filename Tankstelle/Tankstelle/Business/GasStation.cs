@@ -43,9 +43,9 @@ namespace Tankstelle.Business
         /// </summary>
         public List<Receipt> ReceiptList { get; set; } = new List<Receipt>();
         /// <summary>
-        /// Liste mit allen Kassen von der Tankstelle
+        /// Die Kasse von der Tankstelle
         /// </summary>
-        public List<CashRegister> CashRegisterList { get; set; }
+        public CashRegister chashRegister { get; set; }
         #endregion
 
         #region Konstruktor
@@ -101,10 +101,21 @@ namespace Tankstelle.Business
             TankList = _configManager.GetTanks();
         }
 
+        /// <summary>
+        /// Holt alle Rechnungen aus der Config
+        /// </summary>
         public void GetReceipt()
         {
             ReceiptList.Clear();
             ReceiptList = _configManager.GetReceipts();
+        }
+
+        /// <summary>
+        /// Holt alle Coins aus der Config
+        /// </summary>
+        public List<Coin> GetCoins()
+        {
+            return _configManager.GetCoins();
         }
 
         /// <summary>
@@ -127,11 +138,28 @@ namespace Tankstelle.Business
         }
 
         /// <summary>
-        /// Aktualisiert die Daten von den Tanks in der Konfigurationsdatei
+        /// Aktualisiert die Daten von den Tanks im Config
         /// </summary>
         public void UpdateTanks()
         {
             _configManager.SaveTankChanges();
+        }
+
+        /// <summary>
+        /// Aktualisiert die Daten von den Coins im Config
+        /// </summary>
+        public void UpdateCoins(List<Coin> coins)
+        {
+            foreach (var oneCoin in coins)
+            {
+                _configManager.AddCoin(oneCoin);
+            }
+            _configManager.SaveCoinChanges();
+        }
+
+        public void DeleteCoins()
+        {
+            _configManager.ClearAllCoins();
         }
 
         /// <summary>

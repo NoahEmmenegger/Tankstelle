@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tankstelle.Business;
+using Tankstelle.Business.TankService;
 using Tankstelle.Enums;
 using Tankstelle.Interfaces;
 
@@ -160,9 +161,9 @@ namespace Tankstelle.GUI
             catch (Exception ex)
             {
                 if (ex.Message.StartsWith("Es kann leider kein Rückgeld gegeben werden."))
-                    MessageBox.Show(ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageService.AddWarningMessage("Fehler", ex.Message);
                 else
-                    MessageBox.Show(ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageService.AddErrorMessage("Fehler", ex.Message);
                 return;
             }
         }
