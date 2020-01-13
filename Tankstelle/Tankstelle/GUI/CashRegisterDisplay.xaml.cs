@@ -161,7 +161,7 @@ namespace Tankstelle.GUI
             catch (Exception ex)
             {
                 if (ex.Message.StartsWith("Es kann leider kein Rückgeld gegeben werden."))
-                    MessageService.AddWarningMessage("Fehler", ex.Message);
+                    MessageService.AddWarningMessage("Fehler", $"{ex.Message}\r\n{ex.Source}\r\n{ex.StackTrace}");
                 else
                     MessageService.AddErrorMessage("Fehler", ex.Message);
                 return;
