@@ -47,7 +47,7 @@ namespace Tankstelle.GUI
         /// <param name="e"></param>
         private void _btnCashRegister_Click(object sender, RoutedEventArgs e)
         {
-            CashRegisterDisplay display = new CashRegisterDisplay(_gasStation.chashRegister);
+            CashRegisterDisplay display = new CashRegisterDisplay(_gasStation.ChashRegister);
             display.Show();
         }
 
