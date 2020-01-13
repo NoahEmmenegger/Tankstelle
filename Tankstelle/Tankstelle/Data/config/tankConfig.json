@@ -6,7 +6,7 @@
       "FuelName": "Diesel",
       "AvailibleLiter": "1000",
       "VolumeLiter": "900",
-      "MinAmount": "12"
+      "MinAmount": "200"
     },
     {
       "Number": 2,
@@ -14,7 +14,7 @@
       "FuelName": "Benzin",
       "AvailibleLiter": "1000",
       "VolumeLiter": "699.5",
-      "MinAmount": "700"
+      "MinAmount": "200"
     }
   ]
 }
