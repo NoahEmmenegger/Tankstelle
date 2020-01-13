@@ -351,7 +351,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr gasPumpConfig.json", "GASPUMP kann nicht abgespeichert werden");
+                MessageService.AddErrorMessage("Bitte überprüfe Sie ihr gasPumpConfig.json", "GASPUMP kann nicht abgespeichert werden");
             }
         }
 
@@ -387,7 +387,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr tankConfig.json", "Tank kann nicht abgespeichert werden");
+                MessageService.AddErrorMessage("Bitte überprüfe Sie ihr tankConfig.json", "Tank kann nicht abgespeichert werden");
             }
         }
 
@@ -419,7 +419,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr fuelConfig.json", "Fuel kann nicht abgespeichert werden");
+                MessageService.AddErrorMessage("Bitte überprüfe Sie ihr fuelConfig.json", "Fuel kann nicht abgespeichert werden");
             }
         }
 
@@ -454,7 +454,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr receiptConfig.json", "Receipt kann nicht abgespeichert werden");
+                MessageService.AddErrorMessage("Bitte überprüfe Sie ihr receiptConfig.json", "Receipt kann nicht abgespeichert werden");
             }
         }
 
@@ -483,7 +483,7 @@ namespace Tankstelle.Data
             }
             catch (Exception)
             {
-                MessageService.AddFatalErrorMessage("Bitte überprüfe Sie ihr coinConfig.json", "Coin kann nicht abgespeichert werden");
+                MessageService.AddErrorMessage("Bitte überprüfe Sie ihr coinConfig.json", "Coin kann nicht abgespeichert werden");
             }
         }
 
