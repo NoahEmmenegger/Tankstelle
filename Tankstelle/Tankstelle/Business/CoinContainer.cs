@@ -54,7 +54,7 @@ namespace Tankstelle.Business
                 }
                 catch(IndexOutOfRangeException ex)
                 {
-                   
+                    MessageService.AddErrorMessage("Fehler", $"{ex.Message}\r\n{ex.Source}\r\n{ex.StackTrace}");
                 }
             }
 
